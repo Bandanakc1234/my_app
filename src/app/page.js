@@ -20,25 +20,45 @@ export default function Home() {
     loop: true,
     margin: 10,
     items: 4,
+    responsive:{
+      0:{
+          items:1,
+      },
+      600:{
+          items:2,
+      },
+      1000:{
+          items:4
+      }
+    }
   }
 
   const settings2 = {
     loop: true,
     margin: 10,
     items: 5,
+    responsive:{
+      0:{
+          items:1,
+      },
+      600:{
+          items:3,
+      },
+      1000:{
+          items:5
+      }
+    }
   }
 
   
 
   return (
 
-    <>
-      <div className="main">
-
-        <div className="container">
-          <div className="head p-24">
-            <h1 className="text-5xl text-orange-500 font-bold">learn</h1>
-            <div className="p-10 text-xl w-3/5">
+    <div className="bg-blue-200">
+      <div className="main ml-16 mr-16 bg-white ">
+          <div className="head bg-white">
+            <h1 className="text-5xl text-orange-500 font-bold pl-10 pt-10">learn</h1>
+            <div className="lg:p-20 lg:text-lg lg:w-3/5  md:p-10 md:text-base md:w-5/6 sm:p-5 sm:w-full sm:text-sm">
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, voluptatem provident. Corporis
                 dolores nisi cupiditate sunt minus voluptas molestiae necessitatibus voluptates, consequuntur,
                 non rem optio nemo quam sit quis accusantium quas omnis. Molestiae voluptatem officia nesciunt,
@@ -46,18 +66,18 @@ export default function Home() {
             </div>
 
             <div className="cn">
-              <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-4 hover:bg-white"><a href="#" className="p-3">Free Quote</a></button>
-              <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-4 hover:bg-white"><a href="contact.html" className="p-3">Contact Us</a></button>
+              <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-10 hover:bg-white"><a href="#" className="p-3">Free Quote</a></button>
+              <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-10 hover:bg-white"><a href="contact.html" className="p-3">Contact Us</a></button>
             </div>
           </div>
-        </div>
+       
         {/*  first content end */}
 
         {/* second content start */}
-        <div className="body_mid h-auto bg-red-100 flex w-full justify-between p-24">
-          <div className="left w-1/2">
+        <div className="body_mid h-auto bg-white w-full p-9 xl:flex xl:justify-between">
+          <div className="left lg:w-1/2 md:w-full sm:w-full">
             <h1 className="text-5xl text-orange-500 font-bold p-5">learn</h1>
-            <p className="p-12 text-xl w-full">
+            <p className="lg:p-12 lg:text-xl lg:w-full md:text-base md:w-5/6 md:p-10 sm:p-5 sm:text-sm sm:w-full">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique fuga
               consectetur hic quam dolore ea beatae consequatur excepturi ratione deserunt earum ut animi amet
               eligendi suscipit quidem dignissimos debitis sunt, et harum perspiciatis neque! Animi, obcaecati
@@ -75,7 +95,7 @@ export default function Home() {
               <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-4 hover:bg-white "><a href="" className="p-3">Read more</a></button>
             </div>
           </div>
-          <div className="right w-1/2">
+          <div className="right m-5 lg:w-1/2">
             <img src={"/download1.png"} alt="" className="w-full h-full" />
 
           </div>
@@ -88,9 +108,9 @@ export default function Home() {
         <div className="footer bg-blue-950 text-white p-14">
           <h1 className="text-4xl font-bold">Ready to get started</h1>
           <p className="mr-5">Enter you email address</p>
-          <input type="email" id="email" name="email" placeholder="enter your email..." className="text-black w-2/5 h-5 font-2xl rounded-md p-5" />
-          <div>
-            <button className="bg-orange-400 h-9 text-lg text-black rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black"><a href="">submit</a></button>
+          <input type="email" id="email" name="email" placeholder="enter your email..." className="text-black sm:w-3/5 h-5 font-2xl rounded-md p-5" />
+          <div className="flex justify-start">
+            <button className="bg-orange-400 h-9 text-lg text-black rounded-md cursor-pointer mt-4 w-28 hover:bg-white hover:text-black flex items-center justify-center"><a href="">submit</a></button>
           </div>
 
         </div>
@@ -99,13 +119,13 @@ export default function Home() {
 
         {/* fourth content start */}
 
-        <div className="lfooter bg-red-100">
+        <div className="lfooter bg-white p-10">
 
           <h1 className="text-5xl text-center font-bold p-10">our services</h1>
 
-          <div className="topbuttom flex flex-col gap-10 pb-7">
-            <div className="top flex justify-evenly">
-              <div className="topfirst bg-white w-96 rounded-md p-2 flex flex-col justify-center hover:bg-blue-950 hover:text-white">
+          <div className="topbuttom flex flex-col gap-5 pb-7">
+            <div className="top flex-col-3 justify-between lg:flex lg:justify-between">
+              <div className="topfirst bg-white w-96 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -120,7 +140,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="topsecond  bg-white w-96 rounded-md p-2 flex flex-col justify-center hover:bg-blue-950 hover:text-white">
+              <div className="topsecond  bg-white w-96 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -134,7 +154,7 @@ export default function Home() {
                   <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
                 </div>
               </div>
-              <div className="topthird  bg-white w-96 rounded-md p-2 flex flex-col justify-center  hover:bg-blue-950 hover:text-white">
+              <div className="topthird  bg-white w-96 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -150,8 +170,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="buttom flex justify-evenly">
-              <div className="buttomfirst  bg-white w-96 rounded-md p-2 flex flex-col justify-center  hover:bg-blue-950 hover:text-white">
+            <div className="buttom flex-col-3 lg:flex lg:justify-between">
+              <div className="buttomfirst  bg-white w-96 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50} />
                 </div>
@@ -165,7 +185,7 @@ export default function Home() {
                   <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
                 </div>
               </div>
-              <div className="buttomsecond  bg-white w-96 rounded-md p-2 flex flex-col justify-center  hover:bg-blue-950 hover:text-white">
+              <div className="buttomsecond  bg-white w-96 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50} />
                 </div>
@@ -179,7 +199,7 @@ export default function Home() {
                   <button className="bg-orange-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
                 </div>
               </div>
-              <div className="buttomthird  bg-white w-96 rounded-md p-2 flex flex-col justify-center  hover:bg-blue-950 hover:text-white">
+              <div className="buttomthird  bg-white w-96 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -201,11 +221,11 @@ export default function Home() {
 
         {/* carousel start  */}
 
-        <OwlCarousel {...settings}>
-
-          <div className="border border-solid border-black text-center p-5" >
+        <OwlCarousel {...settings} className="border border-t-4 border-b-4">
+          <div >
+          <div className="border border-solid border-l-white shadow-2xl text-center p-5 m-10 rounded-xl bg-white" >
             <div className="imgprofile w-20 mx-auto">
-              <img src="./download2.jpg" alt="" class="rounded-circle w-20 h-20"/>
+              <img src="./download2.jpg" alt="" className="rounded-circle w-20 h-20"/>
             </div>
             <div>
               <h3 className="font-bold text-xl">Bandana kc</h3>
@@ -220,61 +240,62 @@ export default function Home() {
           </div>
 
           
-
+          </div>
         </OwlCarousel >
 
 
         
-          <div className="text-center bg-red-100 pt-3">
-            <h3 className="text-2xl font-bold">Our Clients</h3>
-            <p className="text-3xl ">Some of our happy Clients</p>
+          <div className="text-center p-12 bg-white">
+            <h3 className="text-2xl ">Our Clients</h3>
+            <p className="text-3xl p-5 font-bold">Some of our happy Clients</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae veniam nesciunt, ducimus
               praesentium placeat debitis? Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
       
 
-        <OwlCarousel {...settings2}>
-        <div className="owlcarousel_logo pt-5">
-              <div className="logo border border-solid border-black h-48 w-48 mx-auto">
-                <img src="./logo6.jpg" />
+        <OwlCarousel {...settings2} className="border border-t-4 border-b-4">
+          
+        <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto rounded-xl">
+                <img src="./logo6.jpg" className="rounded-xl"/>
               </div>
             </div>
 
-            <div className="owlcarousel_logo pt-5">
-              <div className="logo border border-solid border-black h-48 w-48 mx-auto">
-                <img src="./logo1.png" />
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo1.png" className="rounded-xl"/>
               </div>
             </div>
             
-            <div className="owlcarousel_logo pt-5">
-              <div className="logo border border-solid border-black h-48 w-48 mx-auto">
-                <img src="./logo2.png" />
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo2.png" className="h-full rounded-xl"/>
               </div>
             </div>
             
-            <div className="owlcarousel_logo pt-5">
-              <div className="logo border border-solid border-black h-48 w-48 mx-auto">
-                <img src="./logo3.png" />
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo3.png" className="h-full rounded-xl" />
               </div>
             </div>
             
-            <div className="owlcarousel_logo pt-5">
-              <div className="logo border border-solid border-black h-48 w-48 mx-auto">
-                <img src="./logo4.jpg" />
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo4.jpg" className="h-full rounded-xl"/>
               </div>
             </div>
             
-            <div className="owlcarousel_logo pt-5">
-              <div className="logo border border-solid border-black h-48 w-48 mx-auto">
-                <img src="./logo5.jpg" />
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo5.jpg" className="h-full rounded-xl" />
               </div>
             </div>
-       
+        
         </OwlCarousel >
 
 
       </div >
-    </>
+    </div>
 
   );
 }
