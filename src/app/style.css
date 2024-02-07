@@ -37,4 +37,15 @@
     }
 }
 
+/* career */
+.careerImage{
+    background: rgb(29, 75, 112) url(/career1.webp) ;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-position: center;
+    height: 30vh;
+}
+
+
 
