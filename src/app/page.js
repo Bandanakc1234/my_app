@@ -1,6 +1,7 @@
 'use client';
 import Image from "next/image";
 import { BiWebcam } from 'react-icons/bi';
+
 import React, { useEffect } from 'react';
 
 if (typeof window !== 'undefined') {
