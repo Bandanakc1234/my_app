@@ -16,8 +16,14 @@
     color: black;
 }
 
-
-
+.contact-img{
+    background: rgb(137, 193, 249) url(/contact1.jpg);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: black;
+  }
 
 @media (min-width:350px) and (max-width:900px) {
     .head .paragraph {
