@@ -2,8 +2,8 @@
 import React from 'react'
 import Link from 'next/link';
 import { AiOutlineMenu, AiOutlineClose, } from 'react-icons/ai'
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'
-import { SiGmail } from "react-icons/si";
+import { IoIosMail, IoLogoFacebook, IoLogoInstagram, IoLogoTwitter, IoLogoLinkedin } from "react-icons/io";
+
 import { useState } from 'react';
 
 
@@ -14,7 +14,7 @@ const Navbar = () => {
         setMenuOpen(!menuOpen);
     }
     return (
-            <nav className="sticky w-full h-24 top-0 shadow-xl bg-white">
+            <nav className="sticky w-full h-24 top-0 shadow-xl bg-white z-10" >
                 <div className='flex justify-between items-center h-full w-full px-4 2xl:px:16'>
                     <div>
                         <h1 className='text-3xl font-semibold'>Index It Hub</h1>
@@ -80,12 +80,12 @@ const Navbar = () => {
                             </Link>
                         </ul>
                     </div>
-                    <div className='flex flex-row, justify-around pt-10 item-center'>
-                        <FaInstagram size={30} className='cursor-pointer hover:text-white' />
-                        <FaFacebook size={30} className='cursor-pointer hover:text-white' />
-                        <FaTwitter size={30} className='cursor-pointer hover:text-white' />
-                        <SiGmail size={30} className='cursor-pointer hover:text-white' />
-                        <FaLinkedin size={30} className='cursor-pointer hover:text-white' />
+                    <div className='flex flex-row, justify-around pt-7 item-center'>
+                        <IoLogoInstagram size={50} className='cursor-pointer hover:text-white' />
+                        <IoLogoFacebook size={50} className='cursor-pointer hover:text-white' />
+                        <IoLogoTwitter size={50} className='cursor-pointer hover:text-white' />
+                        <IoIosMail  size={50} className='cursor-pointer hover:text-white ' />
+                        <IoLogoLinkedin size={50} className='cursor-pointer hover:text-white' />
                     </div>
                 </div>
             </nav>
