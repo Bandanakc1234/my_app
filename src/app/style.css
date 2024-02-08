@@ -16,6 +16,39 @@
     color: black;
 }
 
+/* login */
+.log_in{
+    background-image: url(/image3.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 90vh;
+}
+.circle{
+    height: 70vh;
+    width: 70vh;
+}
+
+@media screen and (max-width: 600px) {
+    .circle{
+        height: 65vh;
+        width: 50vh;
+    }
+}
+
+/* career */
+.careerImage{
+    background: rgb(29, 75, 112) url(/career1.webp) ;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-position: center;
+    height: 30vh;
+}
+
+
+
+
 .contact-img{
     background: rgb(137, 193, 249) url(/contact1.jpg);
     background-blend-mode: overlay;
@@ -204,3 +237,4 @@
         width: 100%;
     }
 } 
+
