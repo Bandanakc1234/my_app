@@ -10,7 +10,7 @@ const project = () => {
     },[])
     return (
         <div>
-            <div className='pl-16 pr-16'>
+            <div className='px-6 md:px-16'>
                 <div className='contact-img h-52 w-100%' >
                     <h1 className=' font-bold text-3xl text-center pt-14' data-aos="zoom-in" data-aos-duration="2000">Our Project</h1>
                     
@@ -31,7 +31,7 @@ const project = () => {
                         </div>
                         <div className="m-16">
                         <ul className='flex justify-center'>
-                            <li className='hover:bg-blue-400 py-2 px-4  active:bg-blue-400 rounded-l-full'>All</li>
+                            <li className='hover:bg-blue-950 py-2 px-4  active:bg-blue-400 rounded-l-full'>All</li>
                             <li className='hover:bg-blue-400 py-2 px-4'> Web Design</li>
                             <li className='hover:bg-blue-400 py-2 px-4'>Graphic Design</li>
                             <li className="hover:bg-blue-400 py-2 px-4 rounded-r-full">Digital Marketing</li>

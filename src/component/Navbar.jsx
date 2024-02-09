@@ -14,7 +14,7 @@ const Navbar = () => {
         setMenuOpen(!menuOpen);
     }
     return (
-            <nav className="sticky w-full h-24 top-0 shadow-xl bg-white z-10"  >
+            <nav className="sticky w-full py-6 top-0 shadow-md bg-blue-100 z-10"  >
                 <div className='flex justify-between items-center h-full w-full px-4 2xl:px:16'>
                     <div>
                         <h1 className='text-3xl font-semibold'>Index It Hub</h1>
