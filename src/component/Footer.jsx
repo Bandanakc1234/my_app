@@ -6,7 +6,7 @@ import { IoIosMail, IoLogoFacebook, IoLogoInstagram, IoLogoTwitter, IoLogoLinked
 
 const Footer = () => {
   return (
-    <footer className='bg-blue-200 pl-16 pr-16 h' >
+    <footer className='bg-blue-200 md:px-16  px-6' >
       <div className='bg-gray-800 text-gray-200'>
         <div className='max-w-7xl mx-auto p-12'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
