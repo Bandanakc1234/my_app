@@ -55,7 +55,7 @@ export default function Home() {
     <div className="bg-blue-200 md:px-16 px-6 font-serif">
       <div className="main  bg-white ">
           <div className="head bg-white">
-            <h1 className="text-5xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="2000">learn</h1>
+            <h1 className="lg:text-4xl text-3xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="2000">Learn</h1>
             <div className="lg:p-20 lg:text-xl lg:w-3/5  md:p-10 md:text-base md:w-5/6 p-3 w-full text-sm text-black" data-aos="zoom-in" data-aos-duration="2000">
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, voluptatem provident. Corporis
                 dolores nisi cupiditate sunt minus voluptas molestiae necessitatibus voluptates, consequuntur,
@@ -74,7 +74,7 @@ export default function Home() {
         {/* second content start */}
         <div className="body_mid h-auto bg-white w-full md:p-9  xl:flex xl:justify-between">
           <div className="left lg:w-1/2 md:w-full sm:w-full" data-aos="fade-up" data-aos-duration="2000">
-            <h1 className="text-5xl text-blue-500 font-bold md:p-5 p-3">learn</h1>
+            <h1 className="lg:text-4xl text-3xl text-blue-500 font-bold md:p-5 p-3">Learn</h1>
             <p className="lg:p-12 lg:text-xl lg:w-full md:text-base md:w-5/6 md:p-10 p-3 text-sm w-full">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique fuga
               consectetur hic quam dolore ea beatae consequatur excepturi ratione deserunt earum ut animi amet
@@ -123,7 +123,7 @@ export default function Home() {
 
           <div className="topbuttom flex flex-col gap-5 pb-7">
             <div className="top flex-col-3 justify-between lg:flex lg:justify-between">
-              <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="2000">
+              <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -138,7 +138,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="topsecond  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="2000">
+              <div className="topsecond  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -152,7 +152,7 @@ export default function Home() {
                   <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
                 </div>
               </div>
-              <div className="topthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="2000">
+              <div className="topthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -169,7 +169,7 @@ export default function Home() {
             </div>
 
             <div className="buttom flex-col-3 lg:flex lg:justify-between">
-              <div className="buttomfirst  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="2000">
+              <div className="buttomfirst  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50} />
                 </div>
@@ -183,7 +183,7 @@ export default function Home() {
                   <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
                 </div>
               </div>
-              <div className="buttomsecond  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="2000">
+              <div className="buttomsecond  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50} />
                 </div>
@@ -197,7 +197,7 @@ export default function Home() {
                   <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
                 </div>
               </div>
-              <div className="buttomthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="2000">
+              <div className="buttomthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>

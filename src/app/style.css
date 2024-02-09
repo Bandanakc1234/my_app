@@ -9,7 +9,7 @@
 }
 
 .head {
-    background: rgb(182, 191, 210) url(/frontimage1.jpg);
+    background: rgb(186, 211, 225) url(/frontimage1.jpg);
     background-blend-mode: overlay;
     background-size: cover;
     background-attachment: fixed;
