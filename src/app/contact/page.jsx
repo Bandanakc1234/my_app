@@ -9,15 +9,16 @@ const contact = () => {
     Aos.init()
   }, [])
   return (
-
     <div className='bg-blue-200 font-serif'>
       <section className="text-gray-600 body-font relative pl-16 pr-16" />
     <div className='bg-blue-200'>
+
       <section className="text-gray-600 body-font relative md:px-16  px-6">
 
         <div className='contact-img h-52 w-100%'>
           <h1 className=' font-bold text-3xl text-center pt-14' data-aos="zoom-in" data-aos-duration="2000">Contact Us</h1>
-          <div className='flex justify-center pt-5 font-bold' data-aos="fade-up" data-aos-duration="2000">
+          <hr  className='w-25'/>
+          <div className='flex justify-center pt-5' data-aos="fade-up" data-aos-duration="2000">
             <a href="/" className='pr-2 hover:text-blue-800'>Home</a> /
             <p className='pl-2'>Contact</p>
           </div>
@@ -53,7 +54,7 @@ const contact = () => {
               <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
               <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
             </div>
-            <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send Message</button>
+            <button className="text-white bg-indigo-700 border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded text-lg">Send Message</button>
           </div>
         </div>
       </section>

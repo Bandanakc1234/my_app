@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
           crossOrigin="anonymous" referrerPolicy="no-referrer" />
       </Head>
-      <body className='bg-blue-200'>
+      <body className='bg-blue-100 font-serif'>
         <Navbar />
 
         <div> {children}</div>

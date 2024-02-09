@@ -6,7 +6,7 @@ import { IoIosMail, IoLogoFacebook, IoLogoInstagram, IoLogoTwitter, IoLogoLinked
 
 const Footer = () => {
   return (
-    <footer className='bg-blue-200 md:px-16  px-6' >
+    <footer className=' md:px-16  px-6' >
       <div className='bg-gray-800 text-gray-200'>
         <div className='max-w-7xl mx-auto p-12'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
@@ -34,7 +34,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className=' p-3'>
+            <div className=' p-4'>
               <h1 className='uppercase mb-3 text-xl'>Contact</h1>
               <ul className='flex flex-col'>
                 <li className='flex pb-2'>
@@ -51,17 +51,17 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className=' p-2'>
+            <div className='p-4'>
               <h1 className='mb-3 text-xl'>Subscribe to our newsletter</h1>
               <p className='mb-2'>Monthly digest of what's new and exciting from us.</p>
-              <form className='flex flex-row flex-wrap'>
-                <input type="text" placeholder='Email address' className='text-black w-2/3 text-center mr-1' />
+              <form className='flex flex-row flex-wrap gap-1'>
+                <input type="text" placeholder='Email address' className='text-black w-2/3 text-center  ' />
                 <button className='p-1 rounded-md bg-blue-500 hover:bg-blue-700'>Subscribe</button>
               </form>
             </div>
           </div>
         </div>
-        <div className='flex flex-col border-t p-0'>
+        <div className='flex flex-col border-t'>
           <ul className='flex justify-end space-x-2 m-4'>
             <li className='hover:text-blue-500'>
               <IoLogoInstagram size={30} />
