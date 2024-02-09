@@ -6,7 +6,7 @@ const about = () => {
             <div className='contact-img text-center p-16 text-white'>
                 <div className='career lg:text-4xl text-2xl font-bold ' data-aos="zoom-in" data-aos-duration="2000" >About Us</div>
 
-                <div className='flex justify-center p-5 font-semibold ' data-aos="fade-up" data-aos-duration="2000">
+                <div className='flex justify-center p-5' data-aos="fade-up" data-aos-duration="2000">
                     <a href="/">Home/</a>
                     <p className='pl-4'>About</p>
                 </div>

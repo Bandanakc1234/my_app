@@ -13,8 +13,6 @@ const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
 });
 
-
-
 export default function Home() {
   const settings = {
     loop: true,
@@ -57,7 +55,7 @@ export default function Home() {
     <div className="bg-blue-200 md:px-16 px-6 font-serif">
       <div className="main  bg-white ">
           <div className="head bg-white">
-            <h1 className="text-5xl text-blue-500 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="2000">learn</h1>
+            <h1 className="text-5xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="2000">learn</h1>
             <div className="lg:p-20 lg:text-xl lg:w-3/5  md:p-10 md:text-base md:w-5/6 p-3 w-full text-sm text-black" data-aos="zoom-in" data-aos-duration="2000">
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, voluptatem provident. Corporis
                 dolores nisi cupiditate sunt minus voluptas molestiae necessitatibus voluptates, consequuntur,
