@@ -9,8 +9,12 @@ const contact = () => {
     Aos.init()
   }, [])
   return (
-    <div >
+    <div className='bg-blue-200 font-serif'>
+      <section className="text-gray-600 body-font relative pl-16 pr-16" />
+    <div className='bg-blue-200'>
+
       <section className="text-gray-600 body-font relative md:px-16  px-6">
+
         <div className='contact-img h-52 w-100%'>
           <h1 className=' font-bold text-3xl text-center pt-14' data-aos="zoom-in" data-aos-duration="2000">Contact Us</h1>
           <hr  className='w-25'/>
@@ -54,6 +58,7 @@ const contact = () => {
           </div>
         </div>
       </section>
+    </div>
     </div>
   )
 }
