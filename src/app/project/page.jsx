@@ -29,7 +29,7 @@ const project = () => {
                             </div>
                             <h1 className='text-2xl'>Recently Launched Projects</h1>
                         </div>
-                        <div className="m-16">
+                        <div className="md:m-16 ">
                         <ul className='flex justify-center'>
                             <li className='hover:bg-blue-950 py-2 px-4  active:bg-blue-400 rounded-l-full'>All</li>
                             <li className='hover:bg-blue-400 py-2 px-4'> Web Design</li>
