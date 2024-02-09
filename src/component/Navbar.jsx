@@ -23,8 +23,8 @@ const Navbar = () => {
                     <a href="#!">Index It Hub</a>
                     </Link> */}
                     </div>
-                    <div className='hidden sm:flex'>
-                        <ul className='hidden sm:flex'>
+                    <div className='hidden md:flex '>
+                        <ul className='hidden md:flex'>
                             <Link href={'/'}>
                                 <li className='ml-10 font-bold hover:text-blue-500 text-xl'>Home</li>
                             </Link>

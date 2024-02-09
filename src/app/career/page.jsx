@@ -14,9 +14,8 @@ const career = () => {
         <div className='md:px-16 bg-blue-200 px-6 font-serif'>
             <div className='contact-img text-center p-16 text-white'>
                 <div className='career lg:text-4xl text-2xl font-bold' data-aos="zoom-in" data-aos-duration="2000" >Career</div>
-
-                <div className='flex justify-center p-3' data-aos="fade-up" data-aos-duration="2000">
-                    <a href="/" className='pr-2 hover:text-blue-800'>Home</a> /
+                <div className='flex justify-center p-5 font-semibold' data-aos="fade-up" data-aos-duration="2000">
+                    <a href="/" className='pr-2 hover:text-blue-200'>Home</a>/
                     <p className='pl-2'>Career</p>
                 </div>
             </div>
@@ -31,7 +30,7 @@ const career = () => {
                     <p className='lg:pl-0 pt-5 pl-3'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quia enim magnam aspernatur nisi hic quisquam facere eius quaerat voluptates voluptas velit, vitae voluptatum at consequatur. Inventore magnam dolorem a! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, voluptate! Sapiente, minima labore? Facilis, repellendus. Nihil facilis quae, optio illum ab alias facere, aliquam blanditiis consequuntur adipisci laboriosam, magni tempora?</p>
                 </div>
                 <div className='lg:p-10 lg:w-1/2 p-5'>
-                    <img src={"/career2.jpg"} alt="" className='h-full w-full rounded-2xl opacity-80' data-aos="zoom-in" data-aos-duration="2000"  />
+                    <img src={"/career2.jpg"} alt="" className='h-full w-full rounded-2xl opacity-80' data-aos="zoom-in" data-aos-duration="2000" />
                 </div>
             </div>
 
