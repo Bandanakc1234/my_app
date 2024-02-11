@@ -1,4 +1,5 @@
 'use client';
+
 import { CgPathTrim } from "react-icons/cg";
 import Aos from "aos";
 import 'aos/dist/aos.css'

@@ -55,8 +55,8 @@ export default function Home() {
     <div className="bg-blue-200 md:px-16 px-6 font-serif">
       <div className="main  bg-white ">
           <div className="head bg-white">
-            <h1 className="lg:text-4xl text-3xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="2000">Learn</h1>
-            <div className="lg:p-20 lg:text-xl lg:w-3/5  md:p-10 md:text-base md:w-5/6 p-3 w-full text-sm text-black" data-aos="zoom-in" data-aos-duration="2000">
+            <h1 className="lg:text-4xl text-3xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="1000">Learn</h1>
+            <div className="lg:p-20 lg:text-xl lg:w-3/5  md:p-10 md:text-base md:w-5/6 p-3 w-full text-sm text-black" data-aos="zoom-in" data-aos-duration="1000">
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, voluptatem provident. Corporis
                 dolores nisi cupiditate sunt minus voluptas molestiae necessitatibus voluptates, consequuntur,
                 non rem optio nemo quam sit quis accusantium quas omnis. Molestiae voluptatem officia nesciunt,
@@ -64,8 +64,8 @@ export default function Home() {
             </div>
 
             <div className="cn">
-              <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 hover:bg-white"  data-aos="fade-right" data-aos-duration="2000"><a href="#" className="p-3">Free Quote</a></button>
-              <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5  hover:bg-white"  data-aos="fade-left" data-aos-duration="2000"><a href="contact.html" className="p-3">Contact Us</a></button>
+              <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 hover:bg-white"  data-aos="fade-right" data-aos-duration="1000"><a href="#" className="p-3">Free Quote</a></button>
+              <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5  hover:bg-white"  data-aos="fade-left" data-aos-duration="1000"><a href="contact.html" className="p-3">Contact Us</a></button>
             </div>
           </div>
        

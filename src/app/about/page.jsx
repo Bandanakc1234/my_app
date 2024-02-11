@@ -1,8 +1,17 @@
+"use client"
+
 import React from 'react'
+import Aos from "aos";
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
 
 const about = () => {
+  useEffect(() => {
+    Aos.init()
+}, [])
   return (
-         <div className='md:px-16 bg-blue-200 px-6 font-serif'>
+         <div className='md:px-16 px-6'>
              <div className='contact-img text-center p-16 text-white'>
                     <div className='career lg:text-4xl text-2xl font-bold' data-aos="zoom-in" data-aos-duration="2000" >About Us</div>
                     <div className='flex justify-center p-3' data-aos="fade-up" data-aos-duration="2000">
