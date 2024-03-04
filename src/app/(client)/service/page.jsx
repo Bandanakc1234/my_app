@@ -25,7 +25,7 @@ const services = () => {
 
       <div className="lfooter bg-white md:p-10">
 
-        <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">our services</h1>
+        <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Our Services</h1>
 
         <div className="topbuttom flex flex-col gap-5 pb-7">
           <div className="top flex-col-3 justify-between lg:flex lg:justify-between">
