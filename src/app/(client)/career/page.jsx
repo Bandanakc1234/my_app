@@ -11,11 +11,11 @@ const career = () => {
         Aos.init()
     }, [])
     return (
-        <div className='md:px-16  px-6'>
+        <div>
             <div className='contact-img text-center p-16 text-white'>
                 <div className='career lg:text-4xl text-2xl font-bold' data-aos="zoom-in" data-aos-duration="2000" >Career</div>
                 <div className='flex justify-center p-5' data-aos="fade-up" data-aos-duration="2000">
-                    <a href="/" className='pr-2 hover:text-blue-200'>Home</a>/
+                    <a href="/" className='pr-2 hover:text-blue-800'>Home</a>/
                     <p className='pl-2'>Career</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@ const career = () => {
             <div className='lg:flex lg:p-10 justify between w-full bg-white'>
                 <div className='lg:w-1/2 lg:m-14 pt-10' data-aos="fade-up" data-aos-duration="2000">
                     <div className='lg:flex lg:justify-start flex  justify-center'>
-                        <CgPathTrim className='m-1 text-blue-500 size-6' />
+                        <CgPathTrim className='m-1 text-blue-500 size-6'/>
                         <p className='font-semibold'>BE PART OF OUR TEAM</p>
                     </div>
                     <p className='lg:text-3xl text-xl lg:text-left text-center font-bold pt-3'>Career and Culture at Index IT Hub</p>
@@ -51,7 +51,7 @@ const career = () => {
                     <p className='md:text-lg md:m-2 m-1 text-sm'>Posted Date: 2024 4th feb</p>
                     <p className='md:text-lg md:m-2 m-1 text-sm'>Apply Before(Deadline):2024 4th march</p>
                     <div className='flex justify-center'>
-                        <button className='md::m-5 m-3 bg-blue-200 md:w-28 w-24 rounded-2xl md:h-9 h-7 hover:bg-white hover:text-black md:text-lg text-sm'>Read More</button>
+                        <button className='md::m-5 m-3 bg-blue-500 text-white md:w-28 w-24 rounded-2xl md:h-9 h-7 hover:bg-blue-700 md:text-lg text-sm'>Read More</button>
                     </div>
                 </div>
 

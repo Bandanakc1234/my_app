@@ -10,12 +10,11 @@ const contact = () => {
     Aos.init()
   }, [])
   return (
-    <div className="md:px-16 px-6">
-
+    <div>
       <div className='contact-img text-center p-16 text-white'>
         <div className='career lg:text-4xl text-2xl font-bold' data-aos="zoom-in" data-aos-duration="2000" >Contact Us</div>
         <div className='flex justify-center p-5' data-aos="fade-up" data-aos-duration="2000">
-          <a href="/" className='pr-2 hover:text-blue-200'>Home</a>/
+          <a href="/" className='pr-2 hover:text-blue-800'>Home</a>/
           <p className='pl-2'>Career</p>
         </div>
       </div>
@@ -51,7 +50,7 @@ const contact = () => {
             <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
             <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
           </div>
-          <button className="text-white bg-indigo-700 border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded text-lg">Send Message</button>
+          <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded text-lg">Send Message</button>
         </div>
       </div>
     </div>

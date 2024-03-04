@@ -12,7 +12,7 @@ const services = () => {
     Aos.init()
   }, [])
   return (
-    <div className='md:px-16 px-6'>
+    <div>
       <div className='contact-img text-center p-16 text-white'>
         <div className='career lg:text-4xl text-2xl font-bold' data-aos="zoom-in" data-aos-duration="2000" >Service</div>
         <div className='flex justify-center p-3' data-aos="fade-up" data-aos-duration="2000">
@@ -40,7 +40,7 @@ const services = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum quidem </p>
               </div>
               <div className="buttondiv flex justify-center">
-                <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
+                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">see more</button>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ const services = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum quidem </p>
               </div>
               <div className="buttondiv flex justify-center">
-                <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
+                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">see more</button>
               </div>
             </div>
             <div className="topthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
@@ -69,7 +69,7 @@ const services = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum quidem </p>
               </div>
               <div className="buttondiv flex justify-center">
-                <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
+                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">see more</button>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@ const services = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum quidem </p>
               </div>
               <div className="buttondiv flex justify-center">
-                <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
+                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">see more</button>
               </div>
             </div>
             <div className="buttomsecond  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
@@ -100,7 +100,7 @@ const services = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum quidem </p>
               </div>
               <div className="buttondiv flex justify-center">
-                <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
+                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">see more</button>
               </div>
             </div>
             <div className="buttomthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
@@ -114,7 +114,7 @@ const services = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum quidem </p>
               </div>
               <div className="buttondiv flex justify-center">
-                <button className="bg-blue-400 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-white hover:text-black">see more</button>
+                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">see more</button>
               </div>
             </div>
           </div>

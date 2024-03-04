@@ -6,7 +6,7 @@ import { IoPerson } from "react-icons/io5";
 
 const login = () => {
     return (
-        <div className='md:px-16 px-6 bg-blue-200 '>
+        <div>
         <div className='log_in  flex justify-center text-center items-center font-serif '>
             <div className='circle lg:border-8 border-4 border-gray-600  bg-black opacity-70 rounded-full lg:p-20 md:p-10 p-5'>
                 <div className='flex justify-center lg:text-3xl md:text-2xl text-xl text-white font-bold md:m-0'>Log < GiThreeLeaves className='text-blue-500 ml-1 mr-1' /> In</div>

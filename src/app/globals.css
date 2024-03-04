@@ -24,6 +24,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+    
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+
 }
 
 @layer utilities {
@@ -31,4 +37,7 @@ body {
     text-wrap: balance;
   }
 }
+
+
+
 
