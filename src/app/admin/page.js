@@ -2,8 +2,8 @@
 
 export default function Home() {
   return (
-    <main className="font-bold">
-      <div>home page of dashboard</div>
+    <main >
+      <div className="font-bold pt-14 text-center">home page of dashboard</div>
     </main>
   );
 }
