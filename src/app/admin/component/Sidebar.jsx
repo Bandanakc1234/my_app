@@ -68,7 +68,9 @@ const Sidebar = ({ isMenuOpen }) => {
   const pathName = usePathname();
 
   const handleDropdown = (index) => {
-    setOpenDropdown(index === openDropdown ? null : index);
+    setOpenDropdown(index === openDropdown 
+      ? null 
+      : index);
   };
 
   return (
@@ -87,10 +89,10 @@ const Sidebar = ({ isMenuOpen }) => {
               <span className={`w-52 ml-3 ${!isMenuOpen ? 'hidden' : 'block'}`}>{name}</span>
             </Link>
             {subItems && openDropdown === index && (
-              <ul className="text-center">
+              <ul>
                 {subItems.map(({ name: subName, href: subHref }) => (
-                  <li key={subName} >
-                    <Link href={subHref}  className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer ${ subHref === pathName ? 'bg-gray-700' : 'hover:bg-gray-700'
+                  <li key={subName} className='py-1'>
+                    <Link href={subHref}  className={`block text-center py-2 px-3 font-medium rounded-md cursor-pointer ${ subHref === pathName ? 'bg-gray-700' : 'hover:bg-gray-700'
                     }`}>
                       <span className=''>{subName}</span>
                     </Link>

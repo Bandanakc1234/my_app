@@ -2,7 +2,9 @@ import React from 'react'
 
 const Careers = () => {
   return (
-    <div>this is all Careers page</div>
+    <div className='text-black flex flex-col justify-center'>this is all Careers page
+      
+    </div>
   )
 }
 
