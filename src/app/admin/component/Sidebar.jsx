@@ -8,7 +8,7 @@ import Link from 'next/link';
 const sidebarItems = [
   {
     name: "Dashboard",
-    href: "/",
+    href: "/admin",
     icon: BiSolidDashboard
   },
   {
@@ -74,7 +74,7 @@ const Sidebar = ({ isMenuOpen }) => {
   };
 
   return (
-    <aside className="fixed h-screen bg-black mt-14 p-4">
+    <aside className={`fixed h-screen bg-black ${isMenuOpen ? 'w-64' : 'w-20'} mt-14 p-3 overflow-auto`}>
       <ul className="text-gray-200">
         {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
           <li key={name}>
@@ -86,7 +86,7 @@ const Sidebar = ({ isMenuOpen }) => {
               <span>
                 <Icon size={24} />
               </span>
-              <span className={`w-52 ml-3 ${!isMenuOpen ? 'hidden' : 'block'}`}>{name}</span>
+              <span className={` ml-3 ${!isMenuOpen ? 'hidden' : 'block'}`}>{name}</span>
             </Link>
             {subItems && openDropdown === index && (
               <ul>
@@ -94,6 +94,7 @@ const Sidebar = ({ isMenuOpen }) => {
                   <li key={subName} className='py-1'>
                     <Link href={subHref}  className={`block text-center py-2 px-3 font-medium rounded-md cursor-pointer ${ subHref === pathName ? 'bg-gray-700' : 'hover:bg-gray-700'
                     }`}>
+
                       <span className=''>{subName}</span>
                     </Link>
                   </li>
