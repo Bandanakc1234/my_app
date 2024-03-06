@@ -53,7 +53,7 @@ const sidebarItems = [
   },
   {
     name: "Register",
-    href: "/register",
+    href: "/admin/register",
     icon: BsPersonPlus
   },
   {

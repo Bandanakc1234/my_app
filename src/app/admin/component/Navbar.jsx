@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className='sidebar_top flex gap-4 text-xl uppercase font-sans items-center'>
         <Image alt='' src='/logo.png' width={35} height={35}/>
         <span>Admin</span>
-        <button className='p-1  ml-auto rounded-lg' onClick={handleMenuToggle}>
+        <button className='p-1 ml-24 rounded-lg' onClick={handleMenuToggle}>
         <AiOutlineMenu size={32}  />
         </button>
       </div>

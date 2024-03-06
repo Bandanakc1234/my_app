@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Navbar from "./component/Navbar";
+// import PageWapper from "./component/PageWapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +12,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="flex min-h-screen">
           <Navbar/>
-          <div className="flex items-center justify-center p-24 w-full" style={{height: '100vh'}}>
+          <div className="flex items-center justify-center p-24 w-full mt-16" style={{height: '100vh'}}>
           {children}
           </div>
         </div>
