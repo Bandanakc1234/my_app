@@ -4,8 +4,8 @@ import React from 'react'
 const Register = () => {
     return (
         <>
-            <div className='w-full'>
-                <form action="" className='m-10 ml-80 border-2 p-9 bg-blue-500 text-white text-center'>
+            <div className='w-full' >
+                <form action="" className='border-2 p-9 bg-blue-500 text-white text-center'>
                     <h1 className='mb-7 text-center text-xl'>Register Here</h1>
                     <div className='flex flex-row'>
                         <div className='flex flex-col text-left'>
@@ -43,7 +43,7 @@ const Register = () => {
                         </div>
                     </div>
                     <button className='border-2 bg-blue-600 rounded-md p-1 mt-4'>Register</button>
-                    <p>Already have an Account? <Link href={"/login"} className='text-blue-600'>Login</Link></p>
+                    <p>Already have an Account? <Link href={"/login"} className='text-blue-900'>Login</Link></p>
                 </form>
             </div>
 

@@ -13,12 +13,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className=" ">
-          <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
-          <div className="flex pt-16" >
-            <Sidebar isMenuOpen={isMenuOpen}/>
+        <div>
+          <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          <div className="mt-14" >
+            <Sidebar isMenuOpen={isMenuOpen} />
             <div className={`mt-14 transition-all duration-300 ease-in-out ${isMenuOpen ? 'ml-64' : 'ml-20'}`}>
-          {children}
+              {children}
             </div>
           </div>
         </div>
