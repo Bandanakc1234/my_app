@@ -2,18 +2,24 @@
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Navbar from "./component/Navbar";
-// import PageWapper from "./component/PageWapper";
+import { useState } from "react";
+import Sidebar from "./component/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex min-h-screen">
-          <Navbar/>
-          <div className="flex items-center justify-center p-24 w-full mt-16" style={{height: '100vh'}}>
+        <div className="">
+          <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
+          <div className="flex pt-16" >
+            <Sidebar isMenuOpen={isMenuOpen}/>
+            <div isMenuOpen={isMenuOpen}>
           {children}
+            </div>
           </div>
         </div>
       </body>
