@@ -40,4 +40,17 @@ body {
 
 
 
+/* table, tr, td{
+  border: 3px solid ;
+} */
 
+tr{
+  @apply flex flex-col md:flex-row md:justify-between;
+}
+td{
+  @apply md:w-1/2;
+}
+
+tr td:first-child{
+  @apply py-4;
+}
