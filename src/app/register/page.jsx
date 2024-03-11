@@ -11,7 +11,7 @@ const Register = () => {
                         <div>
                             <label htmlFor="firstname" className=''>Firstname:</label>
                             <div>
-                            <input type="text" id='firstname' className=' border-2 border-black rounded-md mb-2 ml-3 px-14' name="firstname" />
+                                <input type="text" id='firstname' className=' border-2 border-black rounded-md mb-2 ml-3 px-14' name="firstname" />
                             </div>
                         </div>
 
@@ -32,7 +32,7 @@ const Register = () => {
                         <div>
                             <label htmlFor="email" className=''>Email:</label>
                             <div>
-                            <input type="email" id='email' className=' border-2 border-black rounded-md mb-2 ml-3' name="email" />
+                                <input type="email" id='email' className=' border-2 border-black rounded-md mb-2 ml-3' name="email" />
                             </div>
                         </div>
 
