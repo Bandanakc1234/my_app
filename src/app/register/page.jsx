@@ -5,7 +5,7 @@ const Register = () => {
     return (
         <>
             <div className=' bg-blue-200'  >
-                <form action="" className={`max-w-sm bg-blue-300 text-center`}>
+                <form action="" className={`max-w-md bg-blue-300 text-center`}>
                     <h1 className='mb-7 text-center text-xl'>Register Here</h1>
                     <div className='mb-5'>
                         <div>
@@ -50,13 +50,13 @@ const Register = () => {
 
                         <div>
                             <label htmlFor="gender" className=''>Gender:</label>
-                            <span class="flex flex-row border-2 border-black rounded-md mb-2 ml-3 justify-evenly bg-white">
+                            <span className="flex flex-row border-2 border-black rounded-md mb-2 ml-3 justify-evenly bg-white">
                                 <input type="radio" name="gender" id="male" />
-                                <label for="male" class="custom-label">male</label>
+                                <label for="male" className="custom-label">male</label>
                                 <input type="radio" name="gender" id="female" />
-                                <label for="female" class="custom-label">female</label>
+                                <label for="female" className="custom-label">female</label>
                                 <input type="radio" name="gender" id="others" />
-                                <label for="others" class="custom-label">other</label>
+                                <label for="others" className="custom-label">other</label>
                             </span>
                         </div>
 
