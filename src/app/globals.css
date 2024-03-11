@@ -39,8 +39,8 @@ body {
 }
 
 
-
-/* table, tr, td{
+/* 
+table, tr, td{
   border: 3px solid ;
 } */
 
@@ -52,5 +52,5 @@ td{
 }
 
 tr td:first-child{
-  @apply py-4;
+  @apply py-2;
 }
