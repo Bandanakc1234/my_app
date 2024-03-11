@@ -68,45 +68,46 @@ const Sidebar = ({ isMenuOpen }) => {
   const pathName = usePathname();
 
   const handleDropdown = (index) => {
-    setOpenDropdown(index === openDropdown 
-      ? null 
+    setOpenDropdown(index === openDropdown
+      ? null
       : index);
   };
 
   return (
     <div>
-    <aside className={`fixed h-screen bg-black ${isMenuOpen ? 'w-1/5' : 'w-1/12'} p-3 overflow-auto`}>
-      <ul className="text-gray-200" ismenuopen={isMenuOpen}>
 
-        {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
-          <li key={name}>
-            <Link href={href}
-              className={`flex h-full items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer ${pathName === href ? 'bg-gray-700' : 'hover:bg-gray-700'
+      <aside className={`fixed h-screen bg-black ${isMenuOpen ? 'w-1/6' : 'w-1/12 flex flex-col items-center'} p-3 overflow-auto`}>
+        <ul className="text-gray-200 " ismenuopen={isMenuOpen}>
+
+
+          {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
+            <li key={name}>
+              <Link href={href}
+                className={`flex h-full items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer ${pathName === href ? 'bg-gray-700' : 'hover:bg-gray-700'
                 }`}
-              onClick={() => subItems && handleDropdown(index)}
-            >
-              <span>
-                <Icon size={24} />
-              </span>
-              <span className={` ml-3 ${!isMenuOpen ? 'hidden' : 'block'}`}>{name}</span>
-            </Link>
-            {subItems && openDropdown === index && (
-              <ul>
-                {subItems.map(({ name: subName, href: subHref }) => (
-                  <li key={subName} className='py-1'>
-                    <Link href={subHref}  className={`block text-center py-2 px-3 font-medium rounded-md cursor-pointer ${ subHref === pathName ? 'bg-gray-700' : 'hover:bg-gray-700'
-                    }`}>
-
-                      <span className=''>{subName}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </aside>
+                onClick={() => subItems && handleDropdown(index)}
+              >
+                <span >
+                  <Icon size={24} />
+                </span>
+                <span className={` ml-3 ${!isMenuOpen ? 'hidden' : 'block'}`}>{name}</span>
+              </Link>
+              {subItems && openDropdown === index && (
+                <ul>
+                  {subItems.map(({ name: subName, href: subHref }) => (
+                    <li key={subName} className='py-1'>
+                      <Link href={subHref} className={`block text-center py-2 px-3 font-medium rounded-md cursor-pointer ${subHref === pathName ? 'bg-gray-700' : 'hover:bg-gray-700'
+                        }`}>
+                        <span>{subName}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </aside>
     </div>
   );
 };

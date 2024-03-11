@@ -6,7 +6,6 @@ import Sidebar from './Sidebar'
 
 
 const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
