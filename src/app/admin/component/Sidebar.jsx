@@ -75,8 +75,9 @@ const Sidebar = ({ isMenuOpen }) => {
 
   return (
     <div>
-    <aside className={`fixed h-full bg-black ${isMenuOpen ? 'w-64' : 'w-20'} mt-14 p-3 overflow-auto`}>
-      <ul className="text-gray-200" isMenuOpen={isMenuOpen}>
+    <aside className={`fixed h-screen bg-black ${isMenuOpen ? 'w-1/4' : 'w-1/12'} p-3 overflow-auto`}>
+      <ul className="text-gray-200" ismenuopen={isMenuOpen}>
+
         {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
           <li key={name}>
             <Link href={href}
