@@ -53,7 +53,7 @@ const sidebarItems = [
   },
   {
     name: "Register",
-    href: "/admin/register",
+    href: "/register",
     icon: BsPersonPlus
   },
   {
@@ -77,6 +77,7 @@ const Sidebar = ({ isMenuOpen }) => {
     <div>
     <aside className={`fixed h-screen bg-black ${isMenuOpen ? 'w-1/4' : 'w-1/12'} p-3 overflow-auto`}>
       <ul className="text-gray-200" ismenuopen={isMenuOpen}>
+
         {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
           <li key={name}>
             <Link href={href}
