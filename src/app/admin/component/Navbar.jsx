@@ -13,7 +13,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
   };
   return (
     <div>
-    <nav className='fixed bg-black text-gray-300 w-screen h-16 shadow-2xl pt-3 pl-4 z-10'>
+    <nav className='fixed bg-black text-gray-300 w-full h-16 shadow-2xl pt-3 pl-4 z-10'>
         <div className='flex gap-4 text-xl uppercase font-sans items-center'>
         <button className='p-1  rounded-lg' onClick={handleMenuToggle}>
         <AiOutlineMenu size={28}  />

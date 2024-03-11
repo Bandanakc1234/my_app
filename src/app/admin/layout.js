@@ -15,9 +15,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div>
           <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-          <div className="mt-14" >
+          <div className="flex" >
             <Sidebar isMenuOpen={isMenuOpen} />
-            <div className={`mt-14 transition-all duration-300 ease-in-out ${isMenuOpen ? 'ml-64' : 'ml-20'}`}>
+            <div className={`transition-all duration-300 ease-in-out ${isMenuOpen ? 'ml-64' : 'ml-20'}`}>
               {children}
             </div>
           </div>

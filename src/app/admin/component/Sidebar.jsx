@@ -53,7 +53,7 @@ const sidebarItems = [
   },
   {
     name: "Register",
-    href: "/admin/register",
+    href: "/register",
     icon: BsPersonPlus
   },
   {
@@ -75,7 +75,7 @@ const Sidebar = ({ isMenuOpen }) => {
 
   return (
     <div>
-    <aside className={`fixed h-screen bg-black ${isMenuOpen ? 'w-64' : 'w-20'} p-3 overflow-auto`}>
+    <aside className={`fixed h-full bg-black ${isMenuOpen ? 'w-64' : 'w-20'} mt-14 p-3 overflow-auto`}>
       <ul className="text-gray-200" isMenuOpen={isMenuOpen}>
         {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
           <li key={name}>
