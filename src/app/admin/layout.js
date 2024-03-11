@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
           <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           <div className="flex pt-16" >
             <Sidebar isMenuOpen={isMenuOpen} />
-            <div className={`transition-all duration-300 ease-in-out ${isMenuOpen ? `w-3/4` : `w-10/12`}`}>
+            <div className={`transition-all duration-300 ease-in-out ${isMenuOpen ? `w-10/12` : `w-3/4`}`}>
               {children}
             </div>
           </div>

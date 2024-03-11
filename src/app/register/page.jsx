@@ -5,12 +5,14 @@ const Register = () => {
     return (
         <>
             <div className=' bg-blue-200'  >
-                <form action="" className={`max-w-md bg-blue-300 text-center`}>
+                <form action="" className={`max-w-md mx-auto bg-blue-300 text-center`}>
                     <h1 className='mb-7 text-center text-xl'>Register Here</h1>
                     <div className='mb-5'>
                         <div>
                             <label htmlFor="firstname" className=''>Firstname:</label>
+                            <div>
                             <input type="text" id='firstname' className=' border-2 border-black rounded-md mb-2 ml-3 px-14' name="firstname" />
+                            </div>
                         </div>
 
                         <div>
@@ -29,9 +31,9 @@ const Register = () => {
 
                         <div>
                             <label htmlFor="email" className=''>Email:</label>
-                            {/* <div> */}
+                            <div>
                             <input type="email" id='email' className=' border-2 border-black rounded-md mb-2 ml-3' name="email" />
-                            {/* </div> */}
+                            </div>
                         </div>
 
                         <div>
