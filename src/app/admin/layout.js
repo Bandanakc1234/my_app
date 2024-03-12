@@ -15,12 +15,11 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
 
 
-        <div className=" ">
+        <div className="flex flex-col ">
           <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
-          <div className="flex pt-16" >
+          <div className="flex" >
             <Sidebar isMenuOpen={isMenuOpen} />
-            <div className={`transition-all duration-300 ease-in-out ${isMenuOpen ? `w-5/6` : `w-5/6`}`}>
-
+            <div className={`transition-all duration-300 ease-in-out ${isMenuOpen ? `w-5/6` : `w-11/12`}`}>
               {children}
             </div>
           </div>

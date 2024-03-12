@@ -18,17 +18,14 @@
 }
 
 /* login */
-.log_in{
+/* .log_in{
     background-image: url(/image3.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     height: 90vh;
-}
-.circle{
-    height: 70vh;
-    width: 70vh;
-}
+} */
+
 /* .career::after{
     content: "";
     width: 100px;
@@ -39,12 +36,7 @@
 } */
 
 
-@media screen and (max-width: 600px) {
-    .circle{
-        height: 65vh;
-        width: 50vh;
-    }
-}
+
 
 .contact-img{
     background: rgb(137, 193, 249) url(/contact1.jpg);

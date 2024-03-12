@@ -33,13 +33,12 @@ const Careers = () => {
               <h1>Posted Date: {career.posted_date}</h1>
               <h1>Application Deadline: {career.deadline}</h1>
               <h1>Status: </h1>
-              <button className='border border-2 bg-blue-500 w-14 rounded-md mr-5'> Edit </button>
-              <button className='border border-2 bg-blue-500 w-14 rounded-md mr-5'> Remove </button>
+              <button className=' border-2 bg-blue-500 w-14 rounded-md mr-5'> Edit </button>
+              <button className=' border-2 bg-blue-500 w-14 rounded-md mr-5'> Remove </button>
             </div>
           })
         }
       </div>
-
     </div>
   )
 }

@@ -4,94 +4,101 @@ import React from 'react'
 const Register = () => {
     return (
         <>
-            <div className=' bg-blue-200'  >
-                <form action="" className={`max-w-md mx-auto bg-blue-300 text-center`}>
-                    <h1 className='mb-7 text-center text-xl'>Register Here</h1>
-                    <div className='mb-5'>
-                        <div>
-                            <label htmlFor="firstname" className=''>Firstname:</label>
-                            <div>
-                                <input type="text" id='firstname' className=' border-2 border-black rounded-md mb-2 ml-3 px-14' name="firstname" />
+            <div className='log_in h-full '>
+                <form action="" className='m-50'>
+                    <div className='pb-8 bg-blue-200 ml-20'>
+                    <h1 className='text-base text-center leading-10'>Register Here</h1>
+
+                    <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 ml-20'>
+
+                        <div className='sm:col-span-4'>
+                            <label htmlFor="firstname" className='block text-sm font-medium leading-6'>Firstname:</label>
+                            <div className='mt-2'>
+                                <input type="text" id='firstname' className='block w-full rounded-md border-0 py-1.5 sm:text-lg sm:leading-6' name="firstname" />
                             </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="lastname" className=''>Lastname:</label>
-                            <div>
-                                <input type="text" id='lastname' className=' border-2 border-black rounded-md mb-2 ml-3' name="lastname" />
+                        <div className='sm:col-span-4'>
+                            <label htmlFor="lastname" className='block text-sm font-medium leading-6'>Lastname:</label>
+                            <div className='mt-2'>
+                                <input type="text" id='lastname' className='block w-full rounded-md border-0 py-1.5 sm:text-lg sm:leading-6' name="lastname" />
                             </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="username" className=''>Username:</label>
-                            <div>
-                                <input type="text" id='username' className=' border-2 border-black rounded-md mb-2 ml-3' name="username" />
+                        <div className='sm:col-span-4'>
+                            <label htmlFor="username" className='block text-sm font-medium leading-6'>Username:</label>
+                            <div className='mt-2'>
+                                <input type="text" id='username' className='block w-full rounded-md border-0 py-1.5 sm:text-lg sm:leading-6' name="username" />
                             </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="email" className=''>Email:</label>
-                            <div>
-                                <input type="email" id='email' className=' border-2 border-black rounded-md mb-2 ml-3' name="email" />
+                        <div className='sm:col-span-4'>
+                            <label htmlFor="email" className='block text-sm font-medium leading-6'>Email:</label>
+                            <div className='mt-2'>
+                                <input type="email" id='email' className='block w-full rounded-md border-0 py-1.5 sm:text-lg sm:leading-6' name="email" />
                             </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="password" className=''>Password:</label>
-                            <div>
-                                <input type="password" id='password' className=' border-2 border-black rounded-md mb-2 ml-3' name="password" />
+                        <div className='sm:col-span-4'>
+                            <label htmlFor="password" className='block text-sm font-medium leading-6'>Password:</label>
+                            <div className='mt-2'>
+                                <input type="password" id='password' className='block w-full rounded-md border-0 py-1.5 sm:text-lg sm:leading-6' name="password" />
                             </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="conformpassword" className=''>Conform Password:</label>
-                            <div>
-                                <input type="password" id='conformpassword' className=' border-2 border-black rounded-md mb-2 ml-3' name="conformpassword" />
+                        <div className='sm:col-span-4'>
+                            <label htmlFor="conformpassword" className='block text-sm font-medium leading-6'>Conform Password:</label>
+                            <div className='mt-2'>
+                                <input type="password" id='conformpassword' className='block w-full rounded-md border-0 py-1.5 sm:text-lg sm:leading-6' name="conformpassword" />
                             </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="gender" className=''>Gender:</label>
-                            <span className="flex flex-row border-2 border-black rounded-md mb-2 ml-3 justify-evenly bg-white">
-                                <input type="radio" name="gender" id="male" />
-                                <label for="male" className="custom-label">male</label>
+                        <div className='sm:col-span-4'>
+                            <label htmlFor="gender" className='block text-sm font-medium leading-6'>Gender:</label>
+                            <span className="flex flex-row rounded-md border-0 py-1.5 sm:text-lg sm:leading-6 bg-white text-black">
+                                <input type="radio" name="gender" id="male" className='ml-2' />
+                                <label htmlFor="male" className="">male</label>
                                 <input type="radio" name="gender" id="female" />
-                                <label for="female" className="custom-label">female</label>
+                                <label htmlFor="female" className="">female</label>
                                 <input type="radio" name="gender" id="others" />
-                                <label for="others" className="custom-label">other</label>
+                                <label htmlFor="others" className="">other</label>
                             </span>
                         </div>
 
-                        <div>
+                        <div className='sm:col-span-4'>
                             <label htmlFor="age" className=''>Age:</label>
-                            <div>
-                                <input type="number" id='age' className=' border-2 border-black rounded-md mb-2 ml-3' name="age" />
+                            <div className='mt-2'>
+                                <input type="number" id='age' className='border-2 border-black rounded-md mb-4' name="age" />
                             </div>
                         </div>
 
-                        <div>
+                        <div className='sm:col-span-4'>
                             <label htmlFor="phonenumber" className=''>Phone Number:</label>
-                            <div>
-                                <input type="tel" id='phonenumber' className=' border-2 border-black rounded-md mb-2 ml-3' name="phonenumber" />
+                            <div className='mt-2'>
+                                <input type="tel" id='phonenumber' className=' border-2 border-black rounded-md mb-4' name="phonenumber" />
                             </div>
                         </div>
 
-                        <div>
+                        <div className='sm:col-span-4'>
                             <label htmlFor="tempAddress" className=''>Temporary Address:</label>
-                            <div>
-                                <input type="text" id='tempAddress' className=' border-2 border-black rounded-md mb-2 ml-3' name="tempAddress" />
+                            <div className='mt-2'>
+                                <input type="text" id='tempAddress' className=' border-2 border-black rounded-md mb-4' name="tempAddress" />
                             </div>
                         </div>
 
-                        <div>
+                        <div className='sm:col-span-4'>
                             <label htmlFor="permanentAddress" className=''>Permanent Address:</label>
-                            <div>
-                                <input type="text" id='permanentAddress' className=' border-2 border-black rounded-md mb-2 ml-3' name="permanentAddress" />
+                            <div className='mt-2'>
+                                <input type="text" id='permanentAddress' className=' border-2 border-black rounded-md' name="permanentAddress" />
                             </div>
                         </div>
                     </div>
-                    <button className='border-2 bg-blue-600 rounded-md p-1 mt-4'>Register</button>
-                    <p>Already have an Account? <Link href={"/login"} className='text-blue-500'>Login</Link></p>
+                    </div>
+
+                    <div className='text-center pb-10'>
+                    <button className='border-2 bg-blue-600 rounded-md p-1'>Register</button>
+                    <p>Already have an Account? <Link href={"/login"} className='text-blue-500 '>Login</Link></p>
+                    </div>
                 </form>
             </div>
 
