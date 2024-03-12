@@ -27,13 +27,13 @@ const Career = () => {
 
     console.log(career)
     return (
-        <div className='flex justify-center h-screen bg-blue-200 w-screen'>
-        <div className='border-2 shadow-lg bg-white rounded-md xl:mt-16 md:mt-12 mt-5 xl:ml-80 lg:ml-56 md:ml-28 ml-20 lg:w-2/5 md:w-4/6 w-4/6 xl:p-10 md:p-6 p-2 h-max'>
-            <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add Career</h1>
+        <div className='bg-blue-200'>
+        <div className='border-2 shadow-lg bg-white rounded-md mb-10 lg:w-3/5 md:w-5/6 w-11/12 xl:p-10 md:p-5 p-2'>
+            <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add Project</h1>
             <table className='lg:w-full w-10/12 md:text-xl text-sm'> 
                 <tr className=''>
                     <td className=''>
-                        <label className=' md:text-lg text-sm'>Project_title:</label>
+                        <label className=' md:text-lg text-sm'>project_title:</label>
                     </td>
                     <td className=''>
                         <input type="text" name="title" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
@@ -44,7 +44,7 @@ const Career = () => {
                         <label className='md:text-lg text-sm'>category:</label>
                     </td>
                     <td className=''>
-                        <input type="text" name="vacancyNumber" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                        <input type="text" name="category" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                     </td>
                 </tr>
                 <tr>
@@ -52,7 +52,7 @@ const Career = () => {
                         <label className='md:text-lg'>language:</label>
                     </td>
                     <td>
-                        <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer}/>
+                        <input type="text" name="language" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
 
                     </td>
                 </tr>
@@ -61,7 +61,7 @@ const Career = () => {
                         <label className='md:text-lg'>tools:</label>
                     </td>
                     <td>
-                        <input type="text" name="posted_date" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                        <input type="text" name="tools" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                     </td>
                 </tr>
                 <tr>
@@ -69,7 +69,7 @@ const Career = () => {
                         <label className='md:text-lg'>project_image:</label>
                     </td>
                     <td>
-                        <input type="text" name="deadline" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                        <input type="text" name="project_image" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                     </td>
                 </tr>
             </table>

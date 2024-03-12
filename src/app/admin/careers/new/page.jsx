@@ -24,9 +24,9 @@ const Career = () => {
     console.log(career)
 
     return (
-        <div className='flex justify-center h-screen bg-blue-200 w-screen'>
-            <div className='border-2 shadow-lg bg-white rounded-md xl:mt-16 md:mt-12 mt-5 xl:ml-80 lg:ml-56 md:ml-28 ml-20 lg:w-2/5 md:w-4/6 w-4/6 xl:p-10 md:p-6 p-2 h-max'>
-                <h1 className='font-bold pb- lg:text-3xl lg:text-left text-center md:text-2xl'>Add Career</h1>
+        <div className='bg-blue-200 w-full'>
+            <div className='border-2 shadow-lg bg-white rounded-md mb-10 lg:w-3/5 md:w-5/6 w-11/12 xl:p-10 md:p-5 p-2'>
+                <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add Career</h1>
                 <table className='lg:w-full w-10/12 md:text-xl text-sm'> 
                     <tr className=''>
                         <td className=''>
@@ -50,6 +50,24 @@ const Career = () => {
                         </td>
                         <td>
                             <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label className='md:text-lg'>job_description:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={setCareer} />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label className='md:text-lg'>qualification:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={setCareer} />
 
                         </td>
                     </tr>
