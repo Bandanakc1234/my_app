@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react';
 import { BiSolidDashboard, BiDetail, BiSolidBriefcase, BiTask, BiUser } from "react-icons/bi";
 import { BsPersonPlus } from "react-icons/bs";
@@ -75,10 +76,8 @@ const Sidebar = ({ isMenuOpen }) => {
 
   return (
     <div>
-
-      <aside className={`fixed h-full bg-black mt-16 ${isMenuOpen ? 'md:w-1/6 w:2/6' : 'w-1/12 flex flex-col items-center'} p-3 overflow-auto`}>
+      <aside className={`fixed h-full bg-black z-10 ${isMenuOpen ? 'md:w-1/6 w:2/6' : 'w-1/12 flex flex-col items-center'} p-3 overflow-auto`}>
         <ul className="text-gray-200 " isMenuOpen={isMenuOpen}>
-
 
           {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
             <li key={name}>
@@ -108,7 +107,7 @@ const Sidebar = ({ isMenuOpen }) => {
           ))}
         </ul>
       </aside>
-    </div>
+      </div>
   );
 };
 

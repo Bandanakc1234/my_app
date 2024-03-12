@@ -54,3 +54,22 @@ td{
 tr td:first-child{
   @apply py-2;
 }
+
+.log_in{
+  background-image: url(/image3.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.circle{
+  height: 70vh;
+  width: 70vh;
+}
+
+@media screen and (max-width: 600px) {
+  .circle{
+      height: 65vh;
+      width: 50vh;
+  }
+}

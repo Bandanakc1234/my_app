@@ -35,11 +35,11 @@ const Careers = () => {
               <h1>Status: </h1>
               <button className='border-2 border-none bg-blue-500 hover:bg-blue-700 hover:text-white w-14 h-8 rounded-md mr-5 my-2'> Edit </button>
               <button className='border-2 border-none bg-blue-500 hover:bg-blue-700 hover:text-white w-20 h-8 rounded-md'> Remove </button>
+
             </div>
           })
         }
       </div>
-
     </div>
   )
 }
