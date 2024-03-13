@@ -19,12 +19,12 @@ const Careers = () => {
   }, [])
 
   return (
-    <div className='ms-1 w-4/6 m-auto'>
+    <div className='ms-8 md:w-4/6 w-10/12'>
       <h1 className='font-bold text-3xl'>Careers</h1>
       <div className='text-black flex flex-col'>
         {
           careers.map(career => {
-            return <div key={career._id} className='p-5 border-2 border-black rounded-lg m-5 '>
+            return <div key={career._id} className='p-5 border-2 bg-white rounded-md shadow-lg  my-3'>
               <h1>Title: {career.career_title}</h1>
               <h1>No. of Positions: {career.vacancyNumber}</h1>
               <h1>Offered Salary: {career.offered_salary}</h1>
