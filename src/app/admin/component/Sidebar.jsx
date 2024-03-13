@@ -4,6 +4,7 @@ import { BiSolidDashboard, BiDetail, BiSolidBriefcase, BiTask, BiUser } from "re
 import { BsPersonPlus } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import { FiLogIn } from "react-icons/fi";
+import { MdPostAdd } from "react-icons/md";
 import Link from 'next/link';
 
 const sidebarItems = [
@@ -43,9 +44,19 @@ const sidebarItems = [
     ]
   },
   {
-    name: "My Task",
-    href: "/mytask",
-    icon: BiTask
+    name: "Category",
+    href: "/admin/category",
+    icon: MdPostAdd,
+    subItems: [
+      {
+        name: "All",
+        href: "/admin/category"
+      },
+      {
+        name: "New",
+        href: "/admin/category/new"
+      }
+    ]
   },
   {
     name: "Profile",
