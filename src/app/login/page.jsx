@@ -1,37 +1,39 @@
 import React from 'react'
 import { GiThreeLeaves } from 'react-icons/gi';
 import { FaUnlockKeyhole } from "react-icons/fa6";
-import { IoPerson } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import Link from 'next/link';
 
 
 const login = () => {
     return (
         <div>
-        <div className='log_in h-screen flex justify-center text-center items-center font-serif '>
-            <div className='circle lg:border-8 border-4 border-gray-600  bg-black opacity-70 rounded-full lg:p-20 md:p-10 p-5'>
-                <div className='flex justify-center lg:text-3xl md:text-2xl text-xl text-white font-bold md:m-0'>Log < GiThreeLeaves className='text-blue-500 ml-1 mr-1' /> In</div>
+        <div className='log_in flex justify-center text-center items-center font-serif '>
+            <div className='circle lg:border-8 border-4 bg-blue-200 opacity-80 rounded-full lg:p-20 md:p-10 p-5'>
+                <div className='flex justify-center lg:text-3xl md:text-2xl text-xl font-bold md:m-0'>Log < GiThreeLeaves className='text-blue-700 ml-1 mr-1' /> In</div>
                 <label className='m-2'>
-                    <div className='flex text-white p-1 font-3 md:text-[17px] text-[14px]'>
-                        Username: <IoPerson className='mt-1 ml-2' />
+                    <div className='flex p-1 font-3 md:text-[17px] text-[14px]'>
+                        Email: <MdEmail className='mt-1 ml-2' />
                     </div>
-                    <input type="text" name="firstName" placeholder="Enter username or email.." className='bg-transparent border-2 rounded-md h-10 md:w-80 w-50 px-4 text-white' />
+                    <input type="text" name="firstName" placeholder="Enter your email.." className=' rounded-md py-1.5 w-full placeholder:p-1 p-4 bg-white' />
                 </label>
                 <br />
                 <label className='m-2'>
-                    <div className='flex text-white p-1 md:text-[17px] text-[14px]'>
+                    <div className='flex p-1 md:text-[17px] text-[14px]'>
                         Password: <FaUnlockKeyhole className='mt-1 ml-2' />
                     </div>
-                    <input type="text" name="password" placeholder="Enter password here..." className='bg-transparent border-2 rounded-md h-10 md:w-80 w-50 px-4 text-white' />
+                    <input type="password" name="password" placeholder="Enter your password..." className=' rounded-md py-1.5 w-full bg-white placeholder:p-1 p-4' />
                 </label>
                 <br />
-                <div className=' flex justify-between'>
+                <div className=' flex justify-between mt-2'>
                     <div>
-                        <input type="checkbox" name="" id="html"  className='md:m-1' />
-                        <label className='text-white md:text-[15px] text-[12px] md:m-1'>REMEMBER</label>
+                        <input type="checkbox" name="remember" id="remember"  className='md:m-1' />
+                        <label htmlFor='remember' className='md:text-[15px] text-[12px] md:m-1' >REMEMBER</label>
                     </div>
-                    <a href="#" className='text-white md:text-[15px] text-[12px]'>FORGET PASSWORDS</a>
+                    <a href="#" className=' md:text-[15px] text-[12px]'>FORGET PASSWORDS</a>
                 </div>
-                <button className="border border-none bg-blue-600 hover:bg-white rounded-md w-16 h-8 m-5"><a href="#" className='text-white hover:text-black '>Login</a></button>
+                <button className="rounded-md bg-blue-600 px-3 py-2 text-white hover:bg-indigo-500 mt-4 font-semibold text-sm md:text-md"><a href="#" className='text-white hover:text-black '>Login</a></button>
+                <p>Don't have an account? <Link href={"/register"} className='text-blue-500 font-semibold text-sm md:text-md'>Register</Link></p>
             </div>
         </div >
         </div>
