@@ -24,8 +24,8 @@ const Career = () => {
     console.log(career)
 
     return (
-        <div className='bg-blue-200 w-full'>
-            <div className='border-2 shadow-lg bg-white rounded-md mb-10 lg:w-3/5 md:w-5/6 w-11/12 xl:p-10 md:p-5 p-2'>
+        <div className='bg-blue-200'>
+            <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-10/12 xl:p-10 md:p-5 p-2'>
                 <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add Career</h1>
 
                 <table className='lg:w-full w-10/12 md:text-xl text-sm'> 

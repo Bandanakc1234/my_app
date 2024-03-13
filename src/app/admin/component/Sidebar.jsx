@@ -75,6 +75,7 @@ const Sidebar = ({ isMenuOpen }) => {
   };
 
   return (
+    <div>
       <aside className={`fixed h-full  z-10 bg-black ${isMenuOpen ? '' : 'flex flex-col items-center'} p-3 overflow-auto`}>
         <ul className={`text-gray-200 ${isMenuOpen ? 'open' : ''}`}>
           {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
