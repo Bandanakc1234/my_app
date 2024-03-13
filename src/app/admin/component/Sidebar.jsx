@@ -75,7 +75,7 @@ const Sidebar = ({ isMenuOpen }) => {
   };
 
   return (
-      <aside className={`fixed h-full  z-10 bg-black ${isMenuOpen ? 'w-1/6' : ''} p-3 overflow-auto`}>
+      <aside className={`fixed h-full  z-10 bg-black ${isMenuOpen ? '' : 'flex flex-col items-center'} p-3 overflow-auto`}>
         <ul className={`text-gray-200 ${isMenuOpen ? 'open' : ''}`}>
           {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
             <li key={name}>
@@ -105,6 +105,7 @@ const Sidebar = ({ isMenuOpen }) => {
           ))}
         </ul>
       </aside>
+      </div>
   );
 };
 

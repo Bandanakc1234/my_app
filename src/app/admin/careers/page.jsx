@@ -19,12 +19,12 @@ const Careers = () => {
   }, [])
 
   return (
-    <div className='mt-28 ms-28 bg-slate-300 w-full m-auto'>
-      <h1>Careers</h1>
+    <div className='ms-1 w-4/6 m-auto'>
+      <h1 className='font-bold text-3xl'>Careers</h1>
       <div className='text-black flex flex-col'>
         {
           careers.map(career => {
-            return <div key={career._id} className='p-5 border border-3 border-blue-700 m-5 '>
+            return <div key={career._id} className='p-5 border-2 border-black rounded-lg m-5 '>
               <h1>Title: {career.career_title}</h1>
               <h1>No. of Positions: {career.vacancyNumber}</h1>
               <h1>Offered Salary: {career.offered_salary}</h1>
@@ -33,8 +33,9 @@ const Careers = () => {
               <h1>Posted Date: {career.posted_date}</h1>
               <h1>Application Deadline: {career.deadline}</h1>
               <h1>Status: </h1>
-              <button className=' border-2 bg-blue-500 w-14 rounded-md mr-5'> Edit </button>
-              <button className=' border-2 bg-blue-500 w-14 rounded-md mr-5'> Remove </button>
+              <button className='border-2 border-none bg-blue-500 hover:bg-blue-700 hover:text-white w-14 h-8 rounded-md mr-5 my-2'> Edit </button>
+              <button className='border-2 border-none bg-blue-500 hover:bg-blue-700 hover:text-white w-20 h-8 rounded-md'> Remove </button>
+
             </div>
           })
         }

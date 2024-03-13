@@ -14,7 +14,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
         <button className='p-1  rounded-lg' onClick={handleMenuToggle}>
         <AiOutlineMenu size={28}  />
         </button>
-        <Image alt='' src='/logo.png' width={35} height={35}/>
+        <Image alt='' src='/logo.png' width={40} height={40} className='rounded-full'/>
         <span>Admin</span>
       </div>
     </nav>
