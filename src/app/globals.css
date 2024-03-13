@@ -62,6 +62,12 @@ tr td:first-child{
   background-position: center;
 }
 
+.register{
+  background-image: url(/image3.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
 .circle{
   height: 70vh;
   width: 70vh;

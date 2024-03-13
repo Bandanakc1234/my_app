@@ -9,7 +9,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <nav className='sticky w-full py-4 top-0 bg-black z-20 text-gray-300 pt-3 pl-4'>
+    <nav className='sticky w-full py-4 top-0 bg-black z-10 text-gray-300 pt-3 pl-4'>
         <div className='flex gap-4 text-xl uppercase font-sans items-center'>
         <button className='p-1  rounded-lg' onClick={handleMenuToggle}>
         <AiOutlineMenu size={28}  />
