@@ -1,7 +1,7 @@
 import {API} from '../config'
 
 export const addCareer = (career)=> {
-    return fetch(`http://localhost:8000/api/career/add_career`,{
+    return fetch(`${API}/career/add_career`,{
         method: "POST",
         headers:{
             "Content-Type":"application/json",
@@ -14,7 +14,7 @@ export const addCareer = (career)=> {
 } 
 
 export const view_career = () => {
-    return fetch('http://localhost:8000/api/career/view_career')
+    return fetch(`${API}/career/view_career`)
     .then(res=>res.json())
     .catch(err=>console.log(err))
 }
