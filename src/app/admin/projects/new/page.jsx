@@ -37,7 +37,7 @@ const Career = () => {
                             <label className=' md:text-lg text-sm'>project_Title:</label>
                         </td>
                         <td className=''>
-                            <input type="text" name="title" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="title" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                         </td>
                     </tr>
                     <tr className=''>
@@ -45,7 +45,7 @@ const Career = () => {
                             <label className='md:text-lg text-sm'>category:</label>
                         </td>
                         <td className=''>
-                            <input type="text" name="vacancyNumber" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="vacancyNumber" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@ const Career = () => {
                             <label className='md:text-lg'>language:</label>
                         </td>
                         <td>
-                            <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="offered_salary" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
 
                         </td>
                     </tr>
@@ -62,7 +62,7 @@ const Career = () => {
                             <label className='md:text-lg'>tools:</label>
                         </td>
                         <td>
-                            <input type="text" name="deadline" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="deadline" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                         </td>
                     </tr>
                 </table>

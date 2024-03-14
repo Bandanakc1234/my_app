@@ -86,7 +86,7 @@ const Sidebar = ({ isMenuOpen }) => {
                 onClick={() => subItems && handleDropdown(index)}
               >
                 <span >
-                  <Icon size={24} />
+                  <Icon size={24}/>
                 </span>
                 <span className={` ml-3 ${!isMenuOpen ? 'hidden' : 'block'}`}>{name}</span>
               </Link>
