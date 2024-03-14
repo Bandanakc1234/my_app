@@ -34,7 +34,7 @@ const Career = () => {
                             <label className=' md:text-lg text-sm'>Career_Title:</label>
                         </td>
                         <td className=''>
-                            <input type="text" name="title" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="title" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                         </td>
                     </tr>
                     <tr className=''>
@@ -42,7 +42,7 @@ const Career = () => {
                             <label className='md:text-lg text-sm'>vacancyNumber:</label>
                         </td>
                         <td className=''>
-                            <input type="text" name="vacancyNumber" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="vacancyNumber" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                         </td>
                     </tr>
                     <tr>
@@ -50,7 +50,7 @@ const Career = () => {
                             <label className='md:text-lg'>offered_salary:</label>
                         </td>
                         <td>
-                            <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="offered_salary" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
 
                         </td>
                     </tr>
@@ -59,7 +59,7 @@ const Career = () => {
                             <label className='md:text-lg'>job_description:</label>
                         </td>
                         <td>
-                            <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={setCareer} />
+                            <input type="text" name="offered_salary" className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={setCareer} />
 
                         </td>
                     </tr>
@@ -68,7 +68,7 @@ const Career = () => {
                             <label className='md:text-lg'>qualification:</label>
                         </td>
                         <td>
-                            <input type="text" name="offered_salary" className='border-2 border-black rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={setCareer} />
+                            <input type="text" name="offered_salary" className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={setCareer} />
 
                         </td>
                     </tr>
@@ -77,7 +77,7 @@ const Career = () => {
                             <label className='md:text-lg'>posted_date:</label>
                         </td>
                         <td>
-                            <input type="text" name="posted_date" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="posted_date" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                         </td>
                     </tr>
                     <tr>
@@ -85,7 +85,7 @@ const Career = () => {
                             <label className='md:text-lg'>deadline:</label>
                         </td>
                         <td>
-                            <input type="text" name="deadline" className='border-2 border-black rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
+                            <input type="text" name="deadline" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={setCareer} />
                         </td>
                     </tr>
                 </table>
