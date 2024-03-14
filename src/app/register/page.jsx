@@ -1,15 +1,17 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Register = () => {
+    const [username, setUsername] = useState
     return (
         <>
             <div className='register flex justify-center'>
-                <form action="" className=' bg-blue-200 my-10 opacity-80'>
+                <form action="" className=' bg-blue-200 my-10 rounded-3xl opacity-80'>
                     <div className=' pb-8 mt-5'>
-                    <h1 className='text-2xl text-center'>Register Here</h1>
+                    <h1 className='text-2xl font-bold text-center'>Register Here</h1>
 
-                    <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mx-20 place-items-center'>
+                    <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mx-16 place-items-center'>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="firstname" className='block text-md font-medium'>Firstname:</label>
@@ -81,16 +83,16 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <div className='sm:col-span-4 md:ms-2 ms-24'>
+                        <div className='sm:col-span-4'>
                             <label htmlFor="gender" className='block text-md font-medium'>Gender:</label>
-                            <span className="flex rounded-md py-1.5 md:px-14 px-5 text-sm md:text-lg mt-2 bg-white text-black">
+                            <span className="flex flex-col md:flex-row rounded-md py-1.5 md:px-12 px-4 text-sm md:text-lg mt-2 bg-white text-black">
                                 <div className='flex flex-row'>
                                 <input type="radio" name="gender" id="male" className='mr-2' />
-                                <label htmlFor="male" className="mr-2">male</label>
+                                <label htmlFor="male" className="mr-3">male</label>
                                 </div>
                                 <div className='flex flex-row'>
                                 <input type="radio" name="gender" id="female" className='mr-2'/>
-                                <label htmlFor="female" className="mr-2">female</label>
+                                <label htmlFor="female" className="mr-3">female</label>
                                 </div>
                                 <div className='flex flex-row'>
                                 <input type="radio" name="gender" id="others" className='mr-2'/>
