@@ -1,9 +1,9 @@
 import {API} from '../config'
 
 
-export const userRegister = (first_name, last_name, username, email, password, confirm_password, gender, age, phone_number, temporary_address, permanent_address) =>{
-    let user = {first_name, last_name, username, email, password, confirm_password, gender, age, phone_number, temporary_address, permanent_address}
-    return fetch (`${API}/register`, {
+export const userRegister = (user) =>{
+    console.log(user)
+    return fetch (`${API}/user/register`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"

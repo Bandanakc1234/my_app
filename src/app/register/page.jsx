@@ -1,13 +1,64 @@
 'use client'
+import { userRegister } from '@/api/userApi'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 const Register = () => {
-    const [username, setUsername] = useState
+    const  [formData, setFormData] = useState({})
+
+    let [error, setError] = useState('')
+    let [success, setSuccess] = useState(false)
+
+    let router = useRouter()
+
+   const handleChannge = (event) => {
+        const { name, value } = event.target;
+        setFormData({
+            ...formData,
+                [name]: value
+        })
+    }
+
+   const handleSubmit= (event)=>{
+        event.preventDefault()
+        userRegister(formData)
+        .then(data=>{
+            if(data.error){
+                setSuccess(false)
+                setError(data.error)
+            }
+            else{
+                setError('')
+                setSuccess(true)
+                setFormData({first_name: ""})
+            }
+        })
+        .catch(error=>console.log(error))
+    }
+
+    let {first_name} = formData
+
+    const showError = () =>{
+        if(error){
+            return <div>{error}</div>
+        }
+    }
+
+    const showSuccess = () => {
+        if(success){
+
+            return router.push('/')
+            // return <div>User registered.</div>
+        }
+    }
+
     return (
         <>
+        {showError()}
+        {showSuccess()}
             <div className='register flex justify-center'>
-                <form action="" className=' bg-blue-200 my-10 rounded-3xl opacity-80'>
+                <form action="" className=' bg-blue-200 my-10 rounded-3xl opacity-80' onSubmit={handleSubmit}>
                     <div className=' pb-8 mt-5'>
                     <h1 className='text-2xl font-bold text-center'>Register Here</h1>
 
@@ -16,70 +67,70 @@ const Register = () => {
                         <div className='sm:col-span-3'>
                             <label htmlFor="firstname" className='block text-md font-medium'>Firstname:</label>
                             <div className='mt-2'>
-                                <input type="text" id='firstname' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="firstname" />
+                                <input type="text" id='firstname' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="first_name" value = {first_name} />
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="lastname" className='block text-md font-medium'>Lastname:</label>
                             <div className='mt-2'>
-                                <input type="text" id='lastname' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="lastname" />
+                                <input type="text" id='lastname' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="last_name" value={last_name}/>
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="username" className='block text-md font-medium'>Username:</label>
                             <div className='mt-2'>
-                                <input type="text" id='username' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="username" />
+                                <input type="text" id='username' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="username" value={username} />
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="email" className='block text-md font-medium'>Email:</label>
                             <div className='mt-2'>
-                                <input type="email" id='email' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="email" />
+                                <input type="email" id='email' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="email" value={email} />
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="password" className='block text-md font-medium'>Password:</label>
                             <div className='mt-2'>
-                                <input type="password" id='password' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="password" />
+                                <input type="password" id='password' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="password" value={password}/>
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
-                            <label htmlFor="conformpassword" className='block text-md font-medium'>Conform Password:</label>
+                            <label htmlFor="confirmpassword" className='block text-md font-medium'>Confirm Password:</label>
                             <div className='mt-2'>
-                                <input type="password" id='conformpassword' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="conformpassword" />
+                                <input type="password" id='confirmpassword' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="confirm_password" value={confirm_password} />
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="age" className='block text-md font-medium'>Age:</label>
                             <div className='mt-2'>
-                                <input type="number" id='age' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="age" />
+                                <input type="number" id='age' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="age" value={age}/>
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="phonenumber" className='block text-md font-medium'>Phone Number:</label>
                             <div className='mt-2'>
-                                <input type="tel" id='phonenumber' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="phonenumber" />
+                                <input type="tel" id='phonenumber' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="phone_number" value={phone_number} />
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="tempAddress" className='block text-md font-medium'>Temporary Address:</label>
                             <div className='mt-2'>
-                                <input type="text" id='tempAddress' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="tempAddress" />
+                                <input type="text" id='tempAddress' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="temporary_address" value={temporary_address}/>
                             </div>
                         </div>
 
                         <div className='sm:col-span-3'>
                             <label htmlFor="permanentAddress" className='block text-md font-medium'>Permanent Address:</label>
                             <div className='mt-2'>
-                                <input type="text" id='permanentAddress' className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="permanentAddress" />
+                                <input type="text" id='permanentAddress' onChange={handleChannge} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="permanent_address" value={permanent_address}/>
                             </div>
                         </div>
 
@@ -87,15 +138,15 @@ const Register = () => {
                             <label htmlFor="gender" className='block text-md font-medium'>Gender:</label>
                             <span className="flex flex-col md:flex-row rounded-md py-1.5 md:px-12 px-4 text-sm md:text-lg mt-2 bg-white text-black">
                                 <div className='flex flex-row'>
-                                <input type="radio" name="gender" id="male" className='mr-2' />
+                                <input type="radio" name="gender" id="male" value='male' className='mr-2' onChange={handleChannge}/>
                                 <label htmlFor="male" className="mr-3">male</label>
                                 </div>
                                 <div className='flex flex-row'>
-                                <input type="radio" name="gender" id="female" className='mr-2'/>
+                                <input type="radio" name="gender" id="female" value='female' className='mr-2' onChange={handleChannge}/>
                                 <label htmlFor="female" className="mr-3">female</label>
                                 </div>
                                 <div className='flex flex-row'>
-                                <input type="radio" name="gender" id="others" className='mr-2'/>
+                                <input type="radio" name="gender" id="others" value='others' className='mr-2' onChange={handleChannge}/>
                                 <label htmlFor="others" className="mr-2">other</label>
                                 </div>
                             </span>
@@ -104,7 +155,7 @@ const Register = () => {
                     </div>
 
                     <div className='text-center pb-10 text-md font-semibold'>
-                    <button className='rounded-md bg-blue-600 px-3 py-2 text-white hover:bg-indigo-500'>Register</button>
+                    <button className='rounded-md bg-blue-600 px-3 py-2 text-white hover:bg-blue-500'>Register</button>
                     <p>Already have an Account? <Link href={"/login"} className='text-blue-500 '>Login</Link></p>
                     </div>
                 </form>
