@@ -45,16 +45,16 @@ const sidebarItems = [
   },
   {
     name: "Category",
-    href: "/admin/category",
+    href: "/admin/categories",
     icon: MdPostAdd,
     subItems: [
       {
         name: "All",
-        href: "/admin/category"
+        href: "/admin/categories"
       },
       {
         name: "New",
-        href: "/admin/category/new"
+        href: "/admin/categories/new"
       }
     ]
   },
