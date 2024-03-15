@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GiThreeLeaves } from 'react-icons/gi';
 import { FaUnlockKeyhole } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import Link from 'next/link';
+import { event } from 'jquery';
 
 
 const login = () => {
+    const [formData, setFormData] = useState({})
+
+    let [error, setError] = useState('')
+    let [success, setSuccess] = useState(false)
+
+    const handleChange = (event) =>{
+        const {name, value} = event.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        userRe
+    }
+
     return (
         <div>
         <div className='log_in flex justify-center text-center items-center font-serif '>
