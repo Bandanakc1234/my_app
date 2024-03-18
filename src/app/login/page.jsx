@@ -6,6 +6,10 @@ import { MdEmail } from "react-icons/md";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { userLogin } from '@/api/userApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import VerifyEmail from '../verifyEmail/[token]/page';
+
 
 const login = () => {
     const [formData, setFormData] = useState({})
@@ -62,6 +66,7 @@ const login = () => {
         <div>
             {showError()}
             {showSuccess()}
+            
             <div className='log_in flex justify-center text-center items-center font-serif '>
                 <div className='circle lg:border-8 border-4 bg-blue-200 opacity-80 rounded-full lg:p-20 md:p-10 p-5' onSubmit={handleSubmit}>
                     <div className='flex justify-center lg:text-3xl md:text-2xl text-xl font-bold md:m-0'>Log < GiThreeLeaves className='text-blue-700 ml-1 mr-1' /> In</div>
@@ -84,7 +89,7 @@ const login = () => {
                             <input type="checkbox" name="remember" onChange={handleChange} id="remember" className='md:m-1'/>
                             <label htmlFor='remember' className='md:text-[15px] text-[12px] md:m-1' >REMEMBER</label>
                         </div>
-                        <a href="#" className=' md:text-[15px] text-[12px]'>FORGET PASSWORDS</a>
+                        <a href="/forgetpassword" className=' md:text-[15px] text-[12px]'>FORGET PASSWORDS</a>
                     </div>
                     <button className="rounded-md bg-blue-600 px-3 py-2 text-white hover:bg-indigo-500 mt-4 font-semibold text-sm md:text-md"><a href="#" className='text-white hover:text-black '>Login</a></button>
                     <p>Don't have an account? <Link href={"/register"} className='text-blue-500 font-semibold text-sm md:text-md'>Register</Link></p>

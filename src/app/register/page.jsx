@@ -11,7 +11,9 @@ const Register = () => {
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
-
+    
+    let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address,gender } = formData
+    
     // let router = useRouter()
 
     const handleChange = (event) => {
@@ -46,12 +48,12 @@ const Register = () => {
                          gender: ""
                     })
                     toast.success('User registered successfully. Please wait for email verification.'); 
+                    // router.push('/login')
                 }
             })
             .catch(error => console.log(error))
     }
 
-    let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address,gender } = formData
 
     return (
         <>
