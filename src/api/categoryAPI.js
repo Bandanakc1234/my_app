@@ -5,8 +5,9 @@ export const addCategory = (category_title, token) =>{
         method: "POST",
         headers:{
             "Content-Type":"application/json",
+            Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(category)
+        body: JSON.stringify({category_title})
     })
     .then(res =>res.json())
     .catch(err=>console.log(err))

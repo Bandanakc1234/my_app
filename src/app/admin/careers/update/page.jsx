@@ -1,18 +1,23 @@
 'use client';
-import { addCareer } from '@/api/careerAPI';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import { addCareer, getCareerDetails, updateCareer } from '@/api/careerAPI';
+import Link from 'next/link';
+import { useParams, useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
 
 const Career = () => {
     const [formData, setFormData] = useState({})
-
     let[error, setError] = useState('')
     let[success, setSuccess] = useState(false)
 
     let router = useRouter()
 
-    
+    let {id} = useParams()
+
+    useEffect(() =>{
+        getCareerDetails(id).then(data =>setFormData(data.career_title))
+    },[])
+
     let { career_title, vacancyNumber, offered_salary, job_description, qualification, posted_date, deadline} = formData
 
 
@@ -36,7 +41,7 @@ const Career = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         // console.log(token)
-        addCareer(formData, token)
+        updateCareer(formData, token)
             .then(data => {
                 if (data.error) {
                     setSuccess(false)
@@ -79,7 +84,7 @@ const Career = () => {
             {showError()}
             {showSuccess()}
             <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-10/12 xl:p-10 md:p-5 p-2'>
-                <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add Career</h1>
+                <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Update Career</h1>
 
                 <table className='lg:w-full w-10/12 md:text-xl text-sm'> 
                     <tr>
@@ -113,7 +118,6 @@ const Career = () => {
                         </td>
                         <td>
                             <input type="text" name="job_description" value={job_description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={handleChange} />
-
                         </td>
                     </tr>
                     <tr>
@@ -142,7 +146,10 @@ const Career = () => {
                         </td>
                     </tr>
                 </table>
-                <button onClick={handleSubmit} className="border border-none bg-blue-600 rounded-md md:w-20 md:h-10 w-14 h-7 lg:mt-8 mt-3 md:text-lg text-sm"><a href="#" className=' hover:text-white'>Add</a></button>
+                <button onClick={handleSubmit} className="border border-none bg-blue-600 rounded-md md:w-20 md:h-10 w-14 h-7 lg:mt-8 mt-3 md:text-lg text-sm"><a href="#" className=' hover:text-white'>update</a></button>
+
+
+                <Link to='.admin/careers'>Go Back</Link>
             </div>
         </div>
     )

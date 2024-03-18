@@ -21,15 +21,26 @@ export const emailConfirmation = (token) => {
     .catch(error => console.log(error))
 }
 
-export const userLogin = (user) =>{
-    console.log(user)
+//login
+export const userLogin = ({email, password}) =>{
+    console.log(email, password)
     return fetch(`${API}/user/login`,{
         method: 'POST',
         headers: {
             "Content-Type":"application/json"
         },
-        body:JSON.stringify(user)
+        body:JSON.stringify({email, password})
     })
     .then(response =>{return response.json()})
     .catch(error => console.log(error))
 }
+
+// authenticate to keep sigined in
+export const authenticate = (logininfo) => {
+    localStorage.setItem('token', logininfo.token)
+} 
+
+//to check if logged in 
+// export const isAuthenticated = () =>{
+//     return localStorage.getItem('jwt') ? JSON.parse(localStorage.getItem('jwt')) : false
+// }
