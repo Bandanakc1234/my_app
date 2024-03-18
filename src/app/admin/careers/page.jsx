@@ -38,8 +38,10 @@ const Careers = () => {
               <h1>Posted Date: {career.posted_date}</h1>
               <h1>Application Deadline: {career.deadline}</h1>
               <h1>Status: </h1>
-              <Link className='border-2 border-none bg-yellow-500  hover:text-white w-14 h-8 rounded-md mr-5 my-2'><a href={`/admin/careers/update/${career._id}`}>Update</a></Link>
+              <Link href={`/admin/careers/update/${career._id}`}> <span className='border-2 border-none bg-yellow-500  hover:text-white h-8 p-1.5 text-center rounded-md mr-5 '>Update</span></Link>
+          
               <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md'> Remove </button>
+            
             </div>
           })
         }
