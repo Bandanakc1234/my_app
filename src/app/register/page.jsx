@@ -1,7 +1,9 @@
 'use client'
 import { userRegister } from '@/api/userApi'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
+// import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 const Register = () => {
@@ -25,11 +27,10 @@ const Register = () => {
         userRegister(formData)
             .then(data => {
                 if (data.error) {
-                    setSuccess(false)
                     setError(data.error)
+                    toast.error(data.error);
                 }
                 else {
-                    setError('')
                     setSuccess(true)
                     setFormData({
                         first_name: "",
@@ -44,6 +45,7 @@ const Register = () => {
                          permanent_address: "",
                          gender: ""
                     })
+                    toast.success('User registered successfully. Please wait for email verification.'); 
                 }
             })
             .catch(error => console.log(error))
@@ -51,24 +53,9 @@ const Register = () => {
 
     let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address,gender } = formData
 
-    const showError = () => {
-        if (error) {
-            return <div>{error}</div>
-        }
-    }
-
-    const showSuccess = () => {
-        if (success) {
-
-            // return router.push('/')
-            return <div>User registered.</div>
-        }
-    }
-
     return (
         <>
-            {showError()}
-            {showSuccess()}
+        <ToastContainer/>
             <div className='register flex justify-center'>
                 <form action="" className=' bg-blue-200 my-10 rounded-3xl opacity-80' onSubmit={handleSubmit}>
                     <div className=' pb-8 mt-5'>
