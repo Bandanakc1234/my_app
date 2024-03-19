@@ -43,7 +43,7 @@ const sidebarItems = [
       },
       {
         name: "Update",
-        href: "/admin/careers/update"
+        href: "/admin/careers/update" 
       }
     ]
   },

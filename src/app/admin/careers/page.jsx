@@ -1,8 +1,10 @@
 'use client';
-import { view_career } from '@/api/careerAPI';
+import { deleteCareer, view_career } from '@/api/careerAPI';
 import { Button } from '@mui/material';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2';
+
 
 const Careers = () => {
   let [careers, setCareers] = useState([])
@@ -20,11 +22,34 @@ const Careers = () => {
       })
   }, [])
 
+  const handleDelete = id => (event) => {
+    event.preventDefault()
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3138D6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteCareer(id);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Career has been deleted successfully.",
+          icon: "success"
+        });
+      }
+    });
+  }
+  
+
   return (
     <div className='ms-8 md:w-4/6 w-10/12'>
-       <button className='rounded-md bg-blue-600 my-5 px-3 py-2 hover:text-white hover:bg-blue-700'>
-       <Link href={"/admin/careers/new"}>Add New Careers</Link>
-       </button>
+      <button className='rounded-md bg-blue-600 my-5 px-3 py-2 hover:text-white hover:bg-blue-700'>
+        <Link href={"/admin/careers/new"}>Add New Careers</Link>
+      </button>
       <h1 className='font-bold text-3xl'>Careers</h1>
       <div className='text-black flex flex-col'>
         {
@@ -38,15 +63,17 @@ const Careers = () => {
               <h1>Posted Date: {career.posted_date}</h1>
               <h1>Application Deadline: {career.deadline}</h1>
               <h1>Status: </h1>
-              <Link href={`/admin/careers/update/${career._id}`}> <span className='border-2 border-none bg-yellow-500  hover:text-white h-8 p-1.5 text-center rounded-md mr-5 '>Update</span></Link>
-          
-              <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md'> Remove </button>
-            
+              <Link href={`/admin/careers/update/${career._id}`}>
+                <span className='border-2 border-none bg-yellow-500  hover:text-white h-8 p-1.5 text-center rounded-md mr-5 '>Update</span>
+              </Link>
+
+              <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md ' onClick={handleDelete(career._id)}> Delete </button>
+
             </div>
           })
         }
       </div>
-     
+
     </div>
   )
 }
