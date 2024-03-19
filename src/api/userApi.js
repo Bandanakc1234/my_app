@@ -14,6 +14,13 @@ export const userRegister = (user) =>{
     .catch(error => console.log(error))
 }
 
+//user email confirmation or verify email
+export const emailConfirmation = (token) => {
+    return fetch(`${API}/user/verifyEmail/${token}`)
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
 //login
 export const userLogin = ({email, password}) =>{
     console.log(email, password)

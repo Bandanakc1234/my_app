@@ -1,16 +1,17 @@
 'use client'
 import { userRegister } from '@/api/userApi'
 import Link from 'next/link'
-import { ToastContainer, toast } from 'react-toastify'; 
-import 'react-toastify/dist/ReactToastify.css';
 // import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const [formData, setFormData] = useState({})
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
+
+    let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address, gender } = formData
 
     // let router = useRouter()
 
@@ -27,35 +28,68 @@ const Register = () => {
         userRegister(formData)
             .then(data => {
                 if (data.error) {
+                    setSuccess(false)
                     setError(data.error)
-                    toast.error(data.error);
                 }
                 else {
                     setSuccess(true)
                     setFormData({
                         first_name: "",
                         last_name: "",
-                         username: "", 
-                         email: "", 
-                         password: "", 
-                         confirm_password: "", 
-                         age: "", 
-                         phone_number: "", 
-                         temporary_address: "", 
-                         permanent_address: "",
-                         gender: ""
+                        username: "",
+                        email: "",
+                        password: "",
+                        confirm_password: "",
+                        age: "",
+                        phone_number: "",
+                        temporary_address: "",
+                        permanent_address: "",
+                        gender: ""
                     })
-                    toast.success('User registered successfully. Please wait for email verification.'); 
+                    // router.push('/login')
                 }
             })
             .catch(error => console.log(error))
     }
 
-    let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address,gender } = formData
+    const showError = () => {
+        if (error) {
+            Swal.fire({
+                icon: "error",
+                toast: true,
+                title: "error",
+                text: error,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#d33"
+            })
+            setError('')
+        }
+    }
+
+    const showSuccess = () =>{
+        if (success){
+            Swal.fire({
+                icon: "success",
+                toast: true,
+                title: "success",
+                text: 'User registered successfully. Please wait for email verification.',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#64DD17"
+              })
+              setSuccess('')
+        }
+    }
 
     return (
         <>
-        <ToastContainer/>
+        {showError()}
+        {showSuccess()}
             <div className='register flex justify-center'>
                 <form action="" className=' bg-blue-200 my-10 rounded-3xl opacity-80' onSubmit={handleSubmit}>
                     <div className=' pb-8 mt-5'>
@@ -141,11 +175,11 @@ const Register = () => {
                                         <label htmlFor="male" className="mr-3">male</label>
                                     </div>
                                     <div className='flex flex-row'>
-                                        <input type="radio" name="gender" id="female" value='female' className='mr-2' onChange={handleChange} checked={gender === 'female'}/>
+                                        <input type="radio" name="gender" id="female" value='female' className='mr-2' onChange={handleChange} checked={gender === 'female'} />
                                         <label htmlFor="female" className="mr-3">female</label>
                                     </div>
                                     <div className='flex flex-row'>
-                                        <input type="radio" name="gender" id="others" value='others' className='mr-2' onChange={handleChange} checked={gender === 'others'}/>
+                                        <input type="radio" name="gender" id="others" value='others' className='mr-2' onChange={handleChange} checked={gender === 'others'} />
                                         <label htmlFor="others" className="mr-2">other</label>
                                     </div>
                                 </span>

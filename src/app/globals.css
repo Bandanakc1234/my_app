@@ -70,12 +70,14 @@ tr td:first-child{
   background-position: center;
 }
 
-.hello{
+.forget_password{
   background-image: url(/image3.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  height: 100vh;
 }
+
 .circle{
   height: 70vh;
   width: 70vh;
