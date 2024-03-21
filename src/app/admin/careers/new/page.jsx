@@ -2,9 +2,11 @@
 import { addCareer } from '@/api/careerAPI';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import Swal from 'sweetalert2';
 
 
-const Career = () => {
+
+const AddCareer = () => {
     const [formData, setFormData] = useState({})
 
     let[error, setError] = useState('')
@@ -25,17 +27,9 @@ const Career = () => {
         })
     }
 
-    // let careerReducer = (state, action) => {
-    //     return { ...state, 
-    //         [action.target.name]: action.target.value 
-    //     }
-    // }
-
-    // let [career, setCareer] = useReducer(careerReducer, {})
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // console.log(token)
         addCareer(formData, token)
             .then(data => {
                 if (data.error) {
@@ -63,13 +57,36 @@ const Career = () => {
 
     const showError =()=>{
         if (error){
+            Swal.fire({
+                icon: "error",
+                toast: true,
+                title: "error",
+                text: error,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#d33"
+            })
+            setError('')
             return <div>{error}</div>
         }
     }
     const showSuccess = () =>{
         if (success){
+            Swal.fire({
+                icon: "success",
+                toast: true,
+                title: "success",
+                text: 'Career added successfully.',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#64DD17"
+              })
+              setSuccess('')
             return router.push('/admin/careers')
-            // return <div>career added.</div>
         }
     }
    
@@ -112,7 +129,7 @@ const Career = () => {
                             <label className='md:text-lg'>job_description:</label>
                         </td>
                         <td>
-                            <input type="text" name="job_description" value={job_description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={handleChange} />
+                            <textarea type="text" name="job_description" value={job_description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full text-justify resize-none' onChange={handleChange} />
 
                         </td>
                     </tr>
@@ -121,7 +138,7 @@ const Career = () => {
                             <label className='md:text-lg'>qualification:</label>
                         </td>
                         <td>
-                            <input type="text" name="qualification" value={qualification} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={handleChange} />
+                            <textarea type="text" name="qualification" value={qualification} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full resize-none' onChange={handleChange} />
 
                         </td>
                     </tr>
@@ -148,4 +165,4 @@ const Career = () => {
     )
 }
 
-export default Career
+export default AddCareer

@@ -24,7 +24,7 @@ export const view_career = () => {
 }
 
 
-//to get category details
+//to get career details
 export const getCareerDetails = (id) =>{
     return fetch(`${API}/career/view_careerdetailsbyid/${id}`)
     .then(res=>res.json())

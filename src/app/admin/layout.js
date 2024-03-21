@@ -4,6 +4,9 @@ import "../globals.css";
 import Navbar from "./component/Navbar";
 import { useState } from "react";
 import Sidebar from "./component/Sidebar";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+import { Height } from "@mui/icons-material";
 
 
 const inter = Inter({ subsets: ["latin"] });
