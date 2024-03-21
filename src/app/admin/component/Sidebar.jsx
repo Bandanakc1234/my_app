@@ -42,10 +42,6 @@ const sidebarItems = [
         name: "New",
         href: "/admin/careers/new"
       },
-      {
-        name: "Update",
-        href: "/admin/careers/update" 
-      }
     ]
   },
   {

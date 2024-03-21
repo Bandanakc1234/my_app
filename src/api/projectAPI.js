@@ -1,5 +1,6 @@
 import { API } from "@/config"
 
+//to add project
 export const addProject = (project) => {
     return fetch(`${API}/project/add_project`, {
         method: "POST",
@@ -13,7 +14,9 @@ export const addProject = (project) => {
         .catch(err => console.log(err))
 }
 
-export const view_project = () => {
+
+// to view project
+export const viewProject = () => {
     return fetch(`${API}/project/view_project`)
         .then(res => res.json())
         .catch(err => console.log(err))

@@ -5,9 +5,9 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
 
-
 const Careers = () => {
   let [careers, setCareers] = useState([])
+  let [success, setSuccess] = useState(false)
 
   useEffect(() => {
     view_career()
@@ -20,35 +20,59 @@ const Careers = () => {
           setCareers(data)
         }
       })
-  }, [])
+  }, [success])
+
+  let token = localStorage.getItem('token')
 
   const handleDelete = id => (event) => {
     event.preventDefault()
+    setSuccess(false)
     Swal.fire({
+      icon: "warning",
       title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3138D6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Delete"
+      confirmButtonText: "Delete",
+      width: "35%"
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteCareer(id);
-        Swal.fire({
-          title: "Deleted!",
-          text: "Career has been deleted successfully.",
-          icon: "success"
-        });
+        deleteCareer(id, token)
+          .then(data => {
+            if (data.error) {
+              Swal.fire({
+                title: "Error!",
+                text: data.error,
+                icon: "error",
+                showConfirmButton: false,
+                timer: 3000
+              })
+            }
+            else {
+              Swal.fire({
+                title: "Success!",
+                text: data.msg,
+                icon: "success",
+                showConfirmButton: false,
+                timer: 3000
+              })
+            }
+          })
+          .catch(
+            Swal.fire("something went wrong!")
+          )
+        setSuccess(true)
       }
     });
   }
-  
+
+
 
   return (
     <div className='ms-8 md:w-4/6 w-10/12'>
       <button className='rounded-md bg-blue-600 my-5 px-3 py-2 hover:text-white hover:bg-blue-700'>
-        <Link href={"/admin/careers/new"}>Add New Careers</Link>
+        <Link href={"/admin/careers/new"}>Add New Career</Link>
       </button>
       <h1 className='font-bold text-3xl'>Careers</h1>
       <div className='text-black flex flex-col'>
@@ -73,7 +97,6 @@ const Careers = () => {
           })
         }
       </div>
-
     </div>
   )
 }

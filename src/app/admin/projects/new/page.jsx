@@ -1,10 +1,11 @@
 'use client';
 import { addProject } from '@/api/projectAPI';
 import { useRouter } from 'next/navigation';
-import React, { useReducer, useState } from 'react'
+import React, { useState } from 'react'
+import Swal from 'sweetalert2';
 
 
-const Project = () => {
+const AddProject = () => {
     const [formData, setFormData] = useState({})
 
     let [error, setError] = useState('')
@@ -12,7 +13,9 @@ const Project = () => {
 
     let router = useRouter()
 
+
     let { project_title, category, language, tools, project_image } = formData
+
 
     let token = localStorage.getItem('token')
     const handleChange = (event) => {
@@ -52,12 +55,36 @@ const Project = () => {
 
     const showError = () => {
         if (error) {
+            Swal.fire({
+                icon: "error",
+                toast: true,
+                title: "error",
+                text: error,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#d33"
+            })
+            setError('')
             return <div>{error}</div>
         }
     }
 
     const showSuccess = () => {
         if (success) {
+            Swal.fire({
+                icon: "success",
+                toast: true,
+                title: "success",
+                text: 'Career added successfully.',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#64DD17"
+              })
+              setSuccess('')
             return router.push("/admin/projects")
         }
     }
@@ -120,4 +147,4 @@ const Project = () => {
     )
 }
 
-export default Project
+export default AddProject

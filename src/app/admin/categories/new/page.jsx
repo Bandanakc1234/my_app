@@ -2,31 +2,26 @@
 import { addCategory } from '@/api/categoryAPI'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import Swal from 'sweetalert2'
 
-const Category = () => {
+const AddCategory = () => {
     let [category_title, setCategoryTitle] = useState('')
-   
+
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
     let router = useRouter()
 
     let token = localStorage.getItem('token')
-    const handleChange = (event) =>{
+    const handleChange = (event) => {
         setCategoryTitle(
-             event.target.value
+            event.target.value
         )
     }
 
-
-    // let categoryReducer = (state, action) => {
-    //     return { ...state, [action.target.name]: action.target.value }
-    // }
-    // let [category, setCategory] = useReducer(categoryReducer, {})
-
     const handlesubmit = (event) => {
         event.preventDefault()
-        addCategory(category_title,token)
+        addCategory(category_title, token)
             .then(data => {
                 if (data.error) {
                     setSuccess(false)
@@ -37,19 +32,43 @@ const Category = () => {
                     setError('')
                     setSuccess(true)
                     console.log("category added")
-                    setCategoryTitle(""                    )
+                    setCategoryTitle("")
                 }
             })
             .catch(error => console.log(error))
     }
 
-    const showError = () =>{
-        if(error){
-            return <div className='alert alert-danger'>{error}</div>
+    const showError = () => {
+        if (error) {
+            Swal.fire({
+                icon: "error",
+                toast: true,
+                title: "error",
+                text: error,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#d33"
+            })
+            setError('')
+            return <div>{error}</div>
         }
     }
-    const showSuccess = () =>{
-        if(success){
+    const showSuccess = () => {
+        if (success) {
+            Swal.fire({
+                icon: "success",
+                toast: true,
+                title: "success",
+                text: 'category added successfully',
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#64DD17"
+            })
+            setSuccess('')
             return <div className='alert alert-success'>category added successfully.</div>
         }
     }
@@ -57,10 +76,10 @@ const Category = () => {
 
     return (
         <div className='bg-blue-200 h-screen'>
+            {showSuccess()}
+            {showError()}
             <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-10/12 xl:p-10 md:p-5 p-2'>
-                <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add categories</h1>
-                {showSuccess()}
-                {showError()}
+                <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add category</h1>
                 <table className='lg:w-full w-10/12 md:text-xl text-sm'>
                     <tr>
                         <td>
@@ -77,4 +96,4 @@ const Category = () => {
     )
 }
 
-export default Category
+export default AddCategory

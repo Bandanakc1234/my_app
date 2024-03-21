@@ -1,9 +1,8 @@
 'use client';
 
 import { getCareerDetails, updateCareer } from '@/api/careerAPI';
-import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Swal from 'sweetalert2';
 
 
@@ -15,16 +14,17 @@ const UpdateCareer = () => {
 
     let router = useRouter()
 
+
     let { id } = useParams()
 
-    
+
     useEffect(() => {
         getCareerDetails(id).then(data => setFormData(data)
         )
     }, [])
-    
-    
-    
+
+
+
     let token = localStorage.getItem('token')
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -33,9 +33,24 @@ const UpdateCareer = () => {
             [name]: value
         })
     }
-    
+
     let { career_title, vacancyNumber, offered_salary, job_description, qualification, posted_date, deadline } = formData
- 
+
+    posted_date = new Date(posted_date)
+    let yy = posted_date.getFullYear()
+    let mm = posted_date.getMonth().toString().padStart(2, '0')
+    let dd = posted_date.getDate().toString().padStart(2, '0')
+    posted_date = yy + "-" + mm + '-' + dd
+
+    deadline = new Date(deadline)
+    yy = deadline.getFullYear()
+    mm = deadline.getMonth().toString().padStart(2, '0')
+    dd = deadline.getDate().toString().padStart(2, '0')
+    deadline = yy + "-" + mm + '-' + dd
+    // posted_date = posted_date.getFullYear() + "-" + posted_date.getMonth().toString().padStart(2,'0') + "-"+posted_date.getDate()
+
+
+    // posted_date = posted_date.toDateString()
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -49,7 +64,7 @@ const UpdateCareer = () => {
                 else {
                     setError('')
                     setSuccess(true)
-                    console.log("career updted")
+                    console.log("career updated")
                     setFormData({
                         career_title: "",
                         vacancyNumber: "",
@@ -58,20 +73,49 @@ const UpdateCareer = () => {
                         qualification: "",
                         posted_date: "",
                         deadline: ""
-                    })
+                    }
+                    )
                 }
             })
             .catch(error => console.log(error))
+
     }
 
     const showError = () => {
         if (error) {
+            Swal.fire({
+                icon: "error",
+                toast: true,
+                title: "error",
+                text: error,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#d33"
+            });
+            setError('')
             return <div>{error}</div>
         }
     }
+
     const showSuccess = () => {
         if (success) {
-            return router.push('../')
+            Swal.fire({
+                icon: "success",
+                toast: true,
+                title: "success",
+                text: 'Career updated successfully.',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                color: "#64DD17"
+            })
+            setSuccess('')
+            return router.push("/admin/careers");
+            // return <Redirect to="/admin/careers" />;
+            // router.back()
         }
     }
 
@@ -114,7 +158,7 @@ const UpdateCareer = () => {
                             <label className='md:text-lg'>job_description:</label>
                         </td>
                         <td>
-                            <input type="text" name="job_description" value={job_description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={handleChange} />
+                            <textarea type="text" name="job_description" value={job_description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full resize-none' onChange={handleChange} />
                         </td>
                     </tr>
                     <tr>
@@ -122,7 +166,7 @@ const UpdateCareer = () => {
                             <label className='md:text-lg'>qualification:</label>
                         </td>
                         <td>
-                            <input type="text" name="qualification" value={qualification} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full' onChange={handleChange} />
+                            <textarea type="text" name="qualification" value={qualification} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-7 w-full resize-none' onChange={handleChange} />
 
                         </td>
                     </tr>
@@ -131,7 +175,7 @@ const UpdateCareer = () => {
                             <label className='md:text-lg'>posted_date:</label>
                         </td>
                         <td>
-                            <input type="date" name="posted_date" value={posted_date} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                            <input type="date" name="posted_date" value={posted_date.toString()} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
                     <tr>
@@ -139,12 +183,11 @@ const UpdateCareer = () => {
                             <label className='md:text-lg'>deadline:</label>
                         </td>
                         <td>
-                            <input type="date" name="deadline" value={deadline} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                            <input type="date" name="deadline" value={deadline.toString()} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
                 </table>
                 <button onClick={handleSubmit} className="border border-none bg-blue-600 rounded-md md:w-20 md:h-10 w-14 h-7 lg:mt-8 mt-3 md:text-lg text-sm"><a href="#" className=' hover:text-white'>update</a></button>
-               
             </div>
         </div>
     )
