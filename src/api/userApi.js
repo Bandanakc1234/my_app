@@ -21,15 +21,57 @@ export const emailConfirmation = (token) => {
     .catch(error => console.log(error))
 }
 
+//forget password
+export const forgetPassword = (email) =>{
+    return fetch(`${API}/user/forgetpassword`,{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({email})
+    })
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
+//reset password
+export const resetPassword = (password,confirm_password, token) =>{
+    return fetch(`${API}/user/resetpassword/${token}`,{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({password, confirm_password})
+    })
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
 //login
 export const userLogin = ({email, password}) =>{
-    console.log(email, password)
     return fetch(`${API}/user/login`,{
         method: 'POST',
         headers: {
             "Content-Type":"application/json"
         },
         body:JSON.stringify({email, password})
+    })
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
+//logout
+export const userlogout = () =>{     
+    localStorage.removeItem('token')       
+    return fetch(`${API}/user/logout`)
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
+//get all users
+export const alluser = () =>{
+    return fetch(`${API}/user/userList`,{
+        // Authorization: `Bearer ${token}`
     })
     .then(response =>{return response.json()})
     .catch(error => console.log(error))
@@ -42,5 +84,7 @@ export const authenticate = (logininfo) => {
 
 //to check if logged in 
 // export const isAuthenticated = () =>{
-//     return localStorage.getItem('jwt') ? JSON.parse(localStorage.getItem('jwt')) : false
+//     if(typeof window !== undefined){
+//         localStorage.getItem("token")
+//     }
 // }
