@@ -26,7 +26,7 @@ export const view_career = () => {
 
 //to get category details
 export const getCareerDetails = (id) =>{
-    return fetch(`${API}/career//view_careerdetailsbyid/${id}`)
+    return fetch(`${API}/career/view_careerdetailsbyid/${id}`)
     .then(res=>res.json())
     .catch(err=>console.log(err))
 }
@@ -40,7 +40,20 @@ export const updateCareer = (id, career_title, token) =>{
             "Content-Type":"application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({career_title})
+        body: JSON.stringify(career_title)
+    })
+    .then(res =>res.json())
+    .catch(err=>console.log(err))
+}
+
+//to delete career
+export const deleteCareer = (id, token) =>{
+    return fetch(`${API}/career/delete_career/${id}`,{
+        method: "DELETE",
+        headers:{
+            // "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
     })
     .then(res =>res.json())
     .catch(err=>console.log(err))

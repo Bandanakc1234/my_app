@@ -1,83 +1,80 @@
 'use client';
-import { addCareer, getCareerDetails, updateCareer } from '@/api/careerAPI';
+
+import { getCareerDetails, updateCareer } from '@/api/careerAPI';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2';
 
 
-const Career = () => {
-    const [formData, setFormData] = useState({})
-    let[error, setError] = useState('')
-    let[success, setSuccess] = useState(false)
+const UpdateCareer = () => {
+    let [formData, setFormData] = useState({})
+
+    let [error, setError] = useState('')
+    let [success, setSuccess] = useState(false)
 
     let router = useRouter()
 
-    let {id} = useParams()
+    let { id } = useParams()
 
-    useEffect(() =>{
-        getCareerDetails(id).then(data =>setFormData(data.career_title))
-    },[])
-
-    let { career_title, vacancyNumber, offered_salary, job_description, qualification, posted_date, deadline} = formData
-
-
+    
+    useEffect(() => {
+        getCareerDetails(id).then(data => setFormData(data)
+        )
+    }, [])
+    
+    
+    
     let token = localStorage.getItem('token')
-    const handleChange = (event) =>{
-        const{name, value} = event.target;
+    const handleChange = (event) => {
+        const { name, value } = event.target;
         setFormData({
             ...formData,
-            [name]:value
+            [name]: value
         })
     }
-
-    // let careerReducer = (state, action) => {
-    //     return { ...state, 
-    //         [action.target.name]: action.target.value 
-    //     }
-    // }
-
-    // let [career, setCareer] = useReducer(careerReducer, {})
+    
+    let { career_title, vacancyNumber, offered_salary, job_description, qualification, posted_date, deadline } = formData
+ 
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // console.log(token)
-        updateCareer(formData, token)
+        updateCareer(id, formData, token)
             .then(data => {
                 if (data.error) {
                     setSuccess(false)
                     console.log(data.error)
                     setError(data.error)
-                } 
+                }
                 else {
                     setError('')
                     setSuccess(true)
-                    console.log("career added")
+                    console.log("career updted")
                     setFormData({
-                        career_title:"",
-                        vacancyNumber:"",
-                        offered_salary:"",
-                        job_description:"",
-                        qualification:"", 
-                        posted_date:"", 
-                        deadline:""
+                        career_title: "",
+                        vacancyNumber: "",
+                        offered_salary: "",
+                        job_description: "",
+                        qualification: "",
+                        posted_date: "",
+                        deadline: ""
                     })
                 }
             })
             .catch(error => console.log(error))
     }
 
-    const showError =()=>{
-        if (error){
+    const showError = () => {
+        if (error) {
             return <div>{error}</div>
         }
     }
-    const showSuccess = () =>{
-        if (success){
-            return router.push('/admin/careers')
-            // return <div>career added.</div>
+    const showSuccess = () => {
+        if (success) {
+            return router.push('../')
         }
     }
-   
+
 
     return (
         <div className='bg-blue-200'>
@@ -86,7 +83,7 @@ const Career = () => {
             <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-10/12 xl:p-10 md:p-5 p-2'>
                 <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Update Career</h1>
 
-                <table className='lg:w-full w-10/12 md:text-xl text-sm'> 
+                <table className='lg:w-full w-10/12 md:text-xl text-sm'>
                     <tr>
                         <td>
                             <label className=' md:text-lg text-sm'>career title:</label>
@@ -99,8 +96,8 @@ const Career = () => {
                         <td>
                             <label className='md:text-lg text-sm'>vacancyNumber:</label>
                         </td>
-                          <td>
-                            <input type="text" name="vacancyNumber" value={vacancyNumber} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                        <td>
+                            <input type="number" name="vacancyNumber" value={vacancyNumber} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
                     <tr>
@@ -108,7 +105,7 @@ const Career = () => {
                             <label className='md:text-lg'>offered_salary:</label>
                         </td>
                         <td>
-                            <input type="text" name="offered_salary" value={offered_salary} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                            <input type="number" name="offered_salary" value={offered_salary} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
 
                         </td>
                     </tr>
@@ -147,12 +144,10 @@ const Career = () => {
                     </tr>
                 </table>
                 <button onClick={handleSubmit} className="border border-none bg-blue-600 rounded-md md:w-20 md:h-10 w-14 h-7 lg:mt-8 mt-3 md:text-lg text-sm"><a href="#" className=' hover:text-white'>update</a></button>
-
-
-                <Link to='.admin/careers'>Go Back</Link>
+               
             </div>
         </div>
     )
 }
 
-export default Career
+export default UpdateCareer
