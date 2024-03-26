@@ -1,5 +1,5 @@
 'use client'
-import { deleteCategory, view_category } from '@/api/categoryAPI'
+import { deleteCategory, getAllCategories } from '@/api/categoryAPI'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
@@ -9,7 +9,7 @@ const Category = () => {
   let [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    view_category()
+    getAllCategories()
       .then(data => {
         if (data.error) {
           console.log(data.error)

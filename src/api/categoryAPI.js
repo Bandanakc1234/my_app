@@ -14,7 +14,7 @@ export const addCategory = (category_title, token) =>{
 }
 
 //to view all 
-export const view_category = () =>{
+export const getAllCategories = () =>{
     return fetch(`${API}/category/view_category`)
     .then(res=>res.json())
     .catch(err=>console.log(err))

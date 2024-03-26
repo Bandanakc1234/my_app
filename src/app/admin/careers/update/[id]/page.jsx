@@ -14,7 +14,6 @@ const UpdateCareer = () => {
 
     let router = useRouter()
 
-
     let { id } = useParams()
 
 
@@ -22,7 +21,6 @@ const UpdateCareer = () => {
         getCareerDetails(id).then(data => setFormData(data)
         )
     }, [])
-
 
 
     let token = localStorage.getItem('token')
@@ -114,8 +112,6 @@ const UpdateCareer = () => {
             })
             setSuccess('')
             return router.push("/admin/careers");
-            // return <Redirect to="/admin/careers" />;
-            // router.back()
         }
     }
 
