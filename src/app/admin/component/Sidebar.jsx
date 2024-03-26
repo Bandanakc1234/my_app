@@ -1,9 +1,10 @@
 'use client'
 import { useState } from 'react';
 import { BiSolidDashboard, BiDetail, BiSolidBriefcase, BiTask, BiUser } from "react-icons/bi";
-import { BsPersonPlus } from "react-icons/bs";
+import { PiUsersThree } from "react-icons/pi";
+// import { BsPersonPlus } from "react-icons/bs";
 import { usePathname } from "next/navigation";
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { MdPostAdd } from "react-icons/md";
 import Link from 'next/link';
 
@@ -64,15 +65,25 @@ const sidebarItems = [
     icon: BiUser
   },
   {
-    name: "Register",
-    href: "/register",
-    icon: BsPersonPlus
+    name: "All Users",
+    href: "/admin/allusers",
+    icon: PiUsersThree
   },
   {
-    name: "Login",
-    href: "/login",
-    icon: FiLogIn
+    name: "Logout",
+    href: "/admin/logout",
+    icon: FiLogOut
   },
+  // {
+  //   name: "Register",
+  //   href: "/register",
+  //   icon: BsPersonPlus
+  // },
+  // {
+  //   name: "Login",
+  //   href: "/login",
+  //   icon: FiLogIn
+  // },
 ]
 
 const Sidebar = ({ isMenuOpen }) => {
