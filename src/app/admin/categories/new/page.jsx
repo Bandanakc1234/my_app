@@ -69,7 +69,7 @@ const AddCategory = () => {
                 color: "#64DD17"
             })
             setSuccess('')
-            return <div className='alert alert-success'>category added successfully.</div>
+            return router.push("/admin/categories")
         }
     }
 
