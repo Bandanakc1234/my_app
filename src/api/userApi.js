@@ -62,7 +62,8 @@ export const userLogin = ({email, password}) =>{
 
 //logout
 export const userlogout = () =>{     
-    localStorage.removeItem('token')       
+    localStorage.removeItem('token')    
+    localStorage.removeItem('user')    
     return fetch(`${API}/user/logout`)
     .then(response =>{return response.json()})
     .catch(error => console.log(error))
@@ -77,14 +78,37 @@ export const alluser = () =>{
     .catch(error => console.log(error))
 }
 
+// delete user
+export const deleteUser = (id, token) =>{
+    return fetch(`${API}/user/delete_user/${id}`,{
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
+//user detail
+export const userDetail = (id, token) =>{
+    return fetch(`${API}/user/userDetails/${id}`,{
+        headers: {
+            Authorization: `Bearer ${token}`
+        }})
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
 // authenticate to keep sigined in
 export const authenticate = (logininfo) => {
     localStorage.setItem('token', logininfo.token)
+    localStorage.setItem('user', JSON.stringify(logininfo.user))
 } 
 
 //to check if logged in 
-// export const isAuthenticated = () =>{
-//     if(typeof window !== undefined){
-//         localStorage.getItem("token")
-//     }
-// }
+export const isAuthenticated = () =>{
+    if(typeof window !== undefined){
+        localStorage.getItem("token")
+    }
+}
