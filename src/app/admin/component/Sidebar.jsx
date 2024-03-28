@@ -8,6 +8,8 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { MdPostAdd } from "react-icons/md";
 import Link from 'next/link';
 
+let id = localStorage.getItem('user')?JSON.parse(localStorage.getItem('user'))._id :""
+
 const sidebarItems = [
   {
     name: "Dashboard",
@@ -61,7 +63,7 @@ const sidebarItems = [
   },
   {
     name: "Profile",
-    href: "/profile",
+    href: `/admin/userprofile/${id}`,
     icon: BiUser
   },
   {
