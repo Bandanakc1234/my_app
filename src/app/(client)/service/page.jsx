@@ -1,10 +1,10 @@
 "use client"
-
 import React from 'react';
 import { BiWebcam } from 'react-icons/bi';
 import Aos from "aos";
 import 'aos/dist/aos.css'
 import { useEffect } from "react";
+import { Services } from './[staticData]/page';
 
 
 const services = () => {
@@ -40,7 +40,16 @@ const services = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum quidem </p>
               </div>
               <div className="buttondiv flex justify-center">
-                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">see more</button>
+                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white"
+                >
+                  {
+                    Services && Services.map(serv =>{
+                      return <Services 
+                      serviceCard = {serv}/>
+                    })
+                  }
+
+                  see more</button>
               </div>
             </div>
 

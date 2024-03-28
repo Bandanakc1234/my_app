@@ -57,7 +57,7 @@ const UpdateProject = () => {
 
     const handleChange = name => (event) => {
         let value
-        if (name === 'project_image') {
+        if (event.target.name === 'project_image') {
             value = event.target.files[0]
         }
         else {
@@ -67,10 +67,11 @@ const UpdateProject = () => {
                 [name]: value
             })
         }
+        // console.log(name, event.target.files[0])
+        // if(project.project_image){
+        //     formdata.set('project_image',project.project_image)
+        // }
         formdata.set(name, value)
-        if(project.project_image){
-            formdata.set('project_image',project.project_image)
-        }
     }
 
 
@@ -201,7 +202,7 @@ const UpdateProject = () => {
                                         <label htmlFor='image' className='md:text-lg'>project_image:</label>
                                     </td>
                                     <td>
-                                        <input type="file" id='image' name="project_image" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange('product_image')} ref={file_ref} />
+                                        <input type="file" id='image' name="project_image" className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange('project_image')} ref={file_ref} />
                                     </td>
                                 </tr>
                             </table>

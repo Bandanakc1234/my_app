@@ -1,15 +1,22 @@
 "use client"
-
-import React from 'react'
+import React, { useState } from 'react'
 import { CgPathTrim } from "react-icons/cg";
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { view_career } from '@/api/careerAPI';
+import CareerCard from '../component/CareerCard';
+
 
 const career = () => {
+    let [careers, setCareers] = useState([])
+
     useEffect(() => {
         Aos.init()
+        view_career()
+            .then(data => setCareers(data))
     }, [])
+    
     return (
         <div>
             <div className='contact-img text-center p-16 text-white'>
@@ -23,7 +30,7 @@ const career = () => {
             <div className='lg:flex lg:p-10 justify between w-full bg-white'>
                 <div className='lg:w-1/2 lg:m-14 pt-10' data-aos="fade-up" data-aos-duration="2000">
                     <div className='lg:flex lg:justify-start flex  justify-center'>
-                        <CgPathTrim className='m-1 text-blue-500 size-6'/>
+                        <CgPathTrim className='m-1 text-blue-500 size-6' />
                         <p className='font-semibold'>BE PART OF OUR TEAM</p>
                     </div>
                     <p className='lg:text-3xl text-xl lg:text-left text-center font-bold pt-3'>Career and Culture at Index IT Hub</p>
@@ -42,8 +49,17 @@ const career = () => {
                     </div>
                     <p className='md:text-3xl text-2xl font-bold pt-3'>Our Latest Job Vacancy</p>
                 </div>
+                <div className='flex flex-wrap justify-evenly'>
+                    {
+                        careers.length > 0 &&
+                        careers.map(career => {
+                            console.log(career)
+                            return <CareerCard career={career} />
+                        })
+                    }
+                </div>
 
-                <div className='md:w-96 h-auto rounded-lg flex flex-col text-center pt-12 mt-10 shadow-xl hover:bg-blue-200 lg:mb-24 mb-14' data-aos="fade-up" data-aos-duration="1000">
+                {/* <div className='md:w-96 h-auto rounded-lg flex flex-col text-center pt-12 mt-10 shadow-xl hover:bg-blue-200 lg:mb-24 mb-14' data-aos="fade-up" data-aos-duration="1000">
                     <h1 className='text-center md:text-xl font-bold'>Frontend Developer</h1>
                     <p className='md:text-lg text-sm font-semibold md:m-4 m-1'>Functional Title: Developer Team</p>
                     <p className='md:text-lg md:m-2 m-1 text-sm'>No. of Vacancies:[3]</p>
@@ -53,7 +69,7 @@ const career = () => {
                     <div className='flex justify-center'>
                         <button className='md::m-5 m-3 bg-blue-500 text-white md:w-28 w-24 rounded-2xl md:h-9 h-7 hover:bg-blue-700 md:text-lg text-sm'>Read More</button>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </div>

@@ -47,7 +47,6 @@ const UpdateCareer = () => {
     deadline = yy + "-" + mm + '-' + dd
     // posted_date = posted_date.getFullYear() + "-" + posted_date.getMonth().toString().padStart(2,'0') + "-"+posted_date.getDate()
 
-
     // posted_date = posted_date.toDateString()
 
     const handleSubmit = (event) => {
