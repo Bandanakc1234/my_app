@@ -1,5 +1,6 @@
 'use client'
-import { alluser, deleteUser, isAuthenticated } from '@/api/userApi'
+import { alluser, deleteUser } from '@/api/userApi'
+import { API } from '@/config'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 
@@ -7,22 +8,21 @@ const AllUsers = () => {
     let [users, setUsers] = useState([])
     let [success, setSuccess] = useState(false)
 
-    // let token = isAuthenticated()
+    let token = localStorage.getItem('token') ? localStorage.getItem('token') : ""
 
     useEffect(() => {
-        alluser()
+        alluser(token)
             .then(data => {
                 if (data.error) {
                     console.log(data.error)
                 }
-                else {
+                else {  
                     console.log(data)
                     setUsers(data)
                 }
             })
     }, [success])
 
-    let token = localStorage.getItem('token')
 
     const handleDelete = id => (event) => {
         event.preventDefault()
@@ -70,23 +70,41 @@ const AllUsers = () => {
 
     return (
         <>
-            <div className='ms-8 md:w-4/6 w-10/12'>
-                <h1 className='font-bold text-3xl text-center'>All Users</h1>
-                <div className='flex flex-col'>
-                    {
-                        users && users.map((user, i) => {
-                            return <div key={user._id} className=' border-2 bg-white rounded-md shadow-lg  my-3 flex justify-between'>
-                                <div className='p-5'>
-                                    <h1 className='bg-blue-200 w-1/2 text-center rounded-md'>S.No. {i + 1}</h1>
-                                    <h1>Name: {user.firstname} {user.lastname}</h1>
-                                    <h1>Username: {user.username}</h1>
-                                    <h1>Email: {user.email}</h1>
-                                </div>
-                                <button className='bg-red-600 p-2 m-12 rounded-lg' onClick={handleDelete(user._id)}>Delete</button>
-                            </div>
-                        })
-                    }
-                </div>
+            <div className='shadow-md bg-white rounded-lg h-fit ms-8'>
+                <h1 className='border-b border-dashed py-3 px-6 text-lg font-semibold'>User Details</h1>
+                    <div className='p-4 '>
+                        <table className='w-full inline-block align-middle border rounded-md divide-y divide-gray-200'>
+                            <thead className='bg-red-50 w-full'>
+                                <tr className='w-full'>
+                                    <th className='py-3 ps-4 text-md font-medium w-1/12'>S.No.</th>
+                                    <th className='px-6 py-3 text-left text-md font-medium uppercase w-1/6'>Name</th>
+                                    <th className='px-6 py-3 text-left text-md font-medium uppercase w-1/12'>Age</th>
+                                    <th className='px-6 py-3 text-left text-md font-medium uppercase w-1/6'>Address</th>
+                                    <th className='px-6 py-3 text-left text-md font-medium uppercase w-1/6'>Position</th>
+                                    <th className='px-6 py-3 text-left text-md font-medium uppercase w-1/12'>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody className='divide-y divide-gray-200'>
+                                {
+                                    users && users.map((user, i) => {
+                                        return <tr key={user._id}>
+                                            <td className='py-3 ps-4 w-1/12'>{i + 1}</td>
+                                            <td className='tracking-tight px-6 py-3 w-1/6 text-sm capitalize'>
+                                                <img src={`${API}/${user.image}`} alt={user.image} className='rounded-full h-10' />
+                                                {user.firstname} {user.lastname}</td>
+                                            <td className='tracking-tight px-6 py-3 text-sm w-1/12'>{user.age}</td>
+                                            <td className='tracking-tight px-6 py-3 text-sm w-1/6'>{user.address.tempAddress}</td>
+                                            <td className='tracking-tight px-6 py-3 text-sm capitalize w-1/6'>{user.position}</td>
+                                            <td className='px-6 py-3 text-sm w-1/12'>
+                                                <button className='text-red-600' onClick={handleDelete(user._id)}>Delete</button>
+                                            </td>
+                                        </tr>
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
             </div>
         </>
     )
