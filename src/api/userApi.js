@@ -70,9 +70,11 @@ export const userlogout = () =>{
 }
 
 //get all users
-export const alluser = () =>{
+export const alluser = (token) =>{
     return fetch(`${API}/user/userList`,{
-        // Authorization: `Bearer ${token}`
+        headers:{
+            Authorization: `Bearer ${token}`
+        }
     })
     .then(response =>{return response.json()})
     .catch(error => console.log(error))
