@@ -5,23 +5,31 @@ import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 
 const AddCategory = () => {
-    let [category_title, setCategoryTitle] = useState('')
+    // let [category_title, setCategoryTitle] = useState('')
+    let [formData, setFormData] = useState({})
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
     let router = useRouter()
 
+    let {category_title, icon, description} = formData
+
     let token = localStorage.getItem('token')
     const handleChange = (event) => {
-        setCategoryTitle(
-            event.target.value
-        )
+        const {name, value} = event.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+        // setCategoryTitle(
+        //     event.target.value
+        // )
     }
 
     const handlesubmit = (event) => {
         event.preventDefault()
-        addCategory(category_title, token)
+        addCategory(formData, token)
             .then(data => {
                 if (data.error) {
                     setSuccess(false)
@@ -32,7 +40,11 @@ const AddCategory = () => {
                     setError('')
                     setSuccess(true)
                     console.log("category added")
-                    setCategoryTitle("")
+                    setFormData({
+                        category_title:"",
+                        icon:"",
+                        description:""
+                    })
                 }
             })
             .catch(error => console.log(error))
@@ -87,6 +99,22 @@ const AddCategory = () => {
                         </td>
                         <td>
                             <input type="text" name="category_title" value={category_title} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label className=' md:text-lg text-sm'>icon:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="icon" value={icon} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label className=' md:text-lg text-sm'>Description:</label>
+                        </td>
+                        <td>
+                            <textarea type="text" name="description" value={description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full text-justify resize-one' onChange={handleChange} />
                         </td>
                     </tr>
                 </table>

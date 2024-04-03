@@ -72,7 +72,7 @@ export default function Home() {
 
             <div className="cn">
               <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700"  data-aos="fade-right" data-aos-duration="1000"><a href="#" className="p-3">Free Quote</a></button>
-              <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700"  data-aos="fade-left" data-aos-duration="1000"><a href="contact.html" className="p-3">Contact Us</a></button>
+              <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700"  data-aos="fade-left" data-aos-duration="1000"><a href="/contact" className="p-3">Contact Us</a></button>
             </div>
           </div>
        
@@ -274,7 +274,7 @@ export default function Home() {
             
             <div className="owlcarousel_logo p-20">
               <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-                <img src="./logo2.png" className="h-full rounded-xl"/>
+                <img src="./evolve.png" className="h-full rounded-xl"/>
               </div>
             </div>
             

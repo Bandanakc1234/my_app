@@ -1,5 +1,4 @@
 'use client';
-
 import { getCareerDetails, updateCareer } from '@/api/careerAPI';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
@@ -33,7 +32,7 @@ const UpdateCareer = () => {
     }
 
     let { career_title, vacancyNumber, offered_salary, job_description, qualification, posted_date, deadline } = formData
-
+    
     posted_date = new Date(posted_date)
     let yy = posted_date.getFullYear()
     let mm = posted_date.getMonth().toString().padStart(2, '0')
@@ -45,6 +44,13 @@ const UpdateCareer = () => {
     mm = deadline.getMonth().toString().padStart(2, '0')
     dd = deadline.getDate().toString().padStart(2, '0')
     deadline = yy + "-" + mm + '-' + dd
+
+    let today = new Date()
+    yy = today.getFullYear()
+    mm = (today.getMonth()+1).toString().padStart(2, '0')
+    dd = today.getDate().toString().padStart(2, '0')
+    today = yy + "-" + mm + '-' + dd
+
     // posted_date = posted_date.getFullYear() + "-" + posted_date.getMonth().toString().padStart(2,'0') + "-"+posted_date.getDate()
 
     // posted_date = posted_date.toDateString()
@@ -170,7 +176,7 @@ const UpdateCareer = () => {
                             <label className='md:text-lg'>posted_date:</label>
                         </td>
                         <td>
-                            <input type="date" name="posted_date" value={posted_date.toString()} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                            <input type="date" name="posted_date" value={posted_date.toString()}  min={today}className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
                     <tr>
@@ -178,7 +184,7 @@ const UpdateCareer = () => {
                             <label className='md:text-lg'>deadline:</label>
                         </td>
                         <td>
-                            <input type="date" name="deadline" value={deadline.toString()} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
+                            <input type="date" name="deadline" value={deadline.toString()} min={posted_date.toString()} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
                 </table>

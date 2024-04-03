@@ -1,13 +1,13 @@
 import {API} from "../config"
 
-export const addCategory = (category_title, token) =>{
+export const addCategory = (category, token) =>{
     return fetch (`${API}/category/add_category`,{
         method: "POST",
         headers:{
             "Content-Type":"application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({category_title})
+        body: JSON.stringify(category)
     })
     .then(res =>res.json())
     .catch(err=>console.log(err))
@@ -28,14 +28,14 @@ export const getCategoryDetails = (id) =>{
 }
 
 //to update category
-export const updateCategory = (id, category_title, token) =>{
+export const updateCategory = (id, category, token) =>{
     return fetch(`${API}/category/update_category/${id}`,{
         method: "PUT",
         headers:{
             "Content-Type":"application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({category_title})
+        body: JSON.stringify(category)
     })
     .then(res =>res.json())
     .catch(err=>console.log(err))

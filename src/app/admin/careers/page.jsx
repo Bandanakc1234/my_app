@@ -11,7 +11,7 @@ const Careers = () => {
   useEffect(() => {
     view_career()
       .then(data => {
-        if (data.error) {
+        if (data?.error) {
           console.log(data.error)
         }
         else {
@@ -39,10 +39,10 @@ const Careers = () => {
       if (result.isConfirmed) {
         deleteCareer(id, token)
           .then(data => {
-            if (data.error) {
+            if (data?.error) {
               Swal.fire({
                 title: "Error!",
-                text: data.error,
+                text: data?.error,
                 icon: "error",
                 showConfirmButton: false,
                 timer: 3000
@@ -51,7 +51,7 @@ const Careers = () => {
             else {
               Swal.fire({
                 title: "Success!",
-                text: data.msg,
+                text: data?.msg,
                 icon: "success",
                 showConfirmButton: false,
                 timer: 3000

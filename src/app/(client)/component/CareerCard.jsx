@@ -1,7 +1,13 @@
+'use client'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import React from 'react'
+// import { Link } from 'react-router-dom'
 
 const CareerCard = ({career}) => {
 
+    // const params = useParams()
+    // const id = params.careerId
 
     let {career_title, vacancyNumber, offered_salary, posted_date, deadline} = career
     return (
@@ -13,7 +19,7 @@ const CareerCard = ({career}) => {
             <p className='md:text-lg md:m-2 m-1 text-sm'>Posted Date: {posted_date}</p>
             <p className='md:text-lg md:m-2 m-1 text-sm'>Apply Before(Deadline):{deadline}</p>
             <div className='flex justify-center'>
-                <button className='md::m-5 m-3 bg-blue-500 text-white md:w-28 w-24 rounded-2xl md:h-9 h-7 hover:bg-blue-700 md:text-lg text-sm'>Read More</button>
+                <Link href={`/career/${career._id}`} className='md::m-5 m-3 bg-blue-500 text-white md:w-28 w-24 rounded-2xl md:h-9 h-7 hover:bg-blue-700 md:text-lg text-sm'>Apply here</Link>
             </div>
         </div>
     )

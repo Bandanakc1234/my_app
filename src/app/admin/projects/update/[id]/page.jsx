@@ -46,9 +46,7 @@ const UpdateProject = () => {
                         console.log(key, data[key])
                         formdata.set(key, data[key])
                     }
-
-
-                    sel_ref.current.value = data.category._id
+                    sel_ref.current.value = data.category?._id
                 }
             })
 
