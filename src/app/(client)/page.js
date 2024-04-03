@@ -115,7 +115,7 @@ export default function Home() {
           <p className="m-1">Enter you email address</p>
           <input type="email" id="email" name="email" placeholder="enter your email..." className="text-black md:w-4/5 w-4/5 h-5 font-2xl rounded-md p-5" />
           <div className="flex justify-start">
-            <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer mt-4 md:w-28 w-16 hover:bg-blue-700  flex items-center justify-center"><a href="">submit</a></button>
+            <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer mt-4 md:w-28 w-16 hover:bg-blue-700  flex items-center justify-center"><a href="">Subscribe</a></button>
           </div>
 
         </div>
@@ -258,7 +258,7 @@ export default function Home() {
           </div>
       
 
-        <OwlCarousel {...settings2} className="border border-t-4 border-b-4">
+        <OwlCarousel {...settings2} >
           
         <div className="owlcarousel_logo p-20">
               <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto rounded-xl">

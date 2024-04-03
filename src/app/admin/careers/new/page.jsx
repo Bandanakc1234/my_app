@@ -88,6 +88,14 @@ const AddCareer = () => {
               setSuccess('')
             return router.push('/admin/careers')
         }
+        
+
+        // const validate = (values) =>{
+        //     const errors ={}
+        //     if(!values.posted_date){
+        //         errors.posted_date = 
+        //     }
+        // }
     }
    
 
