@@ -102,6 +102,19 @@ export const userDetail = (id, token) =>{
     .catch(error => console.log(error))
 }
 
+//update user
+export const userUpdate = (id, user, token)=>{
+    return fetch(`${API}/user/updateUser/${id}`,{
+        method: "PUT",
+        headers:{
+            Authorization:`Bearer ${token}`
+        },
+        body: user
+    })
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
 // authenticate to keep sigined in
 export const authenticate = (logininfo) => {
     localStorage.setItem('token', logininfo.token)
@@ -109,8 +122,8 @@ export const authenticate = (logininfo) => {
 } 
 
 //to check if logged in 
-export const isAuthenticated = () =>{
-    if(typeof window !== undefined){
-        localStorage.getItem("token")
-    }
-}
+// export const isAuthenticated = () =>{
+//     if(typeof window !== undefined){
+//         localStorage.getItem("token")
+//     }
+// }
