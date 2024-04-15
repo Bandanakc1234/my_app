@@ -38,9 +38,10 @@ const UpdateProject = () => {
                     console.log(data.error)
                 }
                 else {
-                    // setProject(data)
                     setProject({
-                        ...project, ...data, formdata: new FormData
+                        ...project, 
+                        ...data, 
+                        formdata: new FormData
                     })
                     for (var key in data) {
                         console.log(key, data[key])
