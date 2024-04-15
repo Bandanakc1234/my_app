@@ -6,9 +6,9 @@ export const applyCareer = (career)=> {
     return fetch(`${API}/apply_career`,{
         method: "POST",
         headers:{
-            "Content-Type":"application/json"
+            // "Content-Type":"application/json"
         },
-        body: JSON.stringify(career)
+        body: career
     })
     .then(res=>res.json())
     .catch(err=>console.log(err))

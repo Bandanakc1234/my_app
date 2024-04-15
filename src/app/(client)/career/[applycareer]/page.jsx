@@ -2,10 +2,14 @@
 import { applyCareer } from '@/api/applyCareerAPI';
 import { userRegister } from '@/api/userApi'
 import Link from 'next/link'
-import React, { useRef, useState } from 'react'
+import { useParams, useRouter } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react'
 import Swal from 'sweetalert2';
+import CareerCard from '../../component/CareerCard';
 
 const ApplyCareer = () => {
+    // const [careers, setCareers] = useState({})
+
     const [formData, setFormData] = useState({
       first_name:"",
       last_name:"",
@@ -20,10 +24,17 @@ const ApplyCareer = () => {
     
     let file_ref = useRef()
 
+    let career = useParams().applycareer
+    let router = useRouter()
+
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
     let { first_name, last_name, email, phone_number, qualification, experience, image, reference, formdata  } = formData
+
+    // useEffect(()=>{
+    //     setCareers(CareerCard.find(item =>item.id ==id))
+    // },[])
 
     const handleChange = (event) => {
       let value 
@@ -43,7 +54,8 @@ const ApplyCareer = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        applyCareer(formData)
+        formdata.set('career', career)
+        applyCareer(formdata)
             .then(data => {
                 if (data.error) {
                     setSuccess(false)
@@ -97,6 +109,7 @@ const ApplyCareer = () => {
                 color: "#64DD17"
               })
               setSuccess('')
+              return router.push("/career")
         }
     }
 
@@ -141,14 +154,14 @@ const ApplyCareer = () => {
                             <div className='sm:col-span-3'>
                                 <label htmlFor="qualification" className='block text-md font-medium'>Qualification:</label>
                                 <div className='mt-2'>
-                                    <textarea type="text" id='qualification' onChange={handleChange} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full resize-none' name="temporary_address" value={qualification} />
+                                    <textarea type="text" id='qualification' onChange={handleChange} className='border-0 p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full resize-none' name="qualification" value={qualification} />
                                 </div>
                             </div>
 
                             <div className='sm:col-span-3'>
                                 <label htmlFor="experience" className='block text-md font-medium'>Experience</label>
                                 <div className='mt-2'>
-                                    <textarea type="text" id='experience' onChange={handleChange} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full resize-none' name="experience" value={experience} />
+                                    <textarea type="text" id='experience' onChange={handleChange} className='border-0 p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full resize-none' name="experience" value={experience} />
                                 </div>
                             </div>
 

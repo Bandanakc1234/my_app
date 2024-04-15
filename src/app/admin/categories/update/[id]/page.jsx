@@ -25,9 +25,7 @@ const UpdateCategory = () => {
             ...formData,
             [name]: value
         })
-        // setCategoryTitle(
-        //   event.target.value
-        // )
+
     }
     let {category_title, icon, description} = formData
 

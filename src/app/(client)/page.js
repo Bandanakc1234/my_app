@@ -71,7 +71,7 @@ export default function Home() {
             </div>
 
             <div className="cn">
-              <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700"  data-aos="fade-right" data-aos-duration="1000"><a href="#" className="p-3">Free Quote</a></button>
+              {/* <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700"  data-aos="fade-right" data-aos-duration="1000"><a href="#" className="p-3">Free Quote</a></button> */}
               <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700"  data-aos="fade-left" data-aos-duration="1000"><a href="/contact" className="p-3">Contact Us</a></button>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function Home() {
               doloribus.</p>
 
             <div className="cn">
-              <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 text-white hover:bg-blue-700 "><a href="" className="md:p-3 p-2">Read more</a></button>
+              <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 text-white hover:bg-blue-700 "><a href="" className="md:p-3 p-2">About Us</a></button>
             </div>
           </div>
           <div className="right m-5 lg:w-1/2">

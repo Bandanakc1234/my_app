@@ -38,12 +38,12 @@ const services = ({service}) => {
                 <div className="h2div text-2xl font-bold flex justify-center">
                   <h2>{service.title}</h2>
                 </div>
-                <div className="pdiv text-center">
+                {/* <div className="pdiv text-center">
                   <p>{service.description} </p>
-                </div>
+                </div> */}
                 <div className="buttondiv flex justify-center">
                   <Link href= {`/service/${service?.id}`}>
-                  <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">See more</button>
+                  <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">Read more</button>
                   </Link>
                 </div>
               </div>
