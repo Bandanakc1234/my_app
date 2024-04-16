@@ -47,3 +47,20 @@
     color: black;
   }
 
+/* Client project page*/
+.project-div{
+    width: 100%;
+}
+
+@media (min-width: 520px) {
+    .project-div{
+        width: 45%;
+    }
+}
+
+@media (min-width: 768px) {
+    .project-div{
+        width: 30%;
+    }
+}
+
