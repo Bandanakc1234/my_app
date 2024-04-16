@@ -6,9 +6,29 @@ import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import Swal from 'sweetalert2';
 import CareerCard from '../../component/CareerCard';
+import { getCareerDetails } from '@/api/careerAPI';
 
 const ApplyCareer = () => {
     const [careers, setCareers] = useState({})
+
+    const params = useParams()
+    const id = params.applycareer
+    console.log("id:", id)
+
+    useEffect(()=>{
+        // Aos.init()
+        getCareerDetails(id)
+        .then(data => {
+            if(data.error){
+                console.log(data.error)
+            }   
+            else{
+                console.log(data)
+                setCareers(data)
+                console.log(careers.career_title)
+            }
+        })
+    },[id])
 
     const [formData, setFormData] = useState({
       first_name:"",
@@ -26,6 +46,7 @@ const ApplyCareer = () => {
     let file_ref = useRef()
 
     let career = useParams().applycareer
+    
     let router = useRouter()
 
     let [error, setError] = useState('')
@@ -118,10 +139,10 @@ const ApplyCareer = () => {
         <>
         {showError()}
         {showSuccess()}
-            <div className='flex '>
+            <div className='flex justify-center'>
                 <form action="" className='my-10 rounded-3xl' onSubmit={handleSubmit}>
                     <div className=' pb-8 mt-5'>
-                        <h1 className='text-2xl font-bold text-center'>Apply Here {careers.career_title}</h1>
+                        <h1 className='text-2xl font-bold text-center'>Apply Here for "{careers.career_title}"</h1>
 
                         <div className='mt-10 mx-5 place-items-center'>
                             <div className='sm:col-span-3'>
@@ -169,7 +190,7 @@ const ApplyCareer = () => {
                             <div className='sm:col-span-3'>
                                 <label htmlFor="image" className='block text-md font-medium'>Image</label>
                                 <div className='mt-2'>
-                                    <input type="file" id='image' name='image' onChange={handleChange} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' ref={file_ref} />
+                                    <input type="file" id='image' name='image' onChange={handleChange} className='border-2 bg-white p-1 md:text-lg rounded-md  w-full' ref={file_ref} />
                                 </div>
                             </div>
 
