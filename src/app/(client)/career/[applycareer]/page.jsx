@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import CareerCard from '../../component/CareerCard';
 
 const ApplyCareer = () => {
-    // const [careers, setCareers] = useState({})
+    const [careers, setCareers] = useState({})
 
     const [formData, setFormData] = useState({
       first_name:"",
@@ -21,6 +21,7 @@ const ApplyCareer = () => {
       reference:"",
       formdata: new FormData
     })
+    const id = params.careerId
     
     let file_ref = useRef()
 
@@ -120,7 +121,7 @@ const ApplyCareer = () => {
             <div className='flex '>
                 <form action="" className='my-10 rounded-3xl' onSubmit={handleSubmit}>
                     <div className=' pb-8 mt-5'>
-                        <h1 className='text-2xl font-bold text-center'>Apply Here</h1>
+                        <h1 className='text-2xl font-bold text-center'>Apply Here {careers.career_title}</h1>
 
                         <div className='mt-10 mx-5 place-items-center'>
                             <div className='sm:col-span-3'>
