@@ -37,9 +37,9 @@ const about = () => {
               fugit
               doloribus.</p>
 
-            <div className="cn">
+            {/* <div className="cn">
               <button className="bg-blue-500 text-white h-9 text-lg rounded-md cursor-pointer m-4 hover:bg-blue-700"><a href="" className="md:p-3 p-2">Read more</a></button>
-            </div>
+            </div> */}
           </div>
           <div className="right m-5 lg:w-1/2">
             <img src={"/download1.png"} alt="" className="w-full h-full" data-aos="fade-up" data-aos-duration="2000"/>

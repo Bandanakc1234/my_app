@@ -4,18 +4,13 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 
-
-
 const AddCareer = () => {
     const [formData, setFormData] = useState({})
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
     let router = useRouter()
-
-
     let { career_title, vacancyNumber, offered_salary, job_description, qualification, posted_date, deadline } = formData
-
 
     let token = localStorage.getItem('token')
     const handleChange = (event) => {
@@ -49,7 +44,6 @@ const AddCareer = () => {
     var month = String(today.getMonth() + 1).padStart(2, 0)
     var year = today.getFullYear()
     today = year+ "-" + month + "-" + day
-
 
     const handleSubmit = (event) => {
         event.preventDefault()

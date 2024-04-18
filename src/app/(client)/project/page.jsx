@@ -1,5 +1,4 @@
 'use client';
-
 import { CgPathTrim } from "react-icons/cg";
 import Aos from "aos";
 import 'aos/dist/aos.css'
@@ -10,24 +9,16 @@ import { API } from "@/config";
 import Link from 'next/link';
 
 
-
-
 const project = () => {
-    // 
-
     let [cat, setCat] = useState([])
     let [projects, setProjects] = useState([])
-
     let [filteredResult, setFilteredResult] = useState([])
-
     let [filter, setFilter] = useState('')
-
 
     useEffect(() => {
         Aos.init()
         getAllCategories()
             .then(data => setCat(data))
-
         viewProject()
             .then(data => {
                 console.log(data)
@@ -67,7 +58,7 @@ const project = () => {
                             <li className='hover:bg-blue-700  hover:text-white  py-2 px-4 active:bg-blue-400 rounded-l-full'>All</li>
 
                             {
-                                cat.length > 0 &&
+                                cat?.length > 0 &&
                                 cat.map(c => {
 
                                     return <li className='hover:bg-blue-700  hover:text-white  py-2 px-4 hover:cursor-pointer'

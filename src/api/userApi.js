@@ -70,15 +70,20 @@ export const userlogout = () =>{
 }
 
 //get all users
-export const alluser = (token) =>{
-    return fetch(`${API}/user/userList`,{
-        headers:{
-            Authorization: `Bearer ${token}`
-        }
-    })
-    .then(response =>{return response.json()})
-    .catch(error => console.log(error))
-}
+// export const alluser = (token) =>{
+//     return fetch(`${API}/user/userList`,{
+//         headers:{
+//             Authorization: `Bearer ${token}`
+//         }
+//     })
+//     .then(response =>{return response.json()})
+//     .catch(error => console.log(error))
+// }
+export const alluser = () =>{
+        return fetch(`${API}/user/userList`)
+        .then(response =>{return response.json()})
+        .catch(error => console.log(error))
+    }
 
 // delete user
 export const deleteUser = (id, token) =>{
