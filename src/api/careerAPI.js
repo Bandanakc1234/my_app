@@ -51,7 +51,6 @@ export const deleteCareer = (id, token) =>{
     return fetch(`${API}/career/delete_career/${id}`,{
         method: "DELETE",
         headers:{
-            // "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         }
     })

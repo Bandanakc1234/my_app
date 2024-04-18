@@ -51,7 +51,7 @@ const career = () => {
                 </div>
                 <div className='flex flex-wrap justify-evenly'>
                     {
-                        careers.length > 0 &&
+                        careers?.length > 0 &&
                         careers.map(career => {
                             console.log(career)
                             return <CareerCard career={career} />

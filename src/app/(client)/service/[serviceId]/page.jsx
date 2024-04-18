@@ -19,7 +19,7 @@ const serviceDetail = () => {
   return (
     <>
   <div className='flex justify-center'>
-      <div className="bg-white md:w-5/12 rounded-md p-5 flex flex-col  shadow-xl gap-5 m-10" data-aos="zoom-in" data-aos-duration="000">
+      <div className="bg-white md:w-2/3 rounded-md p-5 flex flex-col shadow-xl gap-5 m-10" data-aos="zoom-in" data-aos-duration="000">
         <div className="flex justify-center">{service.icon}</div>
         <div className="text-2xl font-bold flex justify-center">
           <h2>{service.title}</h2>

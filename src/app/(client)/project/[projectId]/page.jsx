@@ -1,6 +1,4 @@
 'use client'
-
-// import { useRouter } from 'next/router'
 import { getProjectDetails } from '@/api/projectAPI'
 import { API } from '@/config'
 import Aos from 'aos'
@@ -9,9 +7,7 @@ import React, { useEffect, useState } from 'react'
 
 
 const projectDetail = () => {
-   
     let [project, setProject] = useState({})
-
     const params = useParams()
     const id = params.projectId
 

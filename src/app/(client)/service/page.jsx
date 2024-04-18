@@ -29,13 +29,12 @@ const services = ({service}) => {
         <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Our Services</h1>
         <div className="topbuttom flex flex-col gap-5 pb-7">
           <div className="top flex-wrap justify-evenly lg:flex lg:justify-evenly">
-
             {
             Services.map(service => {
-              return <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="000">
+              return <div className="topfirst bg-white md:w-96 w-80 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="000">
                 <div className="icondiv flex justify-center">
                   {service.icon}</div>
-                <div className="h2div text-2xl font-bold flex justify-center">
+                <div className="h2div md:text-2xl text-xl font-bold flex justify-center">
                   <h2>{service.title}</h2>
                 </div>
                 {/* <div className="pdiv text-center">
