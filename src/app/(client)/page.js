@@ -1,9 +1,9 @@
-'use client';
+ 'use client';
 import Image from "next/image";
 import { BiWebcam } from 'react-icons/bi';
 import Aos from "aos";
 import 'aos/dist/aos.css'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 if (typeof window !== 'undefined') {
@@ -12,11 +12,18 @@ if (typeof window !== 'undefined') {
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import dynamic from 'next/dynamic';
+import { getAllCategories } from "@/api/categoryAPI";
+import {alluserclient } from "@/api/userApi";
+import { API } from "@/config";
+import Link from "next/link";
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
 });
 
 export default function Home() {
+  let [users, setUsers] = useState([])
+  let [services, setServices ] = useState([])
+
   const settings = {
     loop: true,
     margin: 10,
@@ -53,6 +60,24 @@ export default function Home() {
 
   useEffect(() => {
     Aos.init()
+    alluserclient()
+    .then(data => {
+      if(data?.error){
+        console.log(data.error)
+      }
+      else{
+        setUsers(data)
+      }
+    })
+    getAllCategories()
+    .then(data => {
+      if(data?.error){
+        console.log(data.error)
+      }
+      else{
+        setServices(data)
+      }
+    })
 }, [])
 
   
@@ -127,8 +152,36 @@ export default function Home() {
         <div className="lfooter bg-white md:p-10">
 
           <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">our services</h1>
+          
+          <div className="flex flex-wrap w-full justify-evenly">
+            {
+              services?.length > 0 && 
+              services.map (service => {
+                return <div key={service._id} className="flex-col-3 justify-between lg:flex lg:justify-between">
+                  <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
+                    <div className="icondiv flex justify-center" >
+                      <div dangerouslySetInnerHTML={{ __html: service.icon }}></div>                      
+                    </div>
+                    <div className="h2div text-2xl font-bold flex justify-center">
+                      <h2 className="text-center">{service.category_title}</h2>
+                    </div>
+                    {/* <div className="pdiv text-center">
+                      <p>{service.description}</p>
+                    </div> */}
+                    <div className="buttondiv flex justify-center">
+                      <Link href={`/service/${service?.id}`}>
+                        <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white" >Read More</button>
+                      </Link>
+                    </div>
+                  </div>
 
-          <div className="topbuttom flex flex-col gap-5 pb-7">
+                  </div>
+              })
+            }
+                
+          </div>
+
+          {/* <div className="topbuttom flex flex-col gap-5 pb-7">
             <div className="top flex-col-3 justify-between lg:flex lg:justify-between">
               <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
@@ -219,34 +272,62 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
         {/* fourth content end */}
 
         {/* carousel start  */}
 
-        <OwlCarousel {...settings} className="border border-t-4 border-b-4">
-          <div >
-          <div className="border border-solid border-l-white shadow-2xl text-center p-5 m-10 rounded-xl bg-white" >
-            <div className="imgprofile w-20 mx-auto">
-              <img src="./download2.jpg" alt="" className="rounded-circle w-20 h-20"/>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl">Bandana kc</h3>
-              <p className="font-bold">student</p>
-            </div>
-            <div className="pdiv">
-              <blockquote>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis tempora minima
-                totam
-                nesciunt cum quaerat
-              </blockquote>
-            </div>
-          </div>
+        <div  className="border border-t-4 border-b-4">
+          <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Our Team Members</h1>
 
-          
-          </div>
-        </OwlCarousel >
+          <OwlCarousel {...settings}>
+            {
+              users?.length > 0 &&
+              users.map(user => {
+                return <div key={user._id} className="border border-solid border-l-white shadow-2xl text-center p-5 m-10 rounded-xl bg-white"  data-aos="fade-up" data-aos-duration="2000">
+                    <div className="imgprofile w-20 mx-auto">
+                      <img src={`${API}/${user.image}`} alt={user.username} className="rounded-circle w-20 h-20"/>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-xl">{user.firstname} {user.lastname} </h3>
+                      <p className="font-bold">{user.position}</p>
+                    </div>
+                    {/* <div className="pdiv">
+                      <blockquote>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis tempora minima
+                        totam
+                        nesciunt cum quaerat
+                      </blockquote>
+                    </div> */}
+                      
+                  </div>
+                  })
+                }
+          </OwlCarousel >
+          {/* <OwlCarousel {...settings} className="border border-t-4 border-b-4">
+            <div >
+            <div className="border border-solid border-l-white shadow-2xl text-center p-5 m-10 rounded-xl bg-white" >
+              <div className="imgprofile w-20 mx-auto">
+                <img src="./download2.jpg" alt="" className="rounded-circle w-20 h-20"/>
+              </div>
+              <div>
+                <h3 className="font-bold text-xl">Bandana kc</h3>
+                <p className="font-bold">student</p>
+              </div>
+              <div className="pdiv">
+                <blockquote>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis tempora minima
+                  totam
+                  nesciunt cum quaerat
+                </blockquote>
+              </div>
+            </div>
+
+            
+            </div>
+          </OwlCarousel > */}
+        </div>
+
 
 
         

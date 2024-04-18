@@ -69,13 +69,20 @@ export const userlogout = () =>{
     .catch(error => console.log(error))
 }
 
-//get all users
+// get all users
 export const alluser = (token) =>{
     return fetch(`${API}/user/userList`,{
         headers:{
             Authorization: `Bearer ${token}`
         }
     })
+    .then(response =>{return response.json()})
+    .catch(error => console.log(error))
+}
+
+// client side user view
+export const alluserclient = () =>{
+    return fetch(`${API}/user/userlistclient`)
     .then(response =>{return response.json()})
     .catch(error => console.log(error))
 }
