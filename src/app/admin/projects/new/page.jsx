@@ -119,7 +119,7 @@ const AddProject = () => {
 
 
     return (
-        <div className='bg-blue-200 h-screen'>
+        <div className='bg-blue-200' style={{ minHeight: "82.3vh" }}>
 
             <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-10/12 xl:p-10 md:p-5 p-2'>
                 <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Add Projects</h1>
