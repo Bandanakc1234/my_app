@@ -59,6 +59,7 @@ export default function Home() {
     }
   }
 
+
   useEffect(() => {
     Aos.init()
     alluserclient()
@@ -169,7 +170,7 @@ export default function Home() {
                     </div> */}
                     <div className="buttondiv flex justify-center">
                       <Link href={`/service/${service?._id}`}>
-                        <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white" >Read More</button>
+                        <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">Read more</button>
                       </Link>
                     </div>
                   </div>

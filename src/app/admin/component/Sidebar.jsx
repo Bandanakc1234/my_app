@@ -21,7 +21,7 @@ const sidebarItems = [
   },
   {
     name: "Project",
-    href: "/admin/projects",
+    href: "#",
     icon: BiDetail,
     subItems: [
       {
@@ -36,7 +36,7 @@ const sidebarItems = [
   },
   {
     name: "Career",
-    href: "/admin/careers",
+    href: "#",
     icon: BiSolidBriefcase,
     subItems: [
       {
@@ -103,7 +103,7 @@ const Sidebar = ({ isMenuOpen }) => {
   return (
     <div>
       <aside className={`fixed h-full  z-10 bg-black ${isMenuOpen ? '' : 'flex flex-col items-center'} p-3 overflow-auto`}>
-        <ul className={`text-gray-200 ${isMenuOpen ? 'open' : ''}`}>
+        <ul className='text-gray-200'>
           {sidebarItems.map(({ name, href, icon: Icon, subItems }, index) => (
             <li key={name}>
               <Link href={href}
@@ -114,7 +114,7 @@ const Sidebar = ({ isMenuOpen }) => {
                 <span >
                   <Icon size={24}/>
                 </span>
-                <span className={` ml-3 ${!isMenuOpen ? 'hidden' : 'block'}`}>{name}</span>
+                <span className={` ml-3 ${!isMenuOpen ? 'block lg:hidden' : 'hidden lg:block'}`}>{name}</span>
               </Link>
               {subItems && openDropdown === index && (
                 <ul>
