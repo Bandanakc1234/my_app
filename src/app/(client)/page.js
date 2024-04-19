@@ -82,7 +82,6 @@ export default function Home() {
 }, [])
 
 
-
   return (
 
     <div>
@@ -158,7 +157,7 @@ export default function Home() {
               services?.length > 0 && 
               services.map (service => {
                 return <div key={service._id} className="flex-col-3 justify-between lg:flex lg:justify-between">
-                  <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
+                  <div className="topfirst bg-white md:w-96 w-52 rounded-md px-2 py-6 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                     <div className="icondiv flex justify-center" >
                       <div dangerouslySetInnerHTML={{ __html: service.icon }}></div>                      
                     </div>
@@ -169,7 +168,7 @@ export default function Home() {
                       <p>{service.description}</p>
                     </div> */}
                     <div className="buttondiv flex justify-center">
-                      <Link href={`/service/${service?.id}`}>
+                      <Link href={`/service/${service?._id}`}>
                         <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white" >Read More</button>
                       </Link>
                     </div>
@@ -328,19 +327,12 @@ export default function Home() {
           </OwlCarousel > */}
         </div>
 
-
-
-
-
-
-
         <div className="text-center md:p-12 p-10 bg-white" data-aos="fade-up" data-aos-duration="2000">
           <h3 className="md:text-2xl text-xl ">Our Clients</h3>
           <p className="md:text-3xl text-2xl p-5 font-bold">Some of our happy Clients</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae veniam nesciunt, ducimus
             praesentium placeat debitis? Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-
 
         <OwlCarousel {...settings2} >
 
@@ -383,7 +375,7 @@ export default function Home() {
         </OwlCarousel >
 
 
-        </div >
+        </div>
     </div>
     </div>
 

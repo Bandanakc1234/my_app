@@ -41,7 +41,7 @@ const Profile = () => {
     useEffect(() => {
         userDetail(id, token)
             .then(data => {
-                if (data.error) {
+                if (data?.error) {
                     console.log(data.error)
                 }
                 else {

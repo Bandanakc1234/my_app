@@ -21,7 +21,10 @@ const Careers = () => {
       })
   }, [success])
 
-  let token = localStorage.getItem('token')
+  let token 
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem('token')
+  }
 
   const handleDelete = id => (event) => {
     event.preventDefault()
@@ -76,6 +79,7 @@ const Careers = () => {
       <h1 className='font-bold text-3xl'>Careers</h1>
       <div className='text-black flex flex-col'>
         {
+          careers?.length > 0 &&
           careers.map(career => {
             return <div key={career._id} className='p-5 border-2 bg-white rounded-md shadow-lg  my-3'>
               <h1>Title: {career.career_title}</h1>
