@@ -20,6 +20,7 @@ const Profile = () => {
         permanentAddress: '',
         gender: '',
         image: '',
+        about: '',
         formdata: new FormData
     })
 
@@ -30,7 +31,6 @@ const Profile = () => {
 
     let token = localStorage.getItem('token') ? localStorage.getItem('token') : ""
 
-    // <start for updateuser>
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
@@ -82,8 +82,8 @@ const Profile = () => {
                 }
                 else {
                     setSuccess(true)
-                    // console.log("user updated")
                     file_ref.current.value = ""
+                    setActiveSection('overview')
                 }
             })
             .catch(error => console.log(error))
@@ -139,6 +139,9 @@ const Profile = () => {
                 <>
                     <div className='mt-6 ' >
                         <h1 className='font-bold '>General Information</h1>
+                        <div className='mb-5 mx-1 lg:mx-16'> About:
+                            <p className='bg-white rounded-md p-5 mt-2'>{user.about}</p>
+                        </div>
                         <div className='lg:columns-3 mt-5 md:columns-2 columns-1 font-light mx-1 lg:mx-16'>
                             <div className='mb-5'>Full Name:
                                 <h1 className='capitalize font-medium'>{user.firstname} {user.lastname}</h1>
@@ -276,7 +279,16 @@ const Profile = () => {
                                             </div>
                                         </span>
                                     </div>
+
                                 </div>
+
+                                <div className='m-0 lg:m-14'>
+                                    <label htmlFor="about" className='block text-md font-medium'>About:</label>
+                                    <div className='mt-2'>
+                                        <textarea type="text" id='about' onChange={handleUpdateChange} className='block w-full font-light rounded-md border-0 text-justify sm:text-md md:h-32 md:mb-3 h-28 resize-none' name="about" value={user.about} />
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div className='text-center pb-5 text-md font-semibold'>
@@ -293,8 +305,8 @@ const Profile = () => {
 
     return (
         <>
-            <div className='ms-8' style={{ minHeight: "83.7vh" }}>
-                <div className='bg-gray-200 p-2 rounded-lg ms-5 lg:ms-0 '>
+            <div className='ms-8 md:w-5/6 w-11/12 mb-5' style={{ minHeight: "83.7vh" }}>
+                <div className='bg-gray-200 p-2 rounded-lg lg:ms-0 '>
                     <div className='lg:flex lg:justify-between text-xs lg:text-lg lg:columns-2 columns-1'>
                         <h1>Profile</h1>
                         <ol className='flex'>
@@ -309,13 +321,13 @@ const Profile = () => {
 
                 <div className='md:flex mt-5 '>
                     <div className='mb-2 '>
-                        <div className='text-center ms-8 p-5 bg-gray-200 rounded-lg font-bold'>
+                        <div className='flex flex-col justify-center items-center p-5 ms-0 lg:ms-5 bg-gray-200 rounded-lg font-bold'>
                             <img src={`${API}/${user.image}`} alt={user.image} className='h-56 rounded-md' />
                             <h1 className='mb-1 mt-2 capitalize'>{user.firstname} {user.lastname}</h1>
                             <h1 className='capitalize'>{user.position}</h1>
                         </div>
                     </div>
-                    <div className='bg-gray-200 ms-8 p-5 rounded-xl lg:w-9/12 text-xs md:text-md lg:text-lg'>
+                    <div className='bg-gray-200 ms-0 lg:ms-8 p-5 rounded-xl lg:w-9/12 text-xs md:text-md lg:text-lg'>
                         <div className='columns-1 lg:columns-2 border-b border-dashed border-b-gray-700 pb-2'>
                             <h1 className='hover:text-blue-600 hover:underline hover:underline-offset-2' onClick={() => handleSectionChange('overview')}>Overview</h1>
                             <h1 className='hover:text-blue-600 hover:underline hover:underline-offset-2' onClick={() => handleSectionChange('editprofile')}>Edit Profile</h1>

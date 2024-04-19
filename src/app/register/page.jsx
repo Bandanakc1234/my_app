@@ -2,30 +2,52 @@
 import { userRegister } from '@/api/userApi'
 import Link from 'next/link'
 // import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const [formData, setFormData] = useState({})
+    const [user, setUser] = useState({
+        first_name: "",
+        last_name: "",
+        username: "",
+        email: "",
+        password: "",
+        confirm_password: "",
+        age: "",
+        phone_number: "",
+        temporary_address: "",
+        permanent_address: "",
+        gender: "",
+        image: "",
+        formdata: new FormData
+    })
+    let file_ref = useRef()
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
-    let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address, gender } = formData
+    let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address, gender, formdata } = user
 
     // let router = useRouter()
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        })
+        let value
+        if (event.target.name === 'image') {
+            value = event.target.files[0]
+        }
+        else {
+            value = event.target.value
+            setUser({
+                ...user,
+                [event.target.name]: value
+            })
+        }
+        formdata.set(event.target.name, value)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        userRegister(formData)
+        userRegister(formdata)
             .then(data => {
                 if (data.error) {
                     setSuccess(false)
@@ -33,7 +55,7 @@ const Register = () => {
                 }
                 else {
                     setSuccess(true)
-                    setFormData({
+                    setUser({
                         first_name: "",
                         last_name: "",
                         username: "",
@@ -44,8 +66,9 @@ const Register = () => {
                         phone_number: "",
                         temporary_address: "",
                         permanent_address: "",
-                        gender: ""
+                        gender: "",
                     })
+                    file_ref.current.value = ""
                     // router.push('/login')
                 }
             })
@@ -69,8 +92,8 @@ const Register = () => {
         }
     }
 
-    const showSuccess = () =>{
-        if (success){
+    const showSuccess = () => {
+        if (success) {
             Swal.fire({
                 icon: "success",
                 toast: true,
@@ -81,15 +104,15 @@ const Register = () => {
                 timer: 3000,
                 timerProgressBar: true,
                 color: "#64DD17"
-              })
-              setSuccess('')
+            })
+            setSuccess('')
         }
     }
 
     return (
         <>
-        {showError()}
-        {showSuccess()}
+            {showError()}
+            {showSuccess()}
             <div className='register flex justify-center'>
                 <form action="" className=' bg-blue-200 my-10 rounded-3xl opacity-80' onSubmit={handleSubmit}>
                     <div className=' pb-8 mt-5'>
@@ -169,7 +192,7 @@ const Register = () => {
 
                             <div className='sm:col-span-4'>
                                 <label htmlFor="gender" className='block text-md font-medium'>Gender:</label>
-                                <span className="flex flex-col md:flex-row rounded-md py-1.5 md:px-12 px-4 text-sm md:text-lg mt-2 bg-white text-black">
+                                <span className="flex flex-col md:flex-row rounded-md py-1.5 md:px-8 px-4 text-sm md:text-lg mt-2 bg-white text-black">
                                     <div className='flex flex-row'>
                                         <input type="radio" name="gender" id="male" value='male' className='mr-2' onChange={handleChange} checked={gender === 'male'} />
                                         <label htmlFor="male" className="mr-3">male</label>
@@ -184,6 +207,14 @@ const Register = () => {
                                     </div>
                                 </span>
                             </div>
+
+                            <div className='sm:col-span-4'>
+                                <label htmlFor="image" className='block text-md font-medium'>Profile Photo:</label>
+                                <div className='mt-2'>
+                                    <input type="file" id='image' onChange={handleChange} className='block w-full rounded-md bg-white border-0 py-1.5 text-sm md:text-lg' name="image" ref={file_ref} />
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
 
