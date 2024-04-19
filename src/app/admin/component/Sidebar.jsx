@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiSolidDashboard, BiDetail, BiSolidBriefcase, BiUser } from "react-icons/bi";
 import { PiUsersThree } from "react-icons/pi";
 // import { BsPersonPlus } from "react-icons/bs";
@@ -8,7 +8,10 @@ import { FiLogOut } from "react-icons/fi";
 import { MdPostAdd } from "react-icons/md";
 import Link from 'next/link';
 
-let id = localStorage.getItem('user')?JSON.parse(localStorage.getItem('user'))._id :""
+let id
+
+
+
 
 const sidebarItems = [
   {
@@ -43,6 +46,10 @@ const sidebarItems = [
       {
         name: "New",
         href: "/admin/careers/new"
+      },
+      {
+        name: "AppliedCareer",
+        href: "/admin/careers/appliedCareer"
       },
     ]
   },
@@ -87,7 +94,12 @@ const Sidebar = ({ isMenuOpen }) => {
       ? null
       : index);
   };
-
+  useEffect(()=>{
+    if(typeof window !== "undefined"){
+      id = localStorage.getItem('user')?JSON.parse(localStorage.getItem('user'))._id :""
+      
+    }
+  })
   return (
     <div>
       <aside className={`fixed h-full  z-10 bg-black ${isMenuOpen ? '' : 'flex flex-col items-center'} p-3 overflow-auto`}>

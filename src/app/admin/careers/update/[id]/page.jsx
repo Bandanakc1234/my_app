@@ -7,20 +7,16 @@ import Swal from 'sweetalert2';
 
 const UpdateCareer = () => {
     let [formData, setFormData] = useState({})
-
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
     let router = useRouter()
-
     let { id } = useParams()
-
 
     useEffect(() => {
         getCareerDetails(id).then(data => setFormData(data)
         )
     }, [])
-
 
     let token = localStorage.getItem('token')
     const handleChange = (event) => {

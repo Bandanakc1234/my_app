@@ -1,5 +1,4 @@
 'use client';
-
 import { CgPathTrim } from "react-icons/cg";
 import Aos from "aos";
 import 'aos/dist/aos.css'
@@ -7,20 +6,19 @@ import { useEffect, useState } from "react";
 import { getAllCategories } from "@/api/categoryAPI";
 import { viewProject } from "@/api/projectAPI";
 import { API } from "@/config";
+import Link from 'next/link';
+
 
 const project = () => {
     let [cat, setCat] = useState([])
     let [projects, setProjects] = useState([])
-
     let [filteredResult, setFilteredResult] = useState([])
-
     let [filter, setFilter] = useState('')
 
     useEffect(() => {
         Aos.init()
         getAllCategories()
             .then(data => setCat(data))
-
         viewProject()
             .then(data => {
                 console.log(data)
@@ -60,7 +58,7 @@ const project = () => {
                             <li className='hover:bg-blue-700  hover:text-white  py-2 px-4 active:bg-blue-400 rounded-l-full'>All</li>
 
                             {
-                                cat.length > 0 &&
+                                cat?.length > 0 &&
                                 cat.map(c => {
 
                                     return <li className='hover:bg-blue-700  hover:text-white  py-2 px-4 hover:cursor-pointer'
@@ -75,7 +73,7 @@ const project = () => {
                             <li className="hover:bg-blue-700  hover:text-white  py-2 px-4 rounded-r-full">Digital Marketing</li> */}
                         </ul>
                     </div>
-                    <div className="px-10">
+                    {/* <div className="px-10">
                     <div className="flex flex-wrap  w-full justify-evenly p-5">
                     {
                         filteredResult.map(project => {
@@ -94,7 +92,33 @@ const project = () => {
                     }
                     </div>
 
+                    </div> */}
+                    <div className="px-10">
+                        <div className="flex flex-wrap w-full justify-evenly">
+                            {
+                                filteredResult.map(project =>{
+                                    return <div key={project._id} className="project-div py-5 px-2 hover:bg-blue-200 rounded-md shadow-lg my-3 " >
+                                        <h1 className="text-center md:text-xl">
+                                            Title:- {project.project_title}
+                                        </h1>
+                                        <div className="flex justify-center py-3 px-5">
+                                            <img src= {`${API}/${project.project_image}`} alt={project.project_title} className="w-full rounded-md" style={{height:"250px"}}/>
+                                        </div>
+                                        <div className="project-btn flex justify-center pt-1">
+                                            <Link href={`/project/${project?._id}`}>
+                                                <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white"> Read More
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    
+                                    </div>
+    
+                                })
+
+                            }
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
