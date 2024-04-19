@@ -113,7 +113,7 @@ const showSuccess = () => {
                             <label htmlFor='icon' className=' md:text-lg text-sm'>Icon:</label>
                         </td>
                         <td>
-                            <input type="text" name="Icon"  className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' 
+                            <input type="text" name="icon"  className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' 
                             onChange={handleChange}
                             value={icon} />
                         </td>

@@ -16,6 +16,7 @@ import { Services } from "./service/StaticData/page";
 import Link from "next/link";
 import { alluser } from "@/api/userApi";
 import { API } from "@/config";
+import { getAllCategories } from "@/api/categoryAPI";
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
 });
@@ -56,18 +57,21 @@ export default function Home() {
   }
 
   let [users, setUsers] = useState([])
+  let [services, setServices] = useState([])
 
   useEffect(() => {
     Aos.init()
     alluser()
+    getAllCategories()
       .then(data => {
         if (data?.error){
           console.log(data.error)
         }
         else{
-
           setUsers(data)
           console.log(users)
+          setServices(data)
+          console.log(data)
         }
       })
   }, [])
@@ -146,18 +150,19 @@ export default function Home() {
           <div className="topbuttom flex flex-col gap-5 pb-7">
             <div className="top flex-col-3 justify-between lg:flex lg:justify-between">
               {
-                Services.map(service => {
+                services?.length >0 &&
+                services.map(service => {
                   return <div className="topfirst bg-white md:w-96 w-80 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="000">
                     <div className="icondiv flex justify-center">
-                      {service.icon}</div>
+                    <h1 dangerouslySetInnerHTML={{ __html: service.icon }}  className="w-24 p-4"></h1></div>
                     <div className="h2div md:text-2xl text-xl font-bold flex justify-center">
-                      <h2>{service.title}</h2>
+                      <h2>{service.category_title}</h2>
                     </div>
                     {/* <div className="pdiv text-center">
                   <p>{service.description} </p>
                 </div> */}
                     <div className="buttondiv flex justify-center">
-                      <Link href={`/service/${service?.id}`}>
+                      <Link href={`/service/${service?._id}`}>
                         <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">Read more</button>
                       </Link>
                     </div>
