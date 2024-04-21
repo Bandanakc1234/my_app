@@ -1,9 +1,122 @@
-// import Image from "next/image";
+
+"use client";
+
+import { view_career } from "@/api/careerAPI";
+import { useEffect, useState } from "react";
+import career from "../(client)/career/page";
+import { API } from "@/config";
+import { viewProject } from "@/api/projectAPI";
+import Link from "next/link";
+import { getAppliedCareer } from "@/api/applyCareerAPI";
 
 export default function Home() {
+  // const [limit, setLimit] = useState(2)
+  const limit = 3
+  const [careers, setCareers] = useState([])
+  const [profile, setProfile] = useState([])
+  const [projects, setProjects] = useState([])
+  const [applicants, setApplicants] = useState([])
+  // const showMore = () => {
+  //   setLimit(limit+2) 
+  // }
+
+  useEffect(() => {
+    // recent job posts
+    view_career()
+    .then(data => {
+      if(data?.error){
+        console.log(error)
+      }
+      else{
+        setCareers(data)
+        // console.log(careers)
+      }
+    })
+    // view projects
+    viewProject()
+    .then(data => {
+      if(data?.error){
+        console.log(error)
+      }
+      else{
+        setProjects(data)
+      }
+    })
+    // view applied persons
+    getAppliedCareer(token)
+      .then(data => {
+        if (data?.error){
+          console.log(data.error)
+        }
+        else{
+          setApplicants(data)
+        }
+      })
+  },[])
+
+  let token 
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem('token')
+  }
+
   return (
-    <main >
-      <div className="font-bold">home page of dashboard lorem  Nature is an important and integral part of mankind. It is one of the greatest blessings for human life; however, nowadays humans fail to recognize it as one. Nature has been an inspiration for numerous poets, writers, artists and more of yesteryears. This remarkable creation inspired them to write poems and stories in the glory of it. They truly valued nature which reflects in their works even today. Essentially, nature is everything we are surrounded by like the water we drink, the air we breathe, the sun we soak in, the birds we hear chirping, the moon we gaze at and more. Above all, it is rich and vibrant and consists of both living and non-living things. Therefore, people of the modern age should also learn something from people of yesteryear and start valuing nature before it gets too late.</div>
-    </main>
+    <>
+      <div className="flex justify-between w-11/12 mx-auto">
+        <div className="recentjobs w-3/4 ">
+          <h1 className="text-2xl">Recent Job Posts</h1>
+          {
+            careers?.length > 0 &&
+            careers.slice(1,limit ) .map(career=>{
+              return <div key={career._id} className="w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2 ">
+                <h1>{career.career_title}</h1> 
+                <h2>No. Of Positions: {career.vacancyNumber}</h2>
+                <h1>Posted Date: {career.posted_date}</h1>
+                <h1>Application Deadline: {career.deadline}</h1>
+                <h1>Status: </h1>
+              </div>
+            })
+          }                    
+        </div>
+        <div className="profile w-1/4 bg-gray-50">
+          <div className="profile-pic h-80 w-80">
+            {/* <img src={`${API}/${profile.image}`} alt={profile.username} className='h-56 rounded-md' /> */}
+          </div>          
+        </div>      
+      </div>  
+      <div className="projects  w-11/12 mx-auto">
+        <h1 className="text-2xl">Projects</h1>
+        {
+          projects?.length > 0 &&
+          projects.slice(1,limit ) .map(project =>{
+            return <div key={project._id} className="w-1/4 p-5 border-2 bg-white rounded-md shadow-lg my-2 ">
+              <h1>
+                <img src={`${API}/${project.project_image}`} alt={project.project_image} className="w-full" style={{height:"150px"}}/>
+              </h1>
+              <h1>{project.project_title}</h1> 
+              <h2>Category: {project.category}</h2>
+              <Link href={`/admin/projects`}>
+                <button className='bg-blue-500 h-9 text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white'>Read More</button>
+              </Link>
+            </div>
+          })
+        }
+      </div>
+      <div className="applications w-11/12 mx-auto">
+        <h1 className="text-2xl">Applicants</h1>
+        <div className="w-1/4 p-5 border-2 bg-white rounded-md shadow-lg my-2">
+          {
+            applicants?.length > 0 && 
+            applicants.map(applicant => {
+              return <div key={applicant._id} className=""> 
+                <Link href="/admin/careers/appliedCareer">
+                  <li> Name: {applicant.first_name} {applicant.last_name} </li>
+                </Link>
+              </div>
+            })
+          }
+        </div>
+      </div>
+
+    </>
   );
 }

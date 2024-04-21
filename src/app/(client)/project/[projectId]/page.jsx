@@ -19,8 +19,8 @@ const projectDetail = () => {
                 console.log(data.error)
             }   
             else{
-                console.log(data)
                 setProject(data)
+                console.log(data)
             }
         })
     },[id])

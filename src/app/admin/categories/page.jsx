@@ -9,6 +9,7 @@ const Category = () => {
   let [success, setSuccess] = useState(false)
 
   useEffect(() => {
+
     getAllCategories()
       .then(data => {
         if (data.error) {
@@ -21,7 +22,10 @@ const Category = () => {
       })
   }, [success])
 
-  let token = localStorage.getItem('token')
+  let token 
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem('token')
+  }
 
   const handleDelete = id => (event) => {
     event.preventDefault()
@@ -80,8 +84,7 @@ const Category = () => {
           categories.map(category => {
             return <div key={category._id} className='p-5 border-2 bg-white rounded-md shadow-lg  my-3'>
               <h1>Title: {category.category_title}</h1>
-              <h1>Icon:{category.icon}</h1>
-<div dangerouslySetInnerHTML={{__html: category.icon}}></div>
+              <div dangerouslySetInnerHTML={{ __html: category.icon }} className="w-24 p-4"></div>
 
 
               <h1>Description:{category.description}</h1>

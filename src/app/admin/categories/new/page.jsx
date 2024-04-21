@@ -114,7 +114,7 @@ const AddCategory = () => {
                             <label className=' md:text-lg text-sm'>Description:</label>
                         </td>
                         <td>
-                            <textarea type="text" name="description" value={description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full text-justify resize-one' onChange={handleChange} />
+                            <textarea name="description" value={description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full text-justify resize-one' onChange={handleChange} />
                         </td>
                     </tr>
                 </table>
