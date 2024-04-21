@@ -6,9 +6,9 @@ export const userRegister = (user) =>{
     return fetch (`${API}/user/register`, {
         method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            
         },
-        body:JSON.stringify(user)
+        body:user
     })
     .then(response =>{return response.json()})
     .catch(error => console.log(error))

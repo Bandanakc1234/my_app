@@ -17,7 +17,6 @@ export default function Home() {
   const [careers, setCareers] = useState([])
   const [projects, setProjects] = useState([])
   const [applicants, setApplicants] = useState([])
-  const [id, setId] = useState(null)
   const [userImage, setUserImage] = useState(null)
   const [userfirstname, setUserFirstname] = useState(null)
   const [userlastname, setUserLastname] = useState(null)
@@ -61,7 +60,6 @@ export default function Home() {
     // view user profile
     const user = JSON.parse(localStorage.getItem('user'))
     if (user) {
-      setId(user._id)
       setUserImage(user.image)
       setUserFirstname(user.firstname)
       setUserLastname(user.lastname)
