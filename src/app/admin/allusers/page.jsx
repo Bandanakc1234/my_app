@@ -14,7 +14,7 @@ const AllUsers = () => {
     useEffect(() => {
         alluser(token)
             .then(data => {
-                if (data.error) {
+                if (data?.error) {
                     console.log(data.error)
                 }
                 else {  
