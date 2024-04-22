@@ -1,4 +1,5 @@
 'use client';
+import { getAppliedCareer } from '@/api/applyCareerAPI';
 import { deleteCareer, view_career } from '@/api/careerAPI';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
@@ -6,20 +7,27 @@ import Swal from 'sweetalert2';
 
 const Careers = () => {
   let [careers, setCareers] = useState([])
+  let [appliedcareer, setAppliedCareer] = useState([])
+  let [filteredResult, setFilteredResult] = useState([])
+  let [filter, setFilter] = useState('')
   let [success, setSuccess] = useState(false)
 
   useEffect(() => {
     view_career()
+    .then(data =>  setCareers(data))
+
+    getAppliedCareer(token)
       .then(data => {
         if (data?.error) {
           console.log(data.error)
         }
         else {
           console.log(data)
-          setCareers(data)
+          setAppliedCareer(data)
         }
       })
   }, [success])
+
 
   let token 
   if (typeof window !== "undefined") {
@@ -90,11 +98,19 @@ const Careers = () => {
               <h1>Posted Date: {career.posted_date}</h1>
               <h1>Application Deadline: {career.deadline}</h1>
               <h1>Status: </h1>
+              <div className='flex lg:flex-row gap-5 flex-col py-1'>
+                <div>
               <Link href={`/admin/careers/update/${career._id}`}>
-                <span className='border-2 border-none bg-yellow-500  hover:text-white h-8 p-1.5 text-center rounded-md mr-5 '>Update</span>
+                <button className='border-2 border-none bg-yellow-500 hover:text-white w-20 h-8 rounded-md mx-1'>Update</button>
               </Link>
 
-              <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md ' onClick={handleDelete(career._id)}> Delete </button>
+              <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md md:ml-5 ml-1' onClick={handleDelete(career._id)}> Delete </button>
+                </div>
+
+              <Link href={`/admin/careers/appliedCareer/${career._id}`}>
+                <button className='border-2 border-none bg-blue-600  hover:text-white w-44 h-8  rounded-md  mx-1 '>Applied Applicants</button>
+              </Link>
+              </div>
 
             </div>
           })

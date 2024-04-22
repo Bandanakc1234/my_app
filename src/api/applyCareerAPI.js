@@ -25,3 +25,14 @@ export const getAppliedCareer = (token) => {
     .then(res=>res.json())
     .catch(err=>console.log(err))
 }
+
+export const getAppliedCareerByCareer = (token,id) => {
+    return fetch(`${API}/view_appliedcareer/${id}`,{
+        method:"GET",
+        headers:{
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}

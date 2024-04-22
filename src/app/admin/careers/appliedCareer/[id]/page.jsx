@@ -1,21 +1,36 @@
 'use client'
-import { getAppliedCareer } from '@/api/applyCareerAPI'
+import { getAppliedCareer, getAppliedCareerByCareer } from '@/api/applyCareerAPI'
+import { view_career } from '@/api/careerAPI'
 import { API } from '@/config'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const AppliedCareer = () => {
-  let [appliedcareer, setAppliedCareer] = useState()
+  let [career, setCareer] = useState({})
+  let [appliedcareer, setAppliedCareer] = useState([])
+  // let [filteredResult, setFilteredResult] = useState([])
+  // let [filter, setFilter] = useState('')
   let [success, setSuccess] = useState(false)
   let token
+
+  let {id} = useParams()
+  // const params = useParams()
+  //   const id = params.applyCareer
+  // let {career_title} = career
 
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       token = localStorage.getItem('token')
     }
-
-    getAppliedCareer(token)
+    view_career()
+    .then(data => {
+      // setCareer(data.find(item => item.id === id));
+      setCareer(data.find(item => item.id === id));
+      console.log(data)
+    })
+    getAppliedCareerByCareer(token, id)
       .then(data => {
         if (data?.error) {
           console.log(data.error)
@@ -23,20 +38,23 @@ const AppliedCareer = () => {
         else {
           setAppliedCareer(data)
           console.log(data)
-
         }
       })
-  }, [success])
+  }, [id,token])
 
+  // const handlefilter = (id) =>{
+  //   console.log(id, filteredResult)
+  //   setFilter(id)
+  //   setFilteredResult(
+  //     appliedcareer.filter(appliedCar => appliedCar.career?._id === id)
+  //   )
+  // }
 
 
   return (
     <>
       <div className='ms-8 md:w-4/6 w-10/12'>
-        <button className='rounded-md bg-blue-600 my-5 px-3 py-2 hover:text-white hover:bg-blue-700'>
-          <Link href={"/admin/careers/new"}>Add New Career</Link>
-        </button>
-        <h1 className='font-bold text-3xl'>Applied Careers</h1>
+        <h1 className='font-bold text-3xl'>Applied Applicants for </h1>
         <div className='text-black flex flex-col'>
           {
             appliedcareer?.length > 0 &&
@@ -47,15 +65,15 @@ const AppliedCareer = () => {
                 </h1>
                 <h1>Name: {applied.first_name} {applied.last_name}</h1>
                 <h1>Email:{applied.email} </h1>
-                <h1>Phone Number {applied.Phone_number}</h1>
-                <h1>Required Qualifications: {applied.qualification}</h1>
+                <h1>Phone Number: {applied.phone_number}</h1>
+                <h1>Qualifications: {applied.qualification}</h1>
                 <h1>Experience: {applied.experience}</h1>
+                <h1>curriculum Vitae: {applied.curriculum_vitae}</h1>
                 <h1>Reference:{applied.reference}</h1>
                 <h1>Status: </h1>
                 {/* <Link href={`/admin/careers/update/${applied._id}`}>
                   <span className='border-2 border-none bg-yellow-500  hover:text-white h-8 p-1.5 text-center rounded-md mr-5 '>Update</span>
                 </Link> */}
-
                 {/* <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md ' onClick={handleDelete(career._id)}> Delete </button> */}
 
               </div>
