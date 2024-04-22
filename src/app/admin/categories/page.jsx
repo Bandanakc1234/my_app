@@ -9,6 +9,7 @@ const Category = () => {
   let [success, setSuccess] = useState(false)
 
   useEffect(() => {
+
     getAllCategories()
       .then(data => {
         if (data.error) {
@@ -21,7 +22,10 @@ const Category = () => {
       })
   }, [success])
 
-  let token = localStorage.getItem('token')
+  let token 
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem('token')
+  }
 
   const handleDelete = id => (event) => {
     event.preventDefault()

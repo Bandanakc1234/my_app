@@ -35,7 +35,7 @@ const serviceDetail = () => {
         <div className="text-2xl font-bold flex justify-center">
           <h2>{service.category_title}</h2>
         </div>
-        <div className="text-center">
+        <div className="text-justify">
           <p>{service.description} </p>
         </div>
       </div>
