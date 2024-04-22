@@ -32,8 +32,8 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
       <div className='mr-12'>
         {
           userImage && (
-            <Link href={`/admin/userprofile/${id}`}>
-              <img src={`${API}/${userImage}`} alt='' width={40} height={40} className='bg-white rounded-full' />
+            <Link href={`/admin/userprofile/${id}`} className=''>
+              <img src={`${API}/${userImage}`} alt='' width={40} height={40} className='user-image' />
             </Link>
           )}
       </div>

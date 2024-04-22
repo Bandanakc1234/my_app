@@ -56,11 +56,12 @@
     .project-div{
         width: 45%;
     }
+    
 }
+
 
 @media (min-width: 1025px) {
     .project-div{
         width: 30%;
     }
 }
-
