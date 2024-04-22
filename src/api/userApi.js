@@ -5,7 +5,7 @@ export const userRegister = (user) =>{
     console.log(user)
     return fetch (`${API}/user/register`, {
         method: 'POST',
-        headers: {
+        headers: {   
         },
         body:user
     })

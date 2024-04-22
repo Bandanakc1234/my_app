@@ -71,10 +71,7 @@ const Category = () => {
   }
 
   return (
-    <div className='m-s md:w-4/6 w-10/12'>
-
-
-
+    <div className='ms-8 md:w-4/6 w-10/12'>
       <button className='rounded-md bg-blue-600 my-5 px-3 py-2 hover:text-white hover:bg-blue-700'>
         <Link href={"/admin/categories/new"}>Add New Categories</Link>
       </button>

@@ -82,10 +82,12 @@ const Projects = () => {
                 <img src={`${API}/${project.project_image}`} alt={project.project_image} style={{height:"100px"}}/>
               </h1>
               <h1>Status: </h1>
+              <div className='flex md:flex-row my-2'>
               <Link href={`/admin/projects/update/${project._id}`}>
-                <span className='border-2 border-none bg-yellow-500  hover:text-white h-8 p-1.5 text-center rounded-md mr-5 '>Update</span>
+                <button className='border-2 border-none bg-yellow-500  hover:text-white h-8 w-20 text-center rounded-md mr-5 '>Update</button>
               </Link>
               <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md' onClick={handleDelete(project._id)}> Delete </button>
+              </div>
             </div>
           })
         }

@@ -16,7 +16,6 @@ export default function Home() {
   const [careers, setCareers] = useState([]);
   const [projects, setProjects] = useState([]);
   const [applicants, setApplicants] = useState([]);
-  const [id, setId] = useState(null);
   const [userImage, setUserImage] = useState(null);
   const [userfirstname, setUserFirstname] = useState(null);
   const [userlastname, setUserLastname] = useState(null);
@@ -60,11 +59,10 @@ export default function Home() {
     // view user profile
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-      setId(user._id);
-      setUserImage(user.image);
-      setUserFirstname(user.firstname);
-      setUserLastname(user.lastname);
-      setUserPosition(user.position);
+      setUserImage(user.image)
+      setUserFirstname(user.firstname)
+      setUserLastname(user.lastname)
+      setUserPosition(user.position)
     }
   }, []);
 
@@ -216,7 +214,7 @@ export default function Home() {
                       key={applicant._id}
                       className="bg-white border-b hover:bg-gray-50"
                     >
-                      <Link href={`/admin/careers/appliedCareer`} className="py-2">
+                      <Link href={`/admin/careers/appliedCareer/${appcareer._id}`} className="py-2">
 
                         <td className="px-6 md:px-2 py-3 md:py-1 font-medium text-gray-900 whitespace-nowrap capitalize">
                           {applicant.first_name} {applicant.last_name}

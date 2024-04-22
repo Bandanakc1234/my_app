@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { BiSolidDashboard, BiDetail, BiSolidBriefcase, BiUser } from "react-icons/bi";
 import { PiUsersThree } from "react-icons/pi";
-// import { BsPersonPlus } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import { FiLogOut } from "react-icons/fi";
 import { MdPostAdd } from "react-icons/md";
@@ -44,6 +43,12 @@ const sidebarItems = [
         name: "New",
         href: "/admin/careers/new"
       },
+
+      // {
+      //   name: "AppliedCareer",
+      //   href: "/admin/careers/appliedCareer"
+      // },
+
     ]
   },
   {
