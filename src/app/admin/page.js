@@ -70,10 +70,10 @@ export default function Home() {
     <>
       {/* Recent Job Posts */}
       <div className="flex flex-col lg:flex-row justify-between w-11/12 mx-auto pb-8 px-5 md:px-0">
-        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
+        {/* <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
           <h1 className="text-xl md:text-2xl font-bold py-1">Recent Job Posts</h1>
           {careers?.length > 0 &&
-            careers.slice(1, limit).map((career) => {
+            careers.slice(0, 2).map((career) => {
               return (
                 <div
                   key={career._id}
@@ -111,7 +111,37 @@ export default function Home() {
               Read More
             </button>
           </Link>
+        </div> */}
+        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
+  <h1 className="text-xl md:text-2xl font-bold py-1">Recent Job Posts</h1>
+  {careers?.length > 0 && (
+    careers
+      .sort((a, b) => new Date(b.posted_date) - new Date(a.posted_date)) // Sorting (descending)
+      .slice(0, 2) // Got the latest first two entries 
+      .map((career) => (
+        <div key={career._id} className="w-full lg:w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2">
+          <h1 className="text-lg md:text-xl font-semibold capitalize py-1">
+            {career.career_title}
+          </h1>
+          <h2 className="text-sm md:text-base font-medium py-1">
+            No. Of Positions: <span className="text-xs md:text-sm capitalize">{career.vacancyNumber}</span>
+          </h2>
+          <h2 className="text-sm md:text-base font-medium py-1">
+            Posted Date: <span className="text-xs md:text-sm capitalize">{new Date(career.posted_date).toLocaleString()}</span>
+          </h2>
+          <h2 className="text-sm md:text-base font-medium py-1">
+            Application Deadline: <span className="text-xs md:text-sm capitalize">{new Date(career.deadline).toLocaleString()}</span>
+          </h2>
         </div>
+      ))
+  )}
+  <Link href={`/admin/careers`} className="py-2">
+    <button className="bg-blue-500 h-9 text-sm md:text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white">
+      Read More
+    </button>
+  </Link>
+</div>
+
         <div className="profile w-full lg:w-1/4 order-1 lg:order-2">
           <div className="profile-pic flex flex-col justify-center items-center w-full font-bold">
             <h1>
@@ -208,7 +238,7 @@ export default function Home() {
               <tbody className="text-xs md:text-sm overflow-y-auto max-h-[400px]">
                 {applicants?.length > 0 &&
                   applicants.map((applicant) => {
-                    const appcareer = careers.find((career) => career._id === applicant.career)
+                    const appcareer = careers?.find((career) => career._id === applicant.career)
                     const career_title = appcareer ? appcareer.career_title : 'Unkown Career'
                     return (<tr
                       key={applicant._id}
