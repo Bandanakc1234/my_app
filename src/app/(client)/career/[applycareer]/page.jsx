@@ -17,6 +17,7 @@ const ApplyCareer = () => {
         quaalification: "",
         experience: "",
         image: "",
+        curriculum_vitae:"",
         reference: "",
         formdata: new FormData
     })
@@ -45,7 +46,7 @@ const ApplyCareer = () => {
     let file_ref = useRef()
     // let career = useParams().applycareer
     let router = useRouter()
-    let { first_name, last_name, email, phone_number, qualification, experience, image, reference, formdata } = formData
+    let { first_name, last_name, email, phone_number, qualification, experience, image, reference, curriculum_vitae, formdata } = formData
 
     const handleChange = (event) => {
         let value
@@ -83,7 +84,7 @@ const ApplyCareer = () => {
                         qualification: "",
                         experience: "",
                         image: "",
-                        // curriculum vitae:"",
+                        curriculum_vitae:"",
                         reference: "",
                         formdata: new FormData
                     })
@@ -188,9 +189,9 @@ const ApplyCareer = () => {
                             </div>
 
                             <div className='sm:col-span-3'>
-                                <label htmlFor="curriculum vitae" className='block text-md font-medium'>curriculum vitae(CV)</label>
+                                <label htmlFor="curriculum_vitae" className='block text-md font-medium'>curriculum vitae(CV)</label>
                                 <div className='mt-2'>
-                                    <input type="file" id='curriculum vitae' name='curriculum vitae' onChange={handleChange} className='border-2 bg-white p-1 md:text-lg rounded-md  w-full' ref={file_ref} />
+                                    <input type="file" id='curriculum_vitae' name='curriculum_vitae' onChange={handleChange} className='border-2 bg-white p-1 md:text-lg rounded-md  w-full' ref={file_ref} />
                                 </div>
                             </div>
 

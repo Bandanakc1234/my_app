@@ -42,6 +42,7 @@ const Register = () => {
                 [event.target.name]: value
             })
         }
+        console.log(value)
         formdata.set(event.target.name, value)
     }
 
@@ -121,9 +122,9 @@ const Register = () => {
                         <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mx-16 place-items-center'>
 
                             <div className='sm:col-span-3'>
-                                <label htmlFor="firstname" className='block text-md font-medium'>Firstname:</label>
+                                <label htmlFor="first_name" className='block text-md font-medium'>Firstname:</label>
                                 <div className='mt-2'>
-                                    <input type="text" id='firstname' onChange={handleChange} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="first_name" value={first_name} />
+                                    <input type="text" id='first_name' onChange={handleChange} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="first_name" value={first_name} />
                                 </div>
                             </div>
 
