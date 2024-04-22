@@ -72,7 +72,7 @@ const AllUsers = () => {
     return (
         <>
             <div className='ms-8 md:w-5/6 w-11/12' style={{ minHeight: "82.3vh" }} >
-            <div className='bg-gray-200 p-2 rounded-lg ms-5 lg:ms-0 '>
+            <div className='bg-white p-2 rounded-lg ms-5 lg:ms-0 '>
                     <div className='lg:flex lg:justify-between text-xs lg:text-lg lg:columns-2 columns-1'>
                         <h1>User Details</h1>
                         <ol className='flex'>
@@ -85,9 +85,9 @@ const AllUsers = () => {
                     </div>
                 </div>  
                     <div className='p-4 '>
-                        <table className='bg-gray-200 w-full rounded-lg divide-y divide-gray-500'>
+                        <table className='bg-white w-full rounded-lg divide-y divide-gray-200'>
                             <thead className=' w-full'>
-                                <tr className='w-full bg-gray-300'>
+                                <tr className='w-full bg-gray-100'>
                                     <th className='py-3 ps-4 text-left text-xs lg:text-xl font-medium w-1/12'>S.No.</th>
                                     <th className=' px-5 lg:px-6 py-3 text-left text-xs lg:text-xl font-medium uppercase w-1/2 lg:w-1/6'>Name</th>
                                     <th className='px-3 lg:px-6 py-3 text-left text-xs lg:text-xl font-medium uppercase w-1/12'>Age</th>
@@ -103,7 +103,7 @@ const AllUsers = () => {
                                         return <tr key={user._id}>
                                             <td className='py-3 ps-6 w-1/12'>{i + 1}</td>
                                             <td className='tracking-tight px-5 lg:px-6 py-3 w-1/2 lg:w-1/6 text-xs lg:text-lg capitalize'>
-                                                <img src={`${API}/${user.image}`} alt={user.image} className='rounded-full h-10' />
+                                                <img src={`${API}/${user.image}`} alt={user.image} className='user-image' />
                                                 {user.firstname} {user.lastname}</td>
                                             <td className='tracking-tight px-3 lg:px-6 py-3 text-xs lg:text-lg w-1/2 lg:w-1/6'>{user.age}</td>
                                             <td className='tracking-tight px-3 lg:px-6 py-3 text-xs lg:text-lg w-1/2 lg:w-1/6'>{user.address.tempAddress}</td>

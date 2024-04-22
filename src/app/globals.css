@@ -66,11 +66,19 @@ body {
 .circle{
   height: 70vh;
   width: 70vh;
+  border-radius: 50%;
+}
+
+.user-image {
+  width: 50px; /* Your desired width */
+  height: 50px; /* Your desired height */
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 50%; /* For rounded corners */
 }
 
 @media screen and (max-width: 600px) {
   .circle{
-      height: 65vh;
-      width: 50vh;
+      height: 60vh;
+      width: 60vh;
   }
 }

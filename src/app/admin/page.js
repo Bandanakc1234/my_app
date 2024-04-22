@@ -16,6 +16,7 @@ export default function Home() {
   const [careers, setCareers] = useState([]);
   const [projects, setProjects] = useState([]);
   const [applicants, setApplicants] = useState([]);
+  const [id, setId] = useState(null)
   const [userImage, setUserImage] = useState(null);
   const [userfirstname, setUserFirstname] = useState(null);
   const [userlastname, setUserLastname] = useState(null);
@@ -28,7 +29,6 @@ export default function Home() {
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
   }
-  // let { id } = useParams()
 
   useEffect(() => {
     // recent job posts
@@ -59,6 +59,7 @@ export default function Home() {
     // view user profile
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
+      setId(user._id)
       setUserImage(user.image)
       setUserFirstname(user.firstname)
       setUserLastname(user.lastname)
@@ -115,7 +116,8 @@ export default function Home() {
         </div>
         {/*user profile */}
         <div className="profile w-1/4 bg-gray-50">
-          <div className="profile-pic flex flex-col justify-center items-center h-80 w-80 font-bold">
+          <div className="profile-pic font-semibold text-lg">
+            <div className="flex flex-col justify-center items-center"> 
             <h1>
               <img
                 src={`${API}/${userImage}`}
@@ -127,9 +129,12 @@ export default function Home() {
               {userfirstname} {userlastname}
             </h1>
             <h1 className="capitalize">{userposition}</h1>
+            <Link href={`/admin/userprofile/${id}`}>
             <button className="bg-blue-600 rounded-md p-2 mt-2">
               Edit Profile
             </button>
+            </Link>
+            </div>
           </div>
         </div>
       </div>
