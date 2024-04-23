@@ -16,7 +16,7 @@ export default function Home() {
   const [careers, setCareers] = useState([]);
   const [projects, setProjects] = useState([]);
   const [applicants, setApplicants] = useState([]);
-  const [id, setId] = useState(null)
+  const [id, setId] = useState(null);
   const [userImage, setUserImage] = useState(null);
   const [userfirstname, setUserFirstname] = useState(null);
   const [userlastname, setUserLastname] = useState(null);
@@ -59,11 +59,11 @@ export default function Home() {
     // view user profile
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-      setId(user._id)
-      setUserImage(user.image)
-      setUserFirstname(user.firstname)
-      setUserLastname(user.lastname)
-      setUserPosition(user.position)
+      setId(user._id);
+      setUserImage(user.image);
+      setUserFirstname(user.firstname);
+      setUserLastname(user.lastname);
+      setUserPosition(user.position);
     }
   }, []);
 
@@ -71,97 +71,70 @@ export default function Home() {
     <>
       {/* Recent Job Posts */}
       <div className="flex flex-col lg:flex-row justify-between w-11/12 mx-auto pb-8 px-5 md:px-0">
-        {/* <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
-          <h1 className="text-xl md:text-2xl font-bold py-1">Recent Job Posts</h1>
+        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
+          <h1 className="text-xl md:text-2xl font-bold py-1">
+            Recent Job Posts
+          </h1>
           {careers?.length > 0 &&
-            careers.slice(0, 2).map((career) => {
-              return (
+            careers
+              .sort((a, b) => new Date(b.posted_date) - new Date(a.posted_date)) // Sorting (descending)
+              .slice(0, 2) // Got the latest first two entries
+              .map((career) => (
                 <div
                   key={career._id}
-                  className="w-full lg:w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2 "
+                  className="w-full lg:w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2"
                 >
                   <h1 className="text-lg md:text-xl font-semibold capitalize py-1">
                     {career.career_title}
                   </h1>
                   <h2 className="text-sm md:text-base font-medium py-1">
-                    No. Of Positions:
+                    No. Of Positions:{" "}
                     <span className="text-xs md:text-sm capitalize">
-                      {" "}
                       {career.vacancyNumber}
                     </span>
                   </h2>
                   <h2 className="text-sm md:text-base font-medium py-1">
-                    Posted Date:
+                    Posted Date:{" "}
                     <span className="text-xs md:text-sm capitalize">
-                      {" "}
-                      {career.posted_date}
+                      {new Date(career.posted_date).toLocaleString()}
                     </span>
                   </h2>
                   <h2 className="text-sm md:text-base font-medium py-1">
-                    Application Deadline:
+                    Application Deadline:{" "}
                     <span className="text-xs md:text-sm capitalize">
-                      {" "}
-                      {career.deadline}
+                      {new Date(career.deadline).toLocaleString()}
                     </span>
                   </h2>
                 </div>
-              );
-            })}
+              ))}
           <Link href={`/admin/careers`} className="py-2">
             <button className="bg-blue-500 h-9 text-sm md:text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white">
               Read More
             </button>
           </Link>
-        </div> */}
-        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
-  <h1 className="text-xl md:text-2xl font-bold py-1">Recent Job Posts</h1>
-  {careers?.length > 0 && (
-    careers
-      .sort((a, b) => new Date(b.posted_date) - new Date(a.posted_date)) // Sorting (descending)
-      .slice(0, 2) // Got the latest first two entries 
-      .map((career) => (
-        <div key={career._id} className="w-full lg:w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2">
-          <h1 className="text-lg md:text-xl font-semibold capitalize py-1">
-            {career.career_title}
-          </h1>
-          <h2 className="text-sm md:text-base font-medium py-1">
-            No. Of Positions: <span className="text-xs md:text-sm capitalize">{career.vacancyNumber}</span>
-          </h2>
-          <h2 className="text-sm md:text-base font-medium py-1">
-            Posted Date: <span className="text-xs md:text-sm capitalize">{new Date(career.posted_date).toLocaleString()}</span>
-          </h2>
-          <h2 className="text-sm md:text-base font-medium py-1">
-            Application Deadline: <span className="text-xs md:text-sm capitalize">{new Date(career.deadline).toLocaleString()}</span>
-          </h2>
         </div>
-      ))
-  )}
-  <Link href={`/admin/careers`} className="py-2">
-    <button className="bg-blue-500 h-9 text-sm md:text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white">
-      Read More
-    </button>
-  </Link>
-</div>
         {/*user profile */}
-        <div className="profile w-1/4 bg-gray-50">
-          <div className="profile-pic font-semibold text-lg">
-            <div className="flex flex-col justify-center items-center"> 
-            <h1>
-              <img
-                src={`${API}/${userImage}`}
-                alt=""
-                className="md:h-36 h-24 md:w-36 w-24 border mt-12 rounded-md"
-              />
-            </h1>
-            <h1 className="text-sm md:text-base capitalize mt-2 ">
-              {userfirstname} {userlastname}
-            </h1>
-            <h1 className="capitalize">{userposition}</h1>
-            <Link href={`/admin/userprofile/${id}`}>
-            <button className="bg-blue-600 rounded-md p-2 mt-2">
-              Edit Profile
-            </button>
-            </Link>
+        <div className="profile w-full lg:w-1/4 order-1 lg:order-2 lg:mt-14">
+          <div className="profile-pic font-semibold text-lg ">
+            <div className="flex flex-col justify-center items-center rounded-md lg:bg-white sm:bg-transparent bg-white">
+              <h1 className="pt-5">
+                <img
+                  src={`${API}/${userImage}`}
+                  alt=""
+                  className="md:h-36 h-24 md:w-36 w-24 border rounded-md"
+                />
+              </h1>
+              <h1 className="text-sm md:text-base capitalize mt-2 ">
+                {userfirstname} {userlastname}
+              </h1>
+              <h1 className="text-sm md:text-base capitalize">
+                {userposition}
+              </h1>
+              <Link href={`/admin/userprofile/${id}`}>
+                <button className="bg-blue-600 rounded-md p-2 mt-2 text-sm md:text-base mb-3">
+                  Edit Profile
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -185,7 +158,7 @@ export default function Home() {
                       className="rounded-md w-full dashboard-projecimg"
                       style={{
                         // "@media (min-width: 768px)": {
-                        //   height: "300px", 
+                        //   height: "300px",
                         //   // width: "100%"
                         // },
                         height: "265px",
@@ -222,7 +195,6 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      
 
       {/* Applicants */}
       <div className="applications w-11/12 mx-auto pb-8 px-5 md:px-0">
@@ -243,22 +215,31 @@ export default function Home() {
               <tbody className="text-xs md:text-sm overflow-y-auto max-h-[400px]">
                 {applicants?.length > 0 &&
                   applicants.map((applicant) => {
-                    const appcareer = careers?.find((career) => career._id === applicant.career)
-                    const career_title = appcareer ? appcareer.career_title : 'Unkown Career'
-                    return (<tr
-                      key={applicant._id}
-                      className="bg-white border-b hover:bg-gray-50"
-                    >
-                      <Link href={`/admin/careers/appliedCareer/${appcareer._id}`} className="py-2">
-
-                        <td className="px-6 md:px-2 py-3 md:py-1 font-medium text-gray-900 whitespace-nowrap capitalize">
-                          {applicant.first_name} {applicant.last_name}
-                        </td>
-                      </Link>
-                      <td className="px-6 md:px-2 py-3 md:py-1 capitalize">{career_title}</td>
-                    </tr>
+                    const appcareer = careers?.find(
+                      (career) => career._id === applicant.career
                     );
-                  })}        
+                    const career_title = appcareer
+                      ? appcareer.career_title
+                      : "Unkown Career";
+                    return (
+                      <tr
+                        key={applicant._id}
+                        className="bg-white border-b hover:bg-gray-50"
+                      >
+                        <Link
+                          href={`/admin/careers/appliedCareer/${appcareer._id}`}
+                          className="py-2"
+                        >
+                          <td className="px-6 md:px-2 py-3 md:py-1 font-medium text-gray-900 whitespace-nowrap capitalize">
+                            {applicant.first_name} {applicant.last_name}
+                          </td>
+                        </Link>
+                        <td className="px-6 md:px-2 py-3 md:py-1 capitalize">
+                          {career_title}
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>
