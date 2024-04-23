@@ -11,7 +11,7 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 const login = () => {
     const [formData, setFormData] = useState({})
-    const [showPassword, setShowPassword] =useState(false)
+    const [showPassword, setShowPassword] = useState(false)
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 

@@ -4,6 +4,8 @@ import Link from 'next/link'
 // import { useRouter } from 'next/navigation'
 import React, { useRef, useState } from 'react'
 import Swal from 'sweetalert2';
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+
 
 const Register = () => {
     const [user, setUser] = useState({
@@ -25,6 +27,8 @@ const Register = () => {
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
 
     let { first_name, last_name, username, email, password, confirm_password, age, phone_number, temporary_address, permanent_address, gender, formdata } = user
 
@@ -151,15 +155,45 @@ const Register = () => {
 
                             <div className='sm:col-span-3'>
                                 <label htmlFor="password" className='block text-md font-medium'>Password:</label>
-                                <div className='mt-2'>
-                                    <input type="password" id='password' onChange={handleChange} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="password" value={password} />
+                                <div className='mt-2 relative'>
+                                    <input type={showPassword ? "text" : "password"} id='password' onChange={handleChange} className='block w-full rounded-md border-0 py-1.5 sm:text-md ab' name="password" value={password} />
+                                    {showPassword ? <IoIosEye type="button"
+                                        aria-label={
+                                            showPassword ? "Password Visible" : "Password Invisible."
+                                        }
+                                        onClick={() => {
+                                            setShowPassword((prev) => !prev)
+                                        }}
+                                        className='absolute right-2 top-0 translate-y-1/2 text-xl' /> : <IoIosEyeOff type="button"
+                                            aria-label={
+                                                showPassword ? "Password Visible" : "Password Invisible."
+                                            }
+                                            onClick={() => {
+                                                setShowPassword((prev) => !prev)
+                                            }}
+                                            className='absolute right-2 top-0 translate-y-1/2 text-xl' />}
                                 </div>
                             </div>
 
                             <div className='sm:col-span-3'>
                                 <label htmlFor="confirmpassword" className='block text-md font-medium'>Confirm Password:</label>
-                                <div className='mt-2'>
-                                    <input type="password" id='confirmpassword' onChange={handleChange} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="confirm_password" value={confirm_password} />
+                                <div className='mt-2 relative'>
+                                    <input type={showConfirmPassword ? "text" : "password"} id='confirmpassword' onChange={handleChange} className='block w-full rounded-md border-0 py-1.5 sm:text-md' name="confirm_password" value={confirm_password} />
+                                    {showConfirmPassword ? <IoIosEye type="button"
+                                        aria-label={
+                                            showPassword ? "Password Visible" : "Password Invisible."
+                                        }
+                                        onClick={() => {
+                                            setShowConfirmPassword((prev) => !prev)
+                                        }}
+                                        className='absolute right-2 top-0 translate-y-1/2 text-xl' /> : <IoIosEyeOff type="button"
+                                            aria-label={
+                                                showConfirmPassword ? "Password Visible" : "Password Invisible."
+                                            }
+                                            onClick={() => {
+                                                setShowConfirmPassword((prev) => !prev)
+                                            }}
+                                            className='absolute right-2 top-0 translate-y-1/2 text-xl' />}
                                 </div>
                             </div>
 
@@ -215,7 +249,7 @@ const Register = () => {
                                     <input type="file" id='image' onChange={handleChange} className='block w-full rounded-md bg-white border-0 py-1.5 text-sm md:text-lg' name="image" ref={file_ref} />
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
