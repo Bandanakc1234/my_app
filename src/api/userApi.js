@@ -1,6 +1,6 @@
 import {API} from '../config'
 
-
+//user register
 export const userRegister = (user) =>{
     console.log(user)
     return fetch (`${API}/user/register`, {

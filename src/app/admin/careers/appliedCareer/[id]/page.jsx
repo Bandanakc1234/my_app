@@ -1,13 +1,13 @@
 'use client'
 import { getAppliedCareer, getAppliedCareerByCareer } from '@/api/applyCareerAPI'
-import { view_career } from '@/api/careerAPI'
+import { getCareerDetails, view_career } from '@/api/careerAPI'
 import { API } from '@/config'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const AppliedCareer = () => {
-  let [career, setCareer] = useState({})
+  let [career, setCareer] = useState([])
   let [appliedcareer, setAppliedCareer] = useState([])
   // let [filteredResult, setFilteredResult] = useState([])
   // let [filter, setFilter] = useState('')
@@ -24,10 +24,10 @@ const AppliedCareer = () => {
     if (typeof window !== "undefined") {
       token = localStorage.getItem('token')
     }
-    view_career()
+    getCareerDetails(id)
     .then(data => {
       // setCareer(data.find(item => item.id === id));
-      setCareer(data.find(item => item.id === id));
+      setCareer(data)
       console.log(data)
     })
     getAppliedCareerByCareer(token, id)
@@ -54,7 +54,7 @@ const AppliedCareer = () => {
   return (
     <>
       <div className='ms-8 md:w-4/6 w-10/12'>
-        <h1 className='font-bold text-3xl'>Applied Applicants for </h1>
+        <h1 className='font-bold text-3xl'>Applied Applicants for "{career.career_title}" </h1>
         <div className='text-black flex flex-col'>
           {
             appliedcareer?.length > 0 &&
@@ -68,7 +68,12 @@ const AppliedCareer = () => {
                 <h1>Phone Number: {applied.phone_number}</h1>
                 <h1>Qualifications: {applied.qualification}</h1>
                 <h1>Experience: {applied.experience}</h1>
-                <h1>curriculum Vitae: {applied.curriculum_vitae}</h1>
+                <h1>
+                  {/* Curriculum Vitae: {applied.curriculum_vitae} */}
+                  CV:
+                  <embed src={`${API}/${applied.curriculum_vitae}`} width="800px" height="200px" />
+
+                </h1>
                 <h1>Reference:{applied.reference}</h1>
                 <h1>Status: </h1>
                 {/* <Link href={`/admin/careers/update/${applied._id}`}>
