@@ -27,7 +27,6 @@ const AppliedCareer = () => {
     getCareerDetails(id)
     .then(data => {
       // setCareer(data.find(item => item.id === id));
-      // setCareer(data.find(item => item.id === id));
       setCareer(data)
       console.log(data)
     })
