@@ -71,97 +71,55 @@ export default function Home() {
     <>
       {/* Recent Job Posts */}
       <div className="flex flex-col lg:flex-row justify-between w-11/12 mx-auto pb-8 px-5 md:px-0">
-        {/* <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
+        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
           <h1 className="text-xl md:text-2xl font-bold py-1">Recent Job Posts</h1>
-          {careers?.length > 0 &&
-            careers.slice(0, 2).map((career) => {
-              return (
-                <div
-                  key={career._id}
-                  className="w-full lg:w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2 "
-                >
+          {careers?.length > 0 && (
+            careers
+              .sort((a, b) => new Date(b.posted_date) - new Date(a.posted_date)) // Sorting (descending)
+              .slice(0, 2) // Got the latest first two entries 
+              .map((career) => (
+                <div key={career._id} className="w-full lg:w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2">
                   <h1 className="text-lg md:text-xl font-semibold capitalize py-1">
                     {career.career_title}
                   </h1>
                   <h2 className="text-sm md:text-base font-medium py-1">
-                    No. Of Positions:
-                    <span className="text-xs md:text-sm capitalize">
-                      {" "}
-                      {career.vacancyNumber}
-                    </span>
+                    No. Of Positions: <span className="text-xs md:text-sm capitalize">{career.vacancyNumber}</span>
                   </h2>
                   <h2 className="text-sm md:text-base font-medium py-1">
-                    Posted Date:
-                    <span className="text-xs md:text-sm capitalize">
-                      {" "}
-                      {career.posted_date}
-                    </span>
+                    Posted Date: <span className="text-xs md:text-sm capitalize">{new Date(career.posted_date).toLocaleString()}</span>
                   </h2>
                   <h2 className="text-sm md:text-base font-medium py-1">
-                    Application Deadline:
-                    <span className="text-xs md:text-sm capitalize">
-                      {" "}
-                      {career.deadline}
-                    </span>
+                    Application Deadline: <span className="text-xs md:text-sm capitalize">{new Date(career.deadline).toLocaleString()}</span>
                   </h2>
                 </div>
-              );
-            })}
+              ))
+          )}
           <Link href={`/admin/careers`} className="py-2">
             <button className="bg-blue-500 h-9 text-sm md:text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white">
               Read More
             </button>
           </Link>
-        </div> */}
-        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
-  <h1 className="text-xl md:text-2xl font-bold py-1">Recent Job Posts</h1>
-  {careers?.length > 0 && (
-    careers
-      .sort((a, b) => new Date(b.posted_date) - new Date(a.posted_date)) // Sorting (descending)
-      .slice(0, 2) // Got the latest first two entries 
-      .map((career) => (
-        <div key={career._id} className="w-full lg:w-4/5 p-5 border-2 bg-white rounded-md shadow-lg my-2">
-          <h1 className="text-lg md:text-xl font-semibold capitalize py-1">
-            {career.career_title}
-          </h1>
-          <h2 className="text-sm md:text-base font-medium py-1">
-            No. Of Positions: <span className="text-xs md:text-sm capitalize">{career.vacancyNumber}</span>
-          </h2>
-          <h2 className="text-sm md:text-base font-medium py-1">
-            Posted Date: <span className="text-xs md:text-sm capitalize">{new Date(career.posted_date).toLocaleString()}</span>
-          </h2>
-          <h2 className="text-sm md:text-base font-medium py-1">
-            Application Deadline: <span className="text-xs md:text-sm capitalize">{new Date(career.deadline).toLocaleString()}</span>
-          </h2>
         </div>
-      ))
-  )}
-  <Link href={`/admin/careers`} className="py-2">
-    <button className="bg-blue-500 h-9 text-sm md:text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white">
-      Read More
-    </button>
-  </Link>
-</div>
         {/*user profile */}
-        <div className="profile w-1/4 bg-gray-50">
-          <div className="profile-pic font-semibold text-lg">
-            <div className="flex flex-col justify-center items-center"> 
-            <h1>
-              <img
-                src={`${API}/${userImage}`}
-                alt=""
-                className="md:h-36 h-24 md:w-36 w-24 border mt-12 rounded-md"
-              />
-            </h1>
-            <h1 className="text-sm md:text-base capitalize mt-2 ">
-              {userfirstname} {userlastname}
-            </h1>
-            <h1 className="capitalize">{userposition}</h1>
-            <Link href={`/admin/userprofile/${id}`}>
-            <button className="bg-blue-600 rounded-md p-2 mt-2">
-              Edit Profile
-            </button>
-            </Link>
+        <div className="profile lg:w-1/4 order-1 lg:order-2">
+          <div className="profile-pic font-semibold text-lg ">
+            <div className="flex flex-col justify-center items-center bg-white">
+              <h1>
+                <img
+                  src={`${API}/${userImage}`}
+                  alt=""
+                  className="md:h-36 h-24 md:w-36 w-24 border mt-12 rounded-md"
+                />
+              </h1>
+              <h1 className="text-sm md:text-base capitalize mt-2 ">
+                {userfirstname} {userlastname}
+              </h1>
+              <h1 className="text-sm md:text-base capitalize">{userposition}</h1>
+              <Link href={`/admin/userprofile/${id}`}>
+                <button className="bg-blue-600 rounded-md p-2 mt-2 text-sm md:text-base mb-3">
+                  Edit Profile
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -222,7 +180,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      
+
 
       {/* Applicants */}
       <div className="applications w-11/12 mx-auto pb-8 px-5 md:px-0">
@@ -258,7 +216,7 @@ export default function Home() {
                       <td className="px-6 md:px-2 py-3 md:py-1 capitalize">{career_title}</td>
                     </tr>
                     );
-                  })}        
+                  })}
               </tbody>
             </table>
           </div>
