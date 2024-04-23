@@ -1,6 +1,4 @@
- 'use client';
-import Image from "next/image";
-import { BiWebcam } from 'react-icons/bi';
+'use client';
 import Aos from "aos";
 import 'aos/dist/aos.css'
 import { useEffect, useState } from "react";
@@ -13,17 +11,21 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import dynamic from 'next/dynamic';
 import { getAllCategories } from "@/api/categoryAPI";
-import {alluserclient } from "@/api/userApi";
+import { alluserclient } from "@/api/userApi";
 import { API } from "@/config";
 import Link from "next/link";
-import { Services } from "./service/StaticData/page";
+import { sendEmail, sendMessage } from "@/api/normalUserAPI";
+import Swal from "sweetalert2";
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
 });
 
 export default function Home() {
   let [users, setUsers] = useState([])
-  let [services, setServices ] = useState([])
+  let [services, setServices] = useState([])
+  let [email, setEmail] = useState("")
+  let [error, setError] = useState('')
+  let [success, setSuccess] = useState(false)
 
   const settings = {
     loop: true,
@@ -59,33 +61,92 @@ export default function Home() {
     }
   }
 
-
   useEffect(() => {
     Aos.init()
     alluserclient()
-    .then(data => {
-      if(data?.error){
-        console.log(data.error)
-      }
-      else{
-        setUsers(data)
-      }
-    })
+      .then(data => {
+        if (data?.error) {
+          console.log(data.error)
+        }
+        else {
+          setUsers(data)
+        }
+      })
     getAllCategories()
-    .then(data => {
-      if(data?.error){
-        console.log(data.error)
-      }
-      else{
-        setServices(data)
-      }
-    })
-}, [])
+      .then(data => {
+        if (data?.error) {
+          console.log(data.error)
+        }
+        else {
+          setServices(data)
+        }
+      })
+  }, [])
+
+  const handleChange = (event) => {
+    setEmail(
+      event.target.value
+    )
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    sendEmail(email)
+      .then(data => {
+        if (data.error) {
+          setSuccess(false)
+          setError(data.error)
+        }
+        else {
+          setError('')
+          setSuccess(true)
+          setEmail("")
+        }
+      })
+      .catch(error => console.log(error))
+  }
+
+  const showError = () => {
+    if (error) {
+        Swal.fire({
+            icon: "error",
+            toast: true,
+            title: "error",
+            text: error,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            color: "#d33"
+        })
+        setError('')
+        return <div>{error}</div>
+    }
+}
+const showSuccess = () => {
+    if (success) {
+        Swal.fire({
+            icon: "success",
+            toast: true,
+            title: "success",
+            text: 'Thank you for your Interest',
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            color: "#64DD17"
+        })
+        setSuccess('')
+        return <div>{success}</div>
+    }
+}
 
 
   return (
 
     <div>
+      {showError()}
+      {showSuccess()}
       <div className="main  bg-white ">
         <div className="head bg-white">
           <h1 className="lg:text-4xl text-3xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="1000">Learn</h1>
@@ -138,10 +199,11 @@ export default function Home() {
 
         <div className="footer bg-gray-800 text-white md:p-14 p-3">
           <h1 className="md:text-4xl md:font-bold text-2xl font-semibold">Ready to get started</h1>
-          <p className="m-1">Enter you email address</p>
-          <input type="email" id="email" name="email" placeholder="enter your email..." className="text-black md:w-4/5 w-4/5 h-5 font-2xl rounded-md p-5" />
+          <label htmlFor="email" className="m-1">Enter you email address</label>
+          <br />
+          <input type="email" id="email" name="email" value={email} placeholder="enter your email..." className="text-black md:w-4/5 w-4/5 h-5 font-2xl rounded-md p-5" onChange={handleChange} />
           <div className="flex justify-start">
-            <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer mt-4 w-28 hover:bg-blue-700  flex items-center justify-center"><a href="">Subscribe</a></button>
+            <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer mt-4 w-28 hover:bg-blue-700  flex items-center justify-center" onClick={handleSubmit}><a href="">Send</a></button>
           </div>
 
         </div>
@@ -152,15 +214,15 @@ export default function Home() {
 
         <div className="lfooter bg-white md:p-10">
           <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">our services</h1>
-          
+
           <div className="flex flex-wrap w-full justify-evenly">
             {
-              services?.length > 0 && 
-              services.map (service => {
+              services?.length > 0 &&
+              services.map(service => {
                 return <div key={service._id} className="flex-col-3 justify-between lg:flex lg:justify-between">
                   <div className="topfirst bg-white md:w-96 w-52 rounded-md px-2 py-6 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                     <div className="icondiv flex justify-center" >
-                      <div dangerouslySetInnerHTML={{ __html: service.icon }}></div>                      
+                      <div dangerouslySetInnerHTML={{ __html: service.icon }}></div>
                     </div>
                     <div className="h2div text-2xl font-bold flex justify-center">
                       <h2 className="text-center">{service.category_title}</h2>
@@ -175,15 +237,15 @@ export default function Home() {
                     </div>
                   </div>
 
-                  </div>
+                </div>
               })
             }
-                
+
           </div>
 
-          
 
-        {/* <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
+
+          {/* <div className="topfirst bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50}/>
                 </div>
@@ -198,7 +260,7 @@ export default function Home() {
                 </div>
               </div> */}
 
-        {/* <div className="topsecond  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
+          {/* <div className="topsecond  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50} />
                 </div>
@@ -213,7 +275,7 @@ export default function Home() {
                 </div>
               </div> */}
 
-        {/* <div className="topthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
+          {/* <div className="topthird  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50} />
                 </div>
@@ -229,7 +291,7 @@ export default function Home() {
               </div> */}
 
 
-        {/* <div className="buttom flex-col-3 lg:flex lg:justify-between">
+          {/* <div className="buttom flex-col-3 lg:flex lg:justify-between">
               <div className="buttomfirst  bg-white md:w-96 w-52 rounded-md p-2 flex flex-col justify-center shadow-xl hover:bg-blue-200  m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                 <div className="icondiv flex justify-center">
                   <BiWebcam size={50} />
@@ -275,20 +337,20 @@ export default function Home() {
             </div>
           </div> */}
 
-        {/* fourth content end */}
+          {/* fourth content end */}
 
-        {/* carousel start  */}
+          {/* carousel start  */}
 
-        <div  className="border border-t-4 border-b-4">
-          <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Our Team Members</h1>
+          <div className="border border-t-4 border-b-4">
+            <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Our Team Members</h1>
 
-          <OwlCarousel {...settings}>
-            {
-              users?.length > 0 &&
-              users.map(user => {
-                return <div key={user._id} className="border border-solid border-l-white shadow-2xl text-center p-5 m-10 rounded-xl bg-white"  data-aos="fade-up" data-aos-duration="2000">
+            <OwlCarousel {...settings}>
+              {
+                users?.length > 0 &&
+                users.map(user => {
+                  return <div key={user._id} className="border border-solid border-l-white shadow-2xl text-center p-5 m-10 rounded-xl bg-white" data-aos="fade-up" data-aos-duration="2000">
                     <div className="imgprofile w-20 mx-auto">
-                      <img src={`${API}/${user.image}`} alt={user.username} className="rounded-circle w-20 h-20"/>
+                      <img src={`${API}/${user.image}`} alt={user.username} className="rounded-circle w-20 h-20" />
                     </div>
                     <div>
                       <h3 className="font-bold text-xl">{user.firstname} {user.lastname} </h3>
@@ -300,12 +362,12 @@ export default function Home() {
                         nesciunt cum quaerat
                       </blockquote>
                     </div> */}
-                      
+
                   </div>
-                  })
-                }
-          </OwlCarousel >
-          {/* <OwlCarousel {...settings} className="border border-t-4 border-b-4">
+                })
+              }
+            </OwlCarousel >
+            {/* <OwlCarousel {...settings} className="border border-t-4 border-b-4">
             <div >
             <div className="border border-solid border-l-white shadow-2xl text-center p-5 m-10 rounded-xl bg-white" >
               <div className="imgprofile w-20 mx-auto">
@@ -326,58 +388,58 @@ export default function Home() {
             
             </div>
           </OwlCarousel > */}
+          </div>
+
+          <div className="text-center md:p-12 p-10 bg-white" data-aos="fade-up" data-aos-duration="2000">
+            <h3 className="md:text-2xl text-xl ">Our Clients</h3>
+            <p className="md:text-3xl text-2xl p-5 font-bold">Some of our happy Clients</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae veniam nesciunt, ducimus
+              praesentium placeat debitis? Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+
+          <OwlCarousel {...settings2} >
+
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto rounded-xl">
+                <img src="./logo6.jpg" className="rounded-xl" />
+              </div>
+            </div>
+
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo1.png" className="rounded-xl" />
+              </div>
+            </div>
+
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./evolve.png" className="h-full rounded-xl" />
+              </div>
+            </div>
+
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo3.png" className="h-full rounded-xl" />
+              </div>
+            </div>
+
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo4.jpg" className="h-full rounded-xl" />
+              </div>
+            </div>
+
+            <div className="owlcarousel_logo p-20">
+              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
+                <img src="./logo5.jpg" className="h-full rounded-xl" />
+              </div>
+            </div>
+
+          </OwlCarousel >
+
+
         </div>
-
-        <div className="text-center md:p-12 p-10 bg-white" data-aos="fade-up" data-aos-duration="2000">
-          <h3 className="md:text-2xl text-xl ">Our Clients</h3>
-          <p className="md:text-3xl text-2xl p-5 font-bold">Some of our happy Clients</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae veniam nesciunt, ducimus
-            praesentium placeat debitis? Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-
-        <OwlCarousel {...settings2} >
-
-          <div className="owlcarousel_logo p-20">
-            <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto rounded-xl">
-              <img src="./logo6.jpg" className="rounded-xl" />
-            </div>
-          </div>
-
-          <div className="owlcarousel_logo p-20">
-            <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-              <img src="./logo1.png" className="rounded-xl" />
-            </div>
-          </div>
-
-          <div className="owlcarousel_logo p-20">
-            <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-              <img src="./evolve.png" className="h-full rounded-xl" />
-            </div>
-          </div>
-
-          <div className="owlcarousel_logo p-20">
-            <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-              <img src="./logo3.png" className="h-full rounded-xl" />
-            </div>
-          </div>
-
-          <div className="owlcarousel_logo p-20">
-            <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-              <img src="./logo4.jpg" className="h-full rounded-xl" />
-            </div>
-          </div>
-
-          <div className="owlcarousel_logo p-20">
-            <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-              <img src="./logo5.jpg" className="h-full rounded-xl" />
-            </div>
-          </div>
-
-        </OwlCarousel >
-
-
-        </div>
-    </div>
+      </div>
     </div>
 
   );
