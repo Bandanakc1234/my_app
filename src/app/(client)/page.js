@@ -151,7 +151,7 @@ export default function Home() {
         {/* fourth content start */}
 
         <div className="lfooter bg-white md:p-10">
-          <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">our services</h1>
+          <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Our Services</h1>
           
           <div className="flex flex-wrap w-full justify-evenly">
             {

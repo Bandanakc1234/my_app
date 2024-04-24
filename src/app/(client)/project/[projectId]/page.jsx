@@ -30,10 +30,10 @@ const projectDetail = () => {
     <>
         <div className="flex justify-center p-10">
             <div className="bg-white md:w-5/12 rounded-md py-5 flex flex-col items-center shadow-xl " data-aos="zoom-in" data-aos-duration="000">
-                <h1 className='text-center md:text-xl font-bold'>Title: {project.project_title}</h1>
-                <h1 className='text-center md:text-lg md:m-2 m-1 text-sm'>Category: {project.category?.category_title}</h1>
-                <h1 className='text-center md:text-lg md:m-2 m-1 text-sm'>Language: {project.language}</h1>
-                <h1 className='text-center md:text-lg md:m-2 m-1 text-sm'>Tools: {project.tools}</h1>
+                <h1 className='text-center md:text-xl font-bold capitalize'>Title: {project.project_title}</h1>
+                <h1 className='text-center md:text-lg md:m-2 m-1 text-sm capitalize'>Category: {project.category?.category_title}</h1>
+                <h1 className='text-center md:text-lg md:m-2 m-1 text-sm capitalize'>Language: {project.language}</h1>
+                <h1 className='text-center md:text-lg md:m-2 m-1 text-sm capitalize'>Tools: {project.tools}</h1>
                 <h1 className='flex justify-center w-1/2'>
                     <img src={`${API}/${project.project_image}`} alt={project.project_title} className="w-full rounded-md" style={{height:"250px"}}/>
                 </h1>
