@@ -61,6 +61,15 @@ export default function Home() {
     }
   }
 
+  const settings3 = {
+    items: 1,
+    // nav : true,
+    loop: true,
+    autoHeight: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+  }
+
   useEffect(() => {
     Aos.init()
     alluserclient()
@@ -147,6 +156,28 @@ const showSuccess = () => {
     <div>
       {showError()}
       {showSuccess()}
+      <div className="w-11/12 mx-auto flex flex-col lg:flex-row justify-between ">
+        <div className="w-1/2 bg-cyan-500 ">
+          lorem lorem lorem lorem
+        </div>
+        <div className="w-full lg:w-1/2 h-full p-5">
+          <OwlCarousel {...settings3}>
+            <div className="w-full">
+              <img src="/career1.webp" className="w-full h-full rounded-md" />
+              
+            </div>
+            <div className="w-full">
+              <img src="/career2.jpg" className="w-full h-full rounded-md" />
+              
+            </div> 
+            <div className="w-full">
+              <img src="/contact1.jpg" className="w-full h-full rounded-md" />
+              
+            </div>                     
+          </OwlCarousel>
+        </div>
+
+      </div>
       <div className="main  bg-white ">
         <div className="head bg-white">
           <h1 className="lg:text-4xl text-3xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="1000">Learn</h1>
