@@ -1,11 +1,78 @@
-import React from 'react'
+"use client"
+import { sendEmail } from '@/api/normalUserAPI';
+import React, { useState } from 'react'
 import { FaChevronRight, FaMapMarkerAlt, FaPhoneAlt} from 'react-icons/fa'
 import { IoIosMail, IoLogoFacebook, IoLogoInstagram, IoLogoTwitter, IoLogoLinkedin } from "react-icons/io";
+import Swal from 'sweetalert2';
 
 
 
 const Footer = () => {
+  let [email, setEmail] = useState("")
+  let [error, setError] = useState('')
+  let [success, setSuccess] = useState(false)
+
+  const handleChange = (event) => {
+    setEmail(
+      event.target.value
+    )
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    sendEmail(email)
+      .then(data => {
+        if (data.error) {
+          setSuccess(false)
+          setError(data.error)
+        }
+        else {
+          setError('')
+          setSuccess(true)
+          setEmail("")
+        }
+      })
+      .catch(error => console.log(error))
+  }
+
+  const showError = () => {
+    if (error) {
+        Swal.fire({
+            icon: "error",
+            toast: true,
+            title: "error",
+            text: error,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            color: "#d33"
+        })
+        setError('')
+        return <div>{error}</div>
+    }
+}
+const showSuccess = () => {
+    if (success) {
+        Swal.fire({
+            icon: "success",
+            toast: true,
+            title: "success",
+            text: 'Thank you for your Interest',
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            color: "#64DD17"
+        })
+        setSuccess('')
+        return <div>{success}</div>
+    }
+}
   return (
+    <>
+    {showError()}
+    {showSuccess()}
     <footer>
       <div className='bg-gray-800 text-gray-200'>
         <div className='max-w-7xl mx-auto p-12'>
@@ -55,8 +122,8 @@ const Footer = () => {
               <h1 className='mb-3 text-xl'>Subscribe to our newsletter</h1>
               <p className='mb-2'>Monthly digest of what's new and exciting from us.</p>
               <form className='flex flex-row flex-wrap gap-1'>
-                <input type="text" placeholder='Email address' className='text-black w-2/3 text-center  ' />
-                <button className='p-1 rounded-md bg-blue-500 hover:bg-blue-700'>Subscribe</button>
+                <input type="text" placeholder='Email address' name='email' value={email} onChange={handleChange} className='text-black w-2/3 text-center  ' />
+                <button className='p-1 rounded-md bg-blue-500 hover:bg-blue-700' onClick={handleSubmit}>Subscribe</button>
               </form>
             </div>
           </div>
@@ -79,6 +146,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   )
 }
 

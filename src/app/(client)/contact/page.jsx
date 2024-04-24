@@ -1,15 +1,93 @@
 'use client';
 
-import React from 'react'
+import React, { useState } from 'react'
 import Aos from "aos";
 import 'aos/dist/aos.css'
 import { useEffect } from "react";
+import { sendMessage } from '@/api/normalUserAPI';
+import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 
 const contact = () => {
+  let [formData, setFormData] = useState({})
+  let [error, setError] = useState('')
+  let [success, setSuccess] = useState(false)
+
+  let {name, email, message} = formData
+
   useEffect(() => {
     Aos.init()
   }, [])
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    sendMessage(formData)
+      .then(data => {
+        if (data.error) {
+          setSuccess(false)
+          console.log(data.error)
+          setError(data.error)
+        }
+        else {
+          setError('')
+          setSuccess(true)
+          setFormData({
+            name: "",
+            email: "",
+            message: ""
+          })
+        }
+      })
+      .catch(error => console.log(error))
+  }
+
+  const showError = () => {
+    if (error) {
+        Swal.fire({
+            icon: "error",
+            toast: true,
+            title: "error",
+            text: "Fill the Required Field",
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            color: "#d33"
+        })
+        setError('')
+        return <div>{error}</div>
+    }
+}
+const showSuccess = () => {
+    if (success) {
+        Swal.fire({
+            icon: "success",
+            toast: true,
+            title: "success",
+            text: 'Thank you for Interest',
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            color: "#64DD17"
+        })
+        setSuccess('')
+        return <div>{success}</div>
+    }
+}
+
   return (
+    <>
+      {showSuccess()}
+      {showError()}
     <div>
       <div className='contact-img text-center p-16 text-white'>
         <div className='career lg:text-4xl text-2xl font-bold' data-aos="zoom-in" data-aos-duration="2000" >Contact Us</div>
@@ -40,20 +118,21 @@ const contact = () => {
           <p className="leading-relaxed mb-5 text-gray-600 text-center">Contact For Any Query</p>
           <div className="relative mb-4">
             <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-            <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            <input type="text" id="name" name="name" value={name} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={handleChange} />
           </div>
           <div className="relative mb-4">
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-            <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            <input type="email" id="email" name="email" value={email}  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={handleChange} />
           </div>
           <div className="relative mb-4">
             <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-            <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+            <textarea id="message" name="message" value={message} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" onChange={handleChange}></textarea>
           </div>
-          <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded text-lg">Send Message</button>
+          <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded text-lg" onClick={handleSubmit}>Send Message</button>
         </div>
       </div>
     </div>
+    </>
 
   )
 }
