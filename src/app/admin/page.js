@@ -71,7 +71,7 @@ export default function Home() {
     <>
       {/* Recent Job Posts */}
       <div className="flex flex-col lg:flex-row justify-between w-11/12 mx-auto pb-8 px-5 md:px-0">
-        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1">
+        <div className="recentjobs w-full lg:w-3/4 order-2 lg:order-1 pt-5 lg:pt-0">
           <h1 className="text-xl md:text-2xl font-bold py-1">Recent Job Posts</h1>
           {careers?.length > 0 && (
             careers
@@ -101,14 +101,14 @@ export default function Home() {
           </Link>
         </div>
         {/*user profile */}
-        <div className="profile lg:w-1/4 order-1 lg:order-2">
+        <div className="profile w-full sm:w-3/4 lg:w-1/4 mx-auto order-1 lg:order-2 lg:mt-14">
           <div className="profile-pic font-semibold text-lg ">
-            <div className="flex flex-col justify-center items-center bg-white">
-              <h1>
+            <div className="flex flex-col justify-center items-center bg-white rounded-md py-5">
+              <h1 className="pt-5">
                 <img
                   src={`${API}/${userImage}`}
                   alt=""
-                  className="md:h-36 h-24 md:w-36 w-24 border mt-12 rounded-md"
+                  className="h-36 w-36  border  rounded-md"
                 />
               </h1>
               <h1 className="text-sm md:text-base capitalize mt-2 ">
@@ -126,7 +126,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className="projects w-11/12 mx-auto pb-8 px-5 md:px-0">
+      {/* <div className="projects w-11/12 mx-auto pb-8 px-5 md:px-0">
         <h1 className="text-xl md:text-2xl font-bold py-1">Projects</h1>
         <div className="w-full flex flex-col items-center">
           {projects?.length > 0 &&
@@ -179,7 +179,7 @@ export default function Home() {
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
 
 
       {/* Applicants */}

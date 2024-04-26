@@ -35,8 +35,8 @@ const Category = () => {
       title: "are you sure?",
       text: "you won't be able to revert this!",
       showCancelButton: true,
-      confirmButtonColor: "#3138D6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3138D6",
       confirmButtonText: "Delete",
       width: "35%"
     }).then((result) => {
@@ -87,9 +87,9 @@ const Category = () => {
               <h1>Description:{category.description}</h1>
               <h1>Status: </h1>
               <Link href={`/admin/categories/update/${category._id}`}>
-                <span className='border-2 border-none bg-yellow-500  hover:text-white h-8 p-1.5 text-center rounded-md mr-5 '>Update</span>
+                <button className='border-2 border-none bg-yellow-500  hover:text-white h-8 w-20 text-center rounded-md mr-5 my-2 sm:my-0'>Update</button>
               </Link>
-              <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md' onClick={handleDelete(category._id)}> Delete </button>
+              <button className='border-2 border-none bg-red-500 hover:text-white w-20 h-8 rounded-md ' onClick={handleDelete(category._id)}> Delete </button>
             </div>
           })
         }

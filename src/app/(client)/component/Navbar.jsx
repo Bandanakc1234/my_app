@@ -14,9 +14,9 @@ const Navbar = () => {
         setMenuOpen(!menuOpen);
     }
     return (
-            <nav className="sticky w-full py-4 top-0 bg-blue-100 z-10"  >
+            <nav className="sticky w-full py-4 top-0 bg-blue-100 z-10 "  >
                 <div className='flex justify-between items-center h-full w-full px-4 2xl:px:16'>
-                    <div>
+                    <div className=''>
                         <h1 className='text-3xl font-semibold'>Index It Hub</h1>
                         {/* <Link>
                     <Image src={Logo} alt='Logo' width={205} height={75} className='cursor-pointer' priority/>

@@ -121,11 +121,11 @@ const UpdateCareer = () => {
         <div className='bg-blue-200'>
             {showError()}
             {showSuccess()}
-            <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-10/12 xl:p-10 md:p-5 p-2'>
+            <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-full xl:p-10 md:p-5 p-2'>
                 <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Update Career</h1>
 
                 <table className='lg:w-full w-10/12 md:text-xl text-sm'>
-                    <tr>
+                    <tr classname='flex md:flex-row flex-col '>
                         <td>
                             <label className=' md:text-lg text-sm'>career title:</label>
                         </td>
@@ -133,7 +133,7 @@ const UpdateCareer = () => {
                             <input type="text" name="career_title" value={career_title} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
-                    <tr>
+                    <tr classname='flex md:flex-row flex-col '>
                         <td>
                             <label className='md:text-lg text-sm'>vacancyNumber:</label>
                         </td>
@@ -141,7 +141,7 @@ const UpdateCareer = () => {
                             <input type="number" name="vacancyNumber" value={vacancyNumber} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
-                    <tr>
+                    <tr classname='flex md:flex-row flex-col '>
                         <td>
                             <label className='md:text-lg'>offered_salary:</label>
                         </td>
@@ -150,7 +150,7 @@ const UpdateCareer = () => {
 
                         </td>
                     </tr>
-                    <tr>
+                    <tr classname='flex md:flex-row flex-col '>
                         <td>
                             <label className='md:text-lg'>job_description:</label>
                         </td>
@@ -158,7 +158,7 @@ const UpdateCareer = () => {
                             <textarea type="text" name="job_description" value={job_description} className='border-2 border-black p-1 md:text-lg rounded-md md:h-44 md:mb-3 h-32 w-full resize-none' onChange={handleChange} />
                         </td>
                     </tr>
-                    <tr>
+                    <tr classname='flex md:flex-row flex-col '>
                         <td>
                             <label className='md:text-lg'>qualification:</label>
                         </td>
@@ -167,7 +167,7 @@ const UpdateCareer = () => {
 
                         </td>
                     </tr>
-                    <tr>
+                    <tr classname='flex md:flex-row flex-col '>
                         <td>
                             <label className='md:text-lg'>posted_date:</label>
                         </td>
@@ -175,7 +175,7 @@ const UpdateCareer = () => {
                             <input type="date" name="posted_date" value={posted_date.toString()}  min={today}className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange} />
                         </td>
                     </tr>
-                    <tr>
+                    <tr classname='flex md:flex-row flex-col '>
                         <td>
                             <label className='md:text-lg'>deadline:</label>
                         </td>

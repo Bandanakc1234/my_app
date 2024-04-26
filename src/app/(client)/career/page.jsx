@@ -34,7 +34,11 @@ const career = () => {
                         <p className='font-semibold'>BE PART OF OUR TEAM</p>
                     </div>
                     <p className='lg:text-3xl text-xl lg:text-left text-center font-bold pt-3'>Career and Culture at Index IT Hub</p>
-                    <p className='lg:pl-0 pt-5 pl-3'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quia enim magnam aspernatur nisi hic quisquam facere eius quaerat voluptates voluptas velit, vitae voluptatum at consequatur. Inventore magnam dolorem a! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, voluptate! Sapiente, minima labore? Facilis, repellendus. Nihil facilis quae, optio illum ab alias facere, aliquam blanditiis consequuntur adipisci laboriosam, magni tempora?</p>
+                    <p className='lg:pl-0 pt-5 pl-3'>
+                    Discover the vibrant culture at Index IT Hub, where collaboration, innovation, and personal growth are paramount. Join our diverse team and unleash your creativity in an environment that not only values your contributions but also empowers your development. Enjoy competitive compensation, comprehensive benefits, and abundant opportunities for advancement in the dynamic field of IT. Here, we believe in the power of collective wisdom, where sharing knowledge, expertise, and creativity fuels the emergence of the best ideas. Our collaborative environment fosters not just professional growth, but also a sense of camaraderie and teamwork essential for success. 
+                    <br/> <br/>
+                    Join us at Index IT Hub, where collaboration, innovation, and excellence converge in project development. Together, we'll push the boundaries of technology and create impactful solutions that shape the future
+                    </p>
                 </div>
                 <div className='lg:p-10 lg:w-1/2 p-5'>
                     <img src={"/career2.jpg"} alt="" className='h-full w-full rounded-2xl opacity-80' data-aos="zoom-in" data-aos-duration="2000" />

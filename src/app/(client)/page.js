@@ -13,9 +13,9 @@ import dynamic from 'next/dynamic';
 import { getAllCategories } from "@/api/categoryAPI";
 import { alluserclient } from "@/api/userApi";
 import { API } from "@/config";
-import Link from "next/link";
-import { sendEmail, sendMessage } from "@/api/normalUserAPI";
+import { sendEmail } from "@/api/normalUserAPI";
 import Swal from "sweetalert2";
+import { Service } from "./service/StaticData/page";
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
 });
@@ -47,16 +47,16 @@ export default function Home() {
   const settings2 = {
     loop: true,
     margin: 10,
-    items: 5,
+    items: 3,
     responsive: {
       0: {
         items: 1,
       },
       600: {
-        items: 3,
+        items: 2,
       },
       1000: {
-        items: 5
+        items: 3
       }
     }
   }
@@ -108,38 +108,38 @@ export default function Home() {
 
   const showError = () => {
     if (error) {
-        Swal.fire({
-            icon: "error",
-            toast: true,
-            title: "error",
-            text: error,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            color: "#d33"
-        })
-        setError('')
-        return <div>{error}</div>
+      Swal.fire({
+        icon: "error",
+        toast: true,
+        title: "error",
+        text: error,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        color: "#d33"
+      })
+      setError('')
+      return <div>{error}</div>
     }
-}
-const showSuccess = () => {
+  }
+  const showSuccess = () => {
     if (success) {
-        Swal.fire({
-            icon: "success",
-            toast: true,
-            title: "success",
-            text: 'Thank you for your Interest',
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            color: "#64DD17"
-        })
-        setSuccess('')
-        return <div>{success}</div>
+      Swal.fire({
+        icon: "success",
+        toast: true,
+        title: "success",
+        text: 'Thank you for your Interest',
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        color: "#64DD17"
+      })
+      setSuccess('')
+      return <div>{success}</div>
     }
-}
+  }
 
 
   return (
@@ -159,7 +159,7 @@ const showSuccess = () => {
 
           <div className="cn">
             {/* <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700"  data-aos="fade-right" data-aos-duration="1000"><a href="#" className="p-3">Free Quote</a></button> */}
-            <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700" data-aos="fade-left" data-aos-duration="1000"><a href="/contact" className="p-3">Contact Us</a></button>
+            <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer md:m-10 m-5 text-white hover:bg-blue-700" data-aos="fade-right" data-aos-duration="2000"><a href="/contact" className="p-3">Contact Us</a></button>
           </div>
         </div>
 
@@ -168,23 +168,13 @@ const showSuccess = () => {
         {/* second content start */}
         <div className="body_mid h-auto bg-white w-full md:p-9  lg:flex lg:justify-between ">
           <div className="left lg:w-1/2 md:w-full sm:w-full" data-aos="fade-up" data-aos-duration="2000">
-            <h1 className="lg:text-4xl text-3xl text-blue-500 font-bold md:p-5 p-3">Learn</h1>
+            <h1 className="lg:text-4xl text-3xl text-blue-500 font-bold md:p-5 p-3">About Us</h1>
             <p className="lg:p-12 lg:text-xl lg:w-full md:text-base md:w-5/6 md:p-10 p-3 text-sm w-full">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique fuga
-              consectetur hic quam dolore ea beatae consequatur excepturi ratione deserunt earum ut animi amet
-              eligendi suscipit quidem dignissimos debitis sunt, et harum perspiciatis neque! Animi, obcaecati
-              reiciendis ipsam incidunt laudantium architecto exercitationem nostrum numquam ex nesciunt illum
-              quia vero reprehenderit voluptatum dignissimos pariatur accusantium explicabo porro! Odit,
-              deleniti
-              officiis laudantium nesciunt quidem tenetur officia debitis magnam odio ab, quod perferendis
-              saepe
-              quibusdam impedit porro quaerat sunt assumenda aliquam fuga quisquam ipsam. Et, nam enim? Modi,
-              numquam enim veniam, facilis mollitia rem ratione similique quia ullam pariatur atque? Esse,
-              fugit
-              doloribus.</p>
+            Index IT Hub pioneers innovative IT solutions for businesses worldwide. Our company specializes in a comprehensive array of services, including software development, web development, mobile application development, graphics design, digital marketing strategies, IT consultation services, and search engine optimization (SEO) With a focus on client success and technical excellence, we deliver tailored solutions to drive growth and efficiency in the digital age. Partner with Index IT Hub to elevate your business to new heights in technology and innovation.
+              </p>
 
             <div className="cn">
-              <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 text-white hover:bg-blue-700 "><a href="/about" className="md:p-3 p-2">About Us</a></button>
+              <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 text-white hover:bg-blue-700 "><a href="/about" className="md:p-3 p-2">Learn More</a></button>
             </div>
           </div>
           <div className="right m-5 lg:w-1/2">
@@ -213,23 +203,48 @@ const showSuccess = () => {
         {/* fourth content start */}
 
         <div className="lfooter bg-white md:p-10">
-          <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">our services</h1>
+          <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Why Index IT Hub?</h1>
 
-          <div className="flex flex-wrap w-full justify-evenly">
+          <div className="lfooter bg-white md:p-10">
+            <div className="flex flex-wrap w-full justify-evenly">
+              {
+                Service?.length > 0 &&
+                Service.map((service, i) => {
+                  return <div className="flex justify-evenly items-center" >
+                    {/* <div > */}
+                    {i%2==0 && 
+                      <div data-aos="zoom-in" data-aos-duration="1000">{service.image}</div>
+                    }
+                    <div className={`text-justify w-1/2`} data-aos="zoom-in" data-aos-duration="1000">
+                      <h2 className="text-3xl font-bold underline mb-3">{service.title}</h2>
+                      <h2 className="text-justify">{service.description}</h2>
+                    </div>
+                    {(i+1)%2==0 && 
+                     <div data-aos="zoom-in" data-aos-duration="1000"> {service.image} </div>
+                    }
+                  </div>
+                  // </div>
+
+                })
+              }
+
+            </div>
+          </div>
+
+
+          {/* <div className="flex flex-wrap w-full justify-evenly">
             {
               services?.length > 0 &&
               services.map(service => {
                 return <div key={service._id} className="flex-col-3 justify-between lg:flex lg:justify-between">
                   <div className="topfirst bg-white md:w-96 w-52 rounded-md px-2 py-6 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
-                    <div className="icondiv flex justify-center" >
+                  <div className="icondiv flex justify-center" >
                       <div dangerouslySetInnerHTML={{ __html: service.icon }}></div>
                     </div>
                     <div className="h2div text-2xl font-bold flex justify-center">
                       <h2 className="text-center">{service.category_title}</h2>
                     </div>
-                    {/* <div className="pdiv text-center">
-                      <p>{service.description}</p>
-                    </div> */}
+                    
                     <div className="buttondiv flex justify-center">
                       <Link href={`/service/${service?._id}`}>
                         <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white">Read more</button>
@@ -241,7 +256,7 @@ const showSuccess = () => {
               })
             }
 
-          </div>
+          </div> */}
 
 
 
@@ -356,13 +371,6 @@ const showSuccess = () => {
                       <h3 className="font-bold text-xl">{user.firstname} {user.lastname} </h3>
                       <p className="font-bold">{user.position}</p>
                     </div>
-                    {/* <div className="pdiv">
-                      <blockquote>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis tempora minima
-                        totam
-                        nesciunt cum quaerat
-                      </blockquote>
-                    </div> */}
-
                   </div>
                 })
               }
@@ -398,46 +406,12 @@ const showSuccess = () => {
           </div>
 
           <OwlCarousel {...settings2} >
-
-            <div className="owlcarousel_logo p-20">
-              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto rounded-xl">
-                <img src="./logo6.jpg" className="rounded-xl" />
-              </div>
-            </div>
-
-            <div className="owlcarousel_logo p-20">
-              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-                <img src="./logo1.png" className="rounded-xl" />
-              </div>
-            </div>
-
             <div className="owlcarousel_logo p-20">
               <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
                 <img src="./evolve.png" className="h-full rounded-xl" />
               </div>
             </div>
-
-            <div className="owlcarousel_logo p-20">
-              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-                <img src="./logo3.png" className="h-full rounded-xl" />
-              </div>
-            </div>
-
-            <div className="owlcarousel_logo p-20">
-              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-                <img src="./logo4.jpg" className="h-full rounded-xl" />
-              </div>
-            </div>
-
-            <div className="owlcarousel_logo p-20">
-              <div className="logo border border-solid shadow-2xl border-white h-48 w-48 mx-auto  rounded-xl">
-                <img src="./logo5.jpg" className="h-full rounded-xl" />
-              </div>
-            </div>
-
           </OwlCarousel >
-
-
         </div>
       </div>
     </div>

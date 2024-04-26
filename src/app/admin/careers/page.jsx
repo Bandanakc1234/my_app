@@ -42,8 +42,8 @@ const Careers = () => {
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       showCancelButton: true,
-      confirmButtonColor: "#3138D6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3138D6",
       confirmButtonText: "Delete",
       width: "35%"
     }).then((result) => {

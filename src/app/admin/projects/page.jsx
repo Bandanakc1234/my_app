@@ -32,8 +32,8 @@ const Projects = () => {
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       showCancelButton: true,
-      confirmButtonColor: "#3138D6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3138D6",
       confirmButtonText: "Delete",
       width: "35%"
     }).then((result) => {
@@ -79,7 +79,7 @@ const Projects = () => {
               <h1>language: {project.language}</h1>
               <h1>tools: {project.tools}</h1>
               <h1>
-                <img src={`${API}/${project.project_image}`} alt={project.project_image} style={{height:"100px"}}/>
+                <img src={`${API}/${project.project_image}`} alt={project.project_image} style={{height:"250px", width:"250px"}} className='p-3'/>
               </h1>
               <h1>Status: </h1>
               <div className='flex md:flex-row my-2'>

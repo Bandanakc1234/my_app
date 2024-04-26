@@ -24,22 +24,10 @@ const about = () => {
           <div className="left lg:w-1/2 md:w-full sm:w-full" data-aos="zoom-in" data-aos-duration="2000">
             <h1 className="lg:text-4xl text-3xl text-blue-500 font-bold md:p-5 p-3">Learn</h1>
             <p className="lg:p-12 lg:text-xl lg:w-full md:text-base md:w-5/6 md:p-10 p-3 text-sm w-full ">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique fuga
-              consectetur hic quam dolore ea beatae consequatur excepturi ratione deserunt earum ut animi amet
-              eligendi suscipit quidem dignissimos debitis sunt, et harum perspiciatis neque! Animi, obcaecati
-              reiciendis ipsam incidunt laudantium architecto exercitationem nostrum numquam ex nesciunt illum
-              quia vero reprehenderit voluptatum dignissimos pariatur accusantium explicabo porro! Odit,
-              deleniti
-              officiis laudantium nesciunt quidem tenetur officia debitis magnam odio ab, quod perferendis
-              saepe
-              quibusdam impedit porro quaerat sunt assumenda aliquam fuga quisquam ipsam. Et, nam enim? Modi,
-              numquam enim veniam, facilis mollitia rem ratione similique quia ullam pariatur atque? Esse,
-              fugit
-              doloribus.</p>
-
-            {/* <div className="cn">
-              <button className="bg-blue-500 text-white h-9 text-lg rounded-md cursor-pointer m-4 hover:bg-blue-700"><a href="" className="md:p-3 p-2">Read more</a></button>
-            </div> */}
+            Index IT Hub pioneers innovative IT solutions for businesses worldwide. Our company specializes in a comprehensive array of services, including software development, web development, mobile application development, graphics design, digital marketing strategies, IT consultation services, and search engine optimization (SEO) With a focus on client success and technical excellence, we deliver tailored solutions to drive growth and efficiency in the digital age. Partner with Index IT Hub to elevate your business to new heights in technology and innovation.
+            <br/> <br/>
+            Partner with Index IT Hub today and discover how our commitment to technology and innovation can elevate your business to new heights of success. Let us be your trusted partner in navigating the complexities of the digital age, and together, we'll pave the way for a brighter future.
+            </p>
           </div>
           <div className="right m-5 lg:w-1/2">
             <img src={"/download1.png"} alt="" className="w-full h-full" data-aos="fade-up" data-aos-duration="2000"/>

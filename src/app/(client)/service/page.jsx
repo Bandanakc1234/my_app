@@ -74,14 +74,11 @@ const Services = () => {
                 return <div key={service._id} className="flex-col-3 justify-between lg:flex lg:justify-between">
                   <div className="topfirst bg-white md:w-96 w-52 rounded-md px-2 py-6 flex flex-col justify-center shadow-xl hover:bg-blue-200 m-auto gap-5 mb-10 lg:m-10" data-aos="zoom-in" data-aos-duration="1000">
                     <div className="icondiv flex justify-center" >
-                      <div dangerouslySetInnerHTML={{ __html: service.icon }}></div>                      
+                      <h1 dangerouslySetInnerHTML={{ __html: service.icon }}></h1>                      
                     </div>
                     <div className="h2div text-2xl font-bold flex justify-center">
                       <h2 className="text-center">{service.category_title}</h2>
                     </div>
-                    {/* <div className="pdiv text-center">
-                      <p>{service.description}</p>
-                    </div> */}
                     <div className="buttondiv flex justify-center">
                       <Link href={`/service/${service?._id}`}>
                         <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer m-4 w-28 hover:bg-blue-700 text-white" >Read More</button>

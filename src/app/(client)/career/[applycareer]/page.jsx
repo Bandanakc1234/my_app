@@ -3,9 +3,7 @@ import { applyCareer } from '@/api/applyCareerAPI';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import Swal from 'sweetalert2';
-import CareerCard from '../../component/CareerCard';
 import { getCareerDetails } from '@/api/careerAPI';
-import career from '../page';
 
 const ApplyCareer = () => {
     const [careers, setCareers] = useState({})

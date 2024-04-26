@@ -143,7 +143,7 @@ const UpdateProject = () => {
         <>
             <div className='bg-blue-200 h-screen'>
 
-                <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-10/12 xl:p-10 md:p-5 p-2'>
+                <div className='border-2 shadow-lg bg-white rounded-md mb-10 ms-7 lg:w-3/5 md:w-5/6 w-full xl:p-10 md:p-5 p-2'>
                     <h1 className='font-bold lg:text-3xl lg:text-left text-center md:text-2xl'>Update Projects</h1>
                     {showError()}
                     {showSuccess()}
@@ -155,7 +155,7 @@ const UpdateProject = () => {
                         <div className='col-6'>
 
                             <table className='lg:w-full w-10/12 md:text-xl text-sm'>
-                                <tr className=''>
+                                <tr className='flex md:flex-row flex-col '>
                                     <td className=''>
                                         <label className=' md:text-lg text-sm'>project_title:</label>
                                     </td>
@@ -163,7 +163,7 @@ const UpdateProject = () => {
                                         <input type="text" name="project_title" value={project_title} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange('project_title')} />
                                     </td>
                                 </tr>
-                                <tr className=''>
+                                <tr className='flex md:flex-row flex-col '>
                                     <td>
                                         <label className='md:text-lg text-sm'>category:</label>
                                     </td>
@@ -179,7 +179,7 @@ const UpdateProject = () => {
                                         </select>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr className='flex md:flex-row flex-col '>
                                     <td>
                                         <label className='md:text-lg'>language:</label>
                                     </td>
@@ -188,7 +188,7 @@ const UpdateProject = () => {
 
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr className='flex md:flex-row flex-col '>
                                     <td>
                                         <label className='md:text-lg'>tools:</label>
                                     </td>
@@ -196,7 +196,7 @@ const UpdateProject = () => {
                                         <input type="text" name="tools" value={tools} className='border-2 border-black p-1 md:text-lg rounded-md md:h-8 h-7 w-full' onChange={handleChange('tools')} />
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr className='flex md:flex-row flex-col '>
                                     <td>
                                         <label htmlFor='image' className='md:text-lg'>project_image:</label>
                                     </td>
