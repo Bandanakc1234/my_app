@@ -98,13 +98,13 @@ const project = () => {
                             {
                                 filteredResult.map(project =>{
                                     return <div key={project._id} className="project-div py-5 px-2 hover:bg-blue-200 rounded-md shadow-lg my-3 " >
-                                        <h1 className="text-center md:text-xl">
+                                        <h1 className="text-center md:text-xl capitalize">
                                             Title:- {project.project_title}
                                         </h1>
-                                        <div className="flex justify-center py-3 px-5">
+                                        <div className="flex justify-center py-3 px-5 capitalize">
                                             <img src= {`${API}/${project.project_image}`} alt={project.project_title} className="w-full rounded-md" style={{height:"250px"}}/>
                                         </div>
-                                        <div className="project-btn flex justify-center pt-1">
+                                        <div className="project-btn flex justify-center pt-1 capitalize">
                                             <Link href={`/project/${project?._id}`}>
                                                 <button className="bg-blue-500 h-9 text-lg rounded-md cursor-pointer w-28 hover:bg-blue-700 text-white"> Read More
                                                 </button>

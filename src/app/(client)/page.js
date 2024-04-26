@@ -61,6 +61,24 @@ export default function Home() {
     }
   }
 
+  const settings3 = {
+    items: 1,
+    // nav : true,
+    loop: true,
+    autoHeight: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+  }
+
+  const settings3 = {
+    items: 1,
+    // nav : true,
+    loop: true,
+    autoHeight: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+  }
+
   useEffect(() => {
     Aos.init()
     alluserclient()
@@ -147,6 +165,28 @@ export default function Home() {
     <div>
       {showError()}
       {showSuccess()}
+      <div className="w-11/12 mx-auto flex flex-col lg:flex-row justify-between ">
+        <div className="w-1/2 bg-cyan-500 ">
+          lorem lorem lorem lorem
+        </div>
+        <div className="w-full lg:w-1/2 h-full p-5">
+          <OwlCarousel {...settings3}>
+            <div className="w-full">
+              <img src="/career1.webp" className="w-full h-full rounded-md" />
+              
+            </div>
+            <div className="w-full">
+              <img src="/career2.jpg" className="w-full h-full rounded-md" />
+              
+            </div> 
+            <div className="w-full">
+              <img src="/contact1.jpg" className="w-full h-full rounded-md" />
+              
+            </div>                     
+          </OwlCarousel>
+        </div>
+
+      </div>
       <div className="main  bg-white ">
         <div className="head bg-white">
           <h1 className="lg:text-4xl text-3xl text-blue-950 font-bold md:pl-10 p-3 pt-10" data-aos="zoom-in" data-aos-duration="1000">Learn</h1>
@@ -203,6 +243,7 @@ export default function Home() {
         {/* fourth content start */}
 
         <div className="lfooter bg-white md:p-10">
+
           <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">Why Index IT Hub?</h1>
 
           <div className="lfooter bg-white md:p-10">
@@ -233,6 +274,10 @@ export default function Home() {
 
 
           {/* <div className="flex flex-wrap w-full justify-evenly">
+=======
+          <h1 className="md:text-5xl text-3xl text-center font-bold p-10" data-aos="fade-up" data-aos-duration="2000">our services</h1>
+          <div className="flex flex-wrap w-full justify-evenly">
+>>>>>>> 3e6eac7760ffe572cbd2db1799a2f7004156b1b5
             {
               services?.length > 0 &&
               services.map(service => {
