@@ -53,11 +53,8 @@ const login = () => {
                     }
                 })
                 .catch(error => console.log(error))
-
         }
-
     }
-
 
     const showError = () => {
         if (error) {

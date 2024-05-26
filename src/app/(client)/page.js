@@ -63,21 +63,20 @@ export default function Home() {
 
   const settings3 = {
     items: 1,
-    // nav : true,
     loop: true,
     autoHeight: true,
     autoplay: true,
     autoplayTimeout: 3000,
   }
 
-  const settings3 = {
-    items: 1,
-    // nav : true,
-    loop: true,
-    autoHeight: true,
-    autoplay: true,
-    autoplayTimeout: 3000,
-  }
+  // const settings3 = {
+  //   items: 1,
+  //   // nav : true,
+  //   loop: true,
+  //   autoHeight: true,
+  //   autoplay: true,
+  //   autoplayTimeout: 3000,
+  // }
 
   useEffect(() => {
     Aos.init()
